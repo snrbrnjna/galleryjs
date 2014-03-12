@@ -33,7 +33,7 @@ require([
     'gallery/app'
 ], function ($, nope, GalleryApp) {
     $(function () {
-        var gallery = new GalleryApp();
+        var gallery = new GalleryApp({el: '.gallery-app'});
 
         console.log(gallery);
     });

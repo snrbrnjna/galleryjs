@@ -3,23 +3,35 @@
  */
 define([
   'backbone',
+  'underscore',
   'gallery/models/gallery.model',
   'gallery/views/thumb.container.view', 
   'gallery/views/thumb.container.dynamic.view', 
   'gallery/views/slider.view',
   'gallery/utils/responsive.adapter'
 ], 
-function(Backbone, GalleryModel, ThumbContainerView, ThumbContainerDynamicView, SliderView, ResponsiveAdapter) {
+function(Backbone, _, GalleryModel, ThumbContainerView, ThumbContainerDynamicView, SliderView, ResponsiveAdapter) {
   
   var GalleryApp = Backbone.View.extend({
     
     el: 'article.gallery',
+
+    defaults: {
+      min_col_width: {
+        desktop: 320,
+        pad: 320,
+        phone: 300
+      },
+      gutter_width: 3,
+      chunk_size: 8,
+      first_chunk: 15
+    },
     
-    initialize: function() {
+    initialize: function(options) {
       if (this.$el.length) {
         
         // Read in Options from gallery template
-        this.opts = this.$el.data('opts');
+        this.opts = _.extend({}, this.defaults, this.$el.data('opts'));
         
         // Initialize the GalleryModel
         this.model = new GalleryModel({

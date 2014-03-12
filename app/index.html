@@ -12,6 +12,8 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/devices.css">
+        <link rel="stylesheet" href="styles/gallery.css">
         <!-- endbuild -->
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="bower_components/modernizr/modernizr.js"></script>
@@ -36,15 +38,60 @@
           </ul>
         </div>
 
+        <!-- Gallery App -->
+        <div class="gallery-app" data-project="ebm-larven">
+            
+            <!-- Container for Thumbs of First Page -->
+            <div class="container photos loading"></div>
+            <div class="stopper"></div>
+            <!-- End Container Thumbs -->
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
+            <!-- Slider -->
+            <div class="slider">
+                <div class="tray">
+                    <div id="prev" class="photo prev"></div>
+                    <div id="current" class="photo current"></div>
+                    <div id="next" class="photo next"></div>
+                    <a class="nav prev" title="[<-] previous"></a>
+                    <a class="nav next" title="next [->]"></a>
+                    <div class="close_button" title="close the slider [ESC]">
+                        <div class="svg-icon">
+                            <span style="background-image: url('/assets/img/icon-cross.png');">
+                                <img src="/assets/img/icon-cross.svg">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="cockpit">
+                        <div class="cockpit_body">
+                            <!-- <nav>EXIF Data, Filename, Toggle Fullscreen</nav> -->
+                            <div>
+                                <span class="line index"></span>
+                                <span class="line filename"></span>
+                            </div>
+                        </div>
+                        <div class="cockpit_button">
+                            <div class="menu_icon svg-icon">
+                                <span style="background-image: url('/assets/img/icon-menu.png');">
+                                    <img src="/assets/img/icon-menu.svg">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Slider -->
+
+        </div>
+        <!-- End Gallery App -->
+
+
+
+
+
+        <script type="text/html" id="template-thumb">
+          <div class="photo loading" id="<%= digest %>">
+              <img src="<%= src %>"/>
+          </div>
         </script>
 
         <!-- build:js scripts/main.js -->

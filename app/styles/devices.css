@@ -1,0 +1,59 @@
+@media (max-width: 320px) {
+}
+
+@media (max-width: 380px) {
+  /* Header doesn't fit */
+  .site {font-size: .6em !important;}
+  .site .header h1.title { margin-bottom: 0.2em !important; }
+  .site .header nav {font-size: 1.4em !important;}
+}
+
+/* ######## From Twitter Bootstrap and modified ######## */
+
+/* Landscape phones and down */
+@media (min-width: 381px) and (max-width: 480px) {
+  /* Header doesn't fit */
+  .site {font-size: .8em !important;}
+  .site .header h1.title { margin-bottom: 0 !important; }
+  .site .header nav {font-size: 1.2em !important;}
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px), (max-device-width: 768px) and (orientation: portrait) {
+  .site .header.fixed  { height: 90px !important; }
+  .site > .main { margin-top: 120px !important; }
+}
+
+/* Portrait tablet (iPad) to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+}
+
+/* ######## For setting image breakpoints (see responsive.adapter) ######## */
+
+/* iPhone likes */
+@media (max-device-width: 640px), (max-device-height: 650px) and (orientation: landscape) {
+  body:after {content: 'phone'; display: block; margin-top: -30px; font-size: 0; line-height: 0; z-index: 0;} 
+  
+  /* no fixed top navi */
+  .site .header.fixed { position: relative !important; }
+  .site > .main { margin-top: 0 !important; }
+  
+  /* DEBUG: set Header color for checking media queries */
+/*  .site .header {background: yellow !important;}*/
+}
+
+/* iPad likes */
+@media (min-device-width: 641px) and (max-device-width: 1024px) {
+  body:after {content: 'pad'; display: block; margin-top: -30px; font-size: 0; line-height: 0; z-index: 0;} 
+  
+  /* DEBUG: set Header color for checking media queries */
+/*  .site .header {background: red !important;}*/
+}
+
+/* Large desktop */
+@media (min-device-width: 1025px) {
+  body:after {content: 'desktop'; display: block; margin-top: -30px; font-size: 0; line-height: 0; z-index: 0;}
+
+  /* DEBUG: set Header color for checking media queries */  
+/*  .site .header {background: green !important;}*/
+}
