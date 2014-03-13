@@ -61,6 +61,7 @@ function(Backbone, _, GalleryModel, ThumbContainerView, ThumbContainerDynamicVie
 
         // Instanciate the SliderView
         this.sliderView = new SliderView({
+          el: this.$('.slider'),
           model: this.model, 
           responsiveAdapter: this.responsiveAdapter
         });

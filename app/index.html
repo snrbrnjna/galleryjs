@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>gallery</title>
+        <title>Gallery</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -24,19 +24,6 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-
-        <div class="hero-unit">
-          <h1>'Allo, 'Allo!</h1>
-          <p>You now have</p>
-          <ul>
-            <li>HTML5 Boilerplate</li>
-            <li>jQuery</li>
-            <li>Backbone.js</li>
-            <li>Underscore.js</li>
-            <li>Modernizr</li>
-            <li>RequireJS</li>
-          </ul>
-        </div>
 
         <!-- Gallery App -->
         <div class="gallery-app" data-project="ebm-larven">
@@ -56,8 +43,8 @@
                     <a class="nav next" title="next [->]"></a>
                     <div class="close_button" title="close the slider [ESC]">
                         <div class="svg-icon">
-                            <span style="background-image: url('/assets/img/icon-cross.png');">
-                                <img src="/assets/img/icon-cross.svg">
+                            <span style="background-image: url('/images/icon-cross.png');">
+                                <img src="/images/icon-cross.svg">
                             </span>
                         </div>
                     </div>
@@ -71,8 +58,8 @@
                         </div>
                         <div class="cockpit_button">
                             <div class="menu_icon svg-icon">
-                                <span style="background-image: url('/assets/img/icon-menu.png');">
-                                    <img src="/assets/img/icon-menu.svg">
+                                <span style="background-image: url('/images/icon-menu.png');">
+                                    <img src="/images/icon-menu.svg">
                                 </span>
                             </div>
                         </div>
@@ -81,18 +68,13 @@
             </div>
             <!-- End Slider -->
 
+            <script type="text/html" id="template-thumb">
+              <div class="photo loading" id="<%= digest %>">
+                  <img src="<%= src %>"/>
+              </div>
+            </script>
         </div>
         <!-- End Gallery App -->
-
-
-
-
-
-        <script type="text/html" id="template-thumb">
-          <div class="photo loading" id="<%= digest %>">
-              <img src="<%= src %>"/>
-          </div>
-        </script>
 
         <!-- build:js scripts/main.js -->
         <script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>

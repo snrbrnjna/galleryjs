@@ -1,11 +1,17 @@
 /**** Photo demo ****/
 
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
 .photos {
   padding: 5px;
   background-color: #fff;
 }
 .js .photos.loading { /* Loading indicator for Thumbs container */
-  background: url("/assets/img/preloader-50.gif") no-repeat center 50px;
+  background: url("/images/preloader-50.gif") no-repeat center 50px;
   background-color: #fff;
   min-height: 250px; /* TODO calculate min-height when json loaded */
 }
@@ -18,7 +24,7 @@
 .js .photos .photo { opacity: 0; }
 .js .photos .photo.loading { 
   opacity: 1; 
-  background: url("/assets/img/preloader-50.gif") no-repeat center;
+  background: url("/images/preloader-50.gif") no-repeat center;
 }
 .js .photos .photo.loading img { 
   opacity: 0; 
@@ -44,7 +50,7 @@
 }
 
 .stopper {
-  background: url("/assets/img/preloader-50.gif") no-repeat center;
+  background: url("/images/preloader-50.gif") no-repeat center;
   background-color: #fff;
   width: 75px; height: 75px;
   margin: 10px auto 0;
@@ -80,7 +86,7 @@
     display: table;
     vertical-align: middle;
     text-align: center;
-    background: url("/assets/img/preloader-50.gif") no-repeat center;
+    background: url("/images/preloader-50.gif") no-repeat center;
     min-height: 100px;
     position: absolute; top: 0; bottom: 0;
     width: 100%;
@@ -120,11 +126,11 @@
     right: .8em;
 }
 .slider .nav.prev.active, .slider .nav.prev:hover {  
-    background:url('/assets/img/arrow_left.png') no-repeat center left;
+    background:url('/images/arrow_left.png') no-repeat center left;
     cursor: pointer;
 }
 .slider .nav.next.active, .slider .nav.next:hover {
-    background:url('/assets/img/arrow_right.png') no-repeat center right;
+    background:url('/images/arrow_right.png') no-repeat center right;
     cursor: pointer;
 }
 /* Close Button */
@@ -194,3 +200,19 @@
   float: left;
   clear: both;
 }
+
+/*** SVG icons polyfill ***/
+/*  no svg img */
+div.svg-icon span {display: block; width:100%; height:100%; background-size:100%; background-repeat:no-repeat;}
+div.svg-icon span img {display: none;}
+div.svg-icon span svg {display: none;}
+ /* no background png img in the span */
+.svg div.svg-icon span {background: none !important;}
+/* yes! show the svg img */
+.svg div.svg-icon span img {display: block !important; height:100%;}
+.svg div.svg-icon span svg {display: block !important; width:100%; /*height:100%;*/}
+
+
+/** SVG image polyfill **/
+/* svg img und fallback über background-image im css eingebunden */
+div.svg-img span {display: block; width:100%; height:100%; background-size:100%; background-repeat:no-repeat;}

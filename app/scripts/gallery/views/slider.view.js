@@ -25,8 +25,9 @@ define([
     defaults: {
       cockpit: true
     },
-    
-    el: '.gallery .slider',
+
+    // now the app initializes the slider with a ref to its slider DOM element
+    // el: '.gallery .slider',
     
     events: {
       'click .nav.prev': 'showPrev',
