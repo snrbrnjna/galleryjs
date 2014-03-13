@@ -1,0 +1,2750 @@
+{
+  "gallery": {
+    "title": "Flyer Doc Patcheko",
+    "project": "flyer-doc",
+    "presets": {
+      "thumb": {
+        "width": 400,
+        "baseurl": "/images/galleries/flyer-doc/thumb"
+      },
+      "large_phones": {
+        "width": 650,
+        "baseurl": "/images/galleries/flyer-doc/large_phones"
+      },
+      "large_pads": {
+        "width": 1024,
+        "baseurl": "/images/galleries/flyer-doc/large_pads"
+      },
+      "large": {
+        "width": 1400,
+        "baseurl": "/images/galleries/flyer-doc/large"
+      }
+    },
+    "imageCount": 113,
+    "images": [
+      {
+        "digest": "488da2",
+        "index": 0,
+        "filename": "59to1a-cab55c-488da2.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7133333333333334,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 560
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 911
+        },
+        "large_pads": {
+          "width": 856,
+          "height": 1200
+        },
+        "large": {
+          "width": 856,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "31b49a",
+        "index": 1,
+        "filename": "59to1b-e4dc3d-31b49a.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7133333333333334,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 560
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 911
+        },
+        "large_pads": {
+          "width": 856,
+          "height": 1200
+        },
+        "large": {
+          "width": 856,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "6998cb",
+        "index": 2,
+        "filename": "966539_10151418989866104_1287096413_o-0b4758-6998cb.jpg",
+        "orientation": "landscape",
+        "ratio": 1.5025678650036685,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 266
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 432
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 681
+        },
+        "large": {
+          "width": 1400,
+          "height": 931
+        }
+      },
+      {
+        "digest": "47a17f",
+        "index": 3,
+        "filename": "analstahl-easternset-61f756-47a17f.jpg",
+        "orientation": "portrait",
+        "ratio": 0.685,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 583
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 948
+        },
+        "large_pads": {
+          "width": 822,
+          "height": 1200
+        },
+        "large": {
+          "width": 822,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "efdf31",
+        "index": 4,
+        "filename": "analstahlglocke-v2-ee31ce-efdf31.jpg",
+        "orientation": "landscape",
+        "ratio": 1.4705882352941178,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 272
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 441
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 696
+        },
+        "large": {
+          "width": 1200,
+          "height": 815
+        }
+      },
+      {
+        "digest": "da9db4",
+        "index": 5,
+        "filename": "analtrompete2-2778b8-da9db4.jpg",
+        "orientation": "landscape",
+        "ratio": 1.4187643020594967,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 281
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 458
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 721
+        },
+        "large": {
+          "width": 1400,
+          "height": 986
+        }
+      },
+      {
+        "digest": "c772d6",
+        "index": 6,
+        "filename": "attack-fc7e98-c772d6.jpg",
+        "orientation": "portrait",
+        "ratio": 0.6975,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 573
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 931
+        },
+        "large_pads": {
+          "width": 837,
+          "height": 1200
+        },
+        "large": {
+          "width": 837,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "dbcf6b",
+        "index": 7,
+        "filename": "banjoman-e7ffb2-dbcf6b.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7441666666666666,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 537
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 873
+        },
+        "large_pads": {
+          "width": 893,
+          "height": 1200
+        },
+        "large": {
+          "width": 893,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "55f9e9",
+        "index": 8,
+        "filename": "battlepanorama-89a98d-55f9e9.jpg",
+        "orientation": "landscape",
+        "ratio": 1.4101057579318448,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 283
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 460
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 726
+        },
+        "large": {
+          "width": 1200,
+          "height": 851
+        }
+      },
+      {
+        "digest": "2a30fa",
+        "index": 9,
+        "filename": "bigboccasilebantam-fc5d23-2a30fa.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7591666666666667,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 526
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 856
+        },
+        "large_pads": {
+          "width": 911,
+          "height": 1200
+        },
+        "large": {
+          "width": 911,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "d8daa0",
+        "index": 10,
+        "filename": "birdkiller-8e3823-d8daa0.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7058333333333333,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 566
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 920
+        },
+        "large_pads": {
+          "width": 847,
+          "height": 1200
+        },
+        "large": {
+          "width": 847,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "e2a195",
+        "index": 11,
+        "filename": "boobscotch1-a46926-e2a195.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7133333333333334,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 560
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 911
+        },
+        "large_pads": {
+          "width": 856,
+          "height": 1200
+        },
+        "large": {
+          "width": 856,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "34af2a",
+        "index": 12,
+        "filename": "boogaloo-9fa1be-34af2a.jpg",
+        "orientation": "portrait",
+        "ratio": 0.6969192339716903,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 573
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 932
+        },
+        "large_pads": {
+          "width": 837,
+          "height": 1201
+        },
+        "large": {
+          "width": 837,
+          "height": 1201
+        }
+      },
+      {
+        "digest": "e39bc3",
+        "index": 13,
+        "filename": "brasseye-8c979e-e39bc3.jpg",
+        "orientation": "landscape",
+        "ratio": 1.4134275618374559,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 283
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 459
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 724
+        },
+        "large": {
+          "width": 1200,
+          "height": 849
+        }
+      },
+      {
+        "digest": "7998ad",
+        "index": 14,
+        "filename": "brasseyeii-1a342f-7998ad.jpg",
+        "orientation": "landscape",
+        "ratio": 1.3333333333333333,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 300
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 487
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 768
+        },
+        "large": {
+          "width": 1200,
+          "height": 900
+        }
+      },
+      {
+        "digest": "5472ef",
+        "index": 15,
+        "filename": "candy-c48ba9-5472ef.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7183333333333334,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 556
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 904
+        },
+        "large_pads": {
+          "width": 862,
+          "height": 1200
+        },
+        "large": {
+          "width": 862,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "279d99",
+        "index": 16,
+        "filename": "churchsigns-d1466a-279d99.jpg",
+        "orientation": "landscape",
+        "ratio": 1.4035087719298245,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 285
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 463
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 729
+        },
+        "large": {
+          "width": 1200,
+          "height": 855
+        }
+      },
+      {
+        "digest": "2b635c",
+        "index": 17,
+        "filename": "coupea-887df7-2b635c.jpg",
+        "orientation": "landscape",
+        "ratio": 1.5345268542199488,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 260
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 423
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 667
+        },
+        "large": {
+          "width": 1200,
+          "height": 782
+        }
+      },
+      {
+        "digest": "ad7952",
+        "index": 18,
+        "filename": "couples-379ded-ad7952.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7048387096774194,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 567
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 922
+        },
+        "large_pads": {
+          "width": 874,
+          "height": 1240
+        },
+        "large": {
+          "width": 874,
+          "height": 1240
+        }
+      },
+      {
+        "digest": "d09575",
+        "index": 19,
+        "filename": "delaneylaab-bbac2d-d09575.jpg",
+        "orientation": "landscape",
+        "ratio": 1.4134275618374559,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 283
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 459
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 724
+        },
+        "large": {
+          "width": 1200,
+          "height": 849
+        }
+      },
+      {
+        "digest": "67196a",
+        "index": 20,
+        "filename": "dh-fortuna-80ab27-67196a.jpg",
+        "orientation": "portrait",
+        "ratio": 1.0,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 400
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 650
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 1024
+        },
+        "large": {
+          "width": 1200,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "2b2c65",
+        "index": 21,
+        "filename": "doingidentity-2-7181f4-2b2c65.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7183333333333334,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 556
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 904
+        },
+        "large_pads": {
+          "width": 862,
+          "height": 1200
+        },
+        "large": {
+          "width": 862,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "635b1b",
+        "index": 22,
+        "filename": "doingidentity-7b7808-635b1b.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7183333333333334,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 556
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 904
+        },
+        "large_pads": {
+          "width": 862,
+          "height": 1200
+        },
+        "large": {
+          "width": 862,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "bb1edb",
+        "index": 23,
+        "filename": "dos-hermanos-nz-5c6710-bb1edb.jpg",
+        "orientation": "landscape",
+        "ratio": 1.4141961231470923,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 282
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 459
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 724
+        },
+        "large": {
+          "width": 1400,
+          "height": 989
+        }
+      },
+      {
+        "digest": "48abec",
+        "index": 24,
+        "filename": "doshermanos-1b98e1-48abec.jpg",
+        "orientation": "landscape",
+        "ratio": 1.4150943396226414,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 282
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 459
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 723
+        },
+        "large": {
+          "width": 1200,
+          "height": 848
+        }
+      },
+      {
+        "digest": "97dbc1",
+        "index": 25,
+        "filename": "doshermanos08ii-950189-97dbc1.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7033333333333334,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 568
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 924
+        },
+        "large_pads": {
+          "width": 844,
+          "height": 1200
+        },
+        "large": {
+          "width": 844,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "0c1272",
+        "index": 26,
+        "filename": "doshermanos123-466825-0c1272.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7091666666666666,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 564
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 916
+        },
+        "large_pads": {
+          "width": 850,
+          "height": 1200
+        },
+        "large": {
+          "width": 850,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "06b9e0",
+        "index": 27,
+        "filename": "doshermanos_faerberei-1cf5ac-06b9e0.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7066666666666667,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 566
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 848,
+          "height": 1200
+        },
+        "large": {
+          "width": 848,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "2af1d3",
+        "index": 28,
+        "filename": "doshermanosenroute08-6175c5-2af1d3.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7083333333333334,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 564
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 917
+        },
+        "large_pads": {
+          "width": 850,
+          "height": 1200
+        },
+        "large": {
+          "width": 850,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "8ae7d1",
+        "index": 29,
+        "filename": "doshermanosposter07-ff1ae0-8ae7d1.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7083333333333334,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 564
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 917
+        },
+        "large_pads": {
+          "width": 850,
+          "height": 1200
+        },
+        "large": {
+          "width": 850,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "0d71ef",
+        "index": 30,
+        "filename": "doshermanostour04-poster-b39f4c-0d71ef.jpg",
+        "orientation": "landscape",
+        "ratio": 2.810304449648712,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 142
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 231
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 364
+        },
+        "large": {
+          "width": 1200,
+          "height": 427
+        }
+      },
+      {
+        "digest": "245569",
+        "index": 31,
+        "filename": "doshermanostour07-fbb44a-245569.jpg",
+        "orientation": "portrait",
+        "ratio": 0.706,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 566
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 920
+        },
+        "large_pads": {
+          "width": 706,
+          "height": 1000
+        },
+        "large": {
+          "width": 706,
+          "height": 1000
+        }
+      },
+      {
+        "digest": "fb3449",
+        "index": 32,
+        "filename": "doshermanosus2011-d2448b-fb3449.jpg",
+        "orientation": "portrait",
+        "ratio": 0.6472060050041701,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 618
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 1004
+        },
+        "large_pads": {
+          "width": 776,
+          "height": 1199
+        },
+        "large": {
+          "width": 776,
+          "height": 1198
+        }
+      },
+      {
+        "digest": "46f753",
+        "index": 33,
+        "filename": "doshermanosusa-f7f9f6-46f753.jpg",
+        "orientation": "portrait",
+        "ratio": 0.6075,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 658
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 1069
+        },
+        "large_pads": {
+          "width": 729,
+          "height": 1200
+        },
+        "large": {
+          "width": 729,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "1723ab",
+        "index": 34,
+        "filename": "double-demento-12fc9f-1723ab.jpg",
+        "orientation": "portrait",
+        "ratio": 0.6605222734254992,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 605
+        },
+        "large_phones": {
+          "width": 429,
+          "height": 651
+        },
+        "large_pads": {
+          "width": 429,
+          "height": 651
+        },
+        "large": {
+          "width": 429,
+          "height": 651
+        }
+      },
+      {
+        "digest": "1a9495",
+        "index": 35,
+        "filename": "drugfree-c33033-1a9495.jpg",
+        "orientation": "landscape",
+        "ratio": 1.2738853503184713,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 314
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 510
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 803
+        },
+        "large": {
+          "width": 1200,
+          "height": 942
+        }
+      },
+      {
+        "digest": "a2b788",
+        "index": 36,
+        "filename": "ellokal-9dd22d-a2b788.jpg",
+        "orientation": "landscape",
+        "ratio": 1.4018691588785046,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 285
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 463
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 730
+        },
+        "large": {
+          "width": 1200,
+          "height": 856
+        }
+      },
+      {
+        "digest": "b033b2",
+        "index": 37,
+        "filename": "en-route2005-2cc4c5-b033b2.jpg",
+        "orientation": "landscape",
+        "ratio": 1.4150943396226414,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 282
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 459
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 723
+        },
+        "large": {
+          "width": 1200,
+          "height": 848
+        }
+      },
+      {
+        "digest": "797064",
+        "index": 38,
+        "filename": "enroute08-1308b1-797064.jpg",
+        "orientation": "portrait",
+        "ratio": 0.545,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 733
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 1192
+        },
+        "large_pads": {
+          "width": 654,
+          "height": 1200
+        },
+        "large": {
+          "width": 654,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "c82018",
+        "index": 39,
+        "filename": "enroute09-e2ccfe-c82018.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7133333333333334,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 560
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 911
+        },
+        "large_pads": {
+          "width": 856,
+          "height": 1200
+        },
+        "large": {
+          "width": 856,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "4f0962",
+        "index": 40,
+        "filename": "enroute2010web-354ff6-4f0962.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7066666666666667,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 566
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 848,
+          "height": 1200
+        },
+        "large": {
+          "width": 848,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "289a95",
+        "index": 41,
+        "filename": "enroute2011-0d7f85-289a95.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7075,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 565
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 918
+        },
+        "large_pads": {
+          "width": 849,
+          "height": 1200
+        },
+        "large": {
+          "width": 849,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "ef4446",
+        "index": 42,
+        "filename": "fasching-ogau-8e2607-ef4446.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7048387096774194,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 567
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 922
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 1452
+        },
+        "large": {
+          "width": 1400,
+          "height": 1986
+        }
+      },
+      {
+        "digest": "ab6819",
+        "index": 43,
+        "filename": "fishnblues-f78c0a-ab6819.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7066666666666667,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 566
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 848,
+          "height": 1200
+        },
+        "large": {
+          "width": 848,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "c2f7e6",
+        "index": 44,
+        "filename": "flame-46ae97-c2f7e6.jpg",
+        "orientation": "landscape",
+        "ratio": 1.3333333333333333,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 300
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 487
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 768
+        },
+        "large": {
+          "width": 1280,
+          "height": 960
+        }
+      },
+      {
+        "digest": "4a1611",
+        "index": 45,
+        "filename": "flyer-uschall-4b8fd9-4a1611.jpg",
+        "orientation": "landscape",
+        "ratio": 3.10077519379845,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 129
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 209
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 330
+        },
+        "large": {
+          "width": 1200,
+          "height": 387
+        }
+      },
+      {
+        "digest": "b811f4",
+        "index": 46,
+        "filename": "follies-v2-b6ef8e-b811f4.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7074175824175825,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 565
+        },
+        "large_phones": {
+          "width": 515,
+          "height": 728
+        },
+        "large_pads": {
+          "width": 515,
+          "height": 728
+        },
+        "large": {
+          "width": 515,
+          "height": 728
+        }
+      },
+      {
+        "digest": "aa25b2",
+        "index": 47,
+        "filename": "francois-eb7abf-aa25b2.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7066666666666667,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 566
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 848,
+          "height": 1200
+        },
+        "large": {
+          "width": 848,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "1556cf",
+        "index": 48,
+        "filename": "fraunhofer-f85f1d-1556cf.jpg",
+        "orientation": "portrait",
+        "ratio": 0.707,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 565
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 707,
+          "height": 1000
+        },
+        "large": {
+          "width": 707,
+          "height": 1000
+        }
+      },
+      {
+        "digest": "be5812",
+        "index": 49,
+        "filename": "fsu-646579-be5812.jpg",
+        "orientation": "landscape",
+        "ratio": 1.3315994798439532,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 300
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 488
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 769
+        },
+        "large": {
+          "width": 1400,
+          "height": 1051
+        }
+      },
+      {
+        "digest": "753070",
+        "index": 50,
+        "filename": "fsuflyerkino2007-1088f2-753070.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7066666666666667,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 566
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 848,
+          "height": 1200
+        },
+        "large": {
+          "width": 848,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "04101d",
+        "index": 51,
+        "filename": "gf038-inpalumbia-live-8-8-98-back-e2d052-04101d.jpg",
+        "orientation": "portrait",
+        "ratio": 1.0,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 400
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 650
+        },
+        "large_pads": {
+          "width": 1000,
+          "height": 1000
+        },
+        "large": {
+          "width": 1000,
+          "height": 1000
+        }
+      },
+      {
+        "digest": "09071d",
+        "index": 52,
+        "filename": "going-south-b845f0-09071d.jpg",
+        "orientation": "landscape",
+        "ratio": 1.4134275618374559,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 283
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 459
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 724
+        },
+        "large": {
+          "width": 1200,
+          "height": 849
+        }
+      },
+      {
+        "digest": "c4c03f",
+        "index": 53,
+        "filename": "grag-delaney-59to1b-lg-e69988-c4c03f.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7147623019182652,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 559
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 909
+        },
+        "large_pads": {
+          "width": 857,
+          "height": 1199
+        },
+        "large": {
+          "width": 857,
+          "height": 1199
+        }
+      },
+      {
+        "digest": "61cb89",
+        "index": 54,
+        "filename": "grag_cd_release-f831ad-61cb89.jpg",
+        "orientation": "portrait",
+        "ratio": 0.695,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 575
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 935
+        },
+        "large_pads": {
+          "width": 833,
+          "height": 1200
+        },
+        "large": {
+          "width": 833,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "96b1cd",
+        "index": 55,
+        "filename": "grag_nogoods_poster-478bf8-96b1cd.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7075,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 565
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 918
+        },
+        "large_pads": {
+          "width": 849,
+          "height": 1200
+        },
+        "large": {
+          "width": 849,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "81900e",
+        "index": 56,
+        "filename": "grag_tutzing-144ed9-81900e.jpg",
+        "orientation": "portrait",
+        "ratio": 0.6716666666666666,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 595
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 967
+        },
+        "large_pads": {
+          "width": 806,
+          "height": 1200
+        },
+        "large": {
+          "width": 806,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "accef7",
+        "index": 57,
+        "filename": "gragdombrowsky-4e32a5-accef7.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7069555302166477,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 565
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 1448
+        },
+        "large": {
+          "width": 1240,
+          "height": 1754
+        }
+      },
+      {
+        "digest": "c2c603",
+        "index": 58,
+        "filename": "gragewerk-49f6e3-c2c603.jpg",
+        "orientation": "landscape",
+        "ratio": 1.4134275618374559,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 283
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 459
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 724
+        },
+        "large": {
+          "width": 1200,
+          "height": 849
+        }
+      },
+      {
+        "digest": "e0476c",
+        "index": 59,
+        "filename": "gragholdfasttour09-bdf9d3-e0476c.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7066666666666667,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 566
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 848,
+          "height": 1200
+        },
+        "large": {
+          "width": 848,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "1818fc",
+        "index": 60,
+        "filename": "gragneon-61dd12-1818fc.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7066666666666667,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 566
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 848,
+          "height": 1200
+        },
+        "large": {
+          "width": 848,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "634c33",
+        "index": 61,
+        "filename": "gragsamba-d6cfd3-634c33.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7075,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 565
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 918
+        },
+        "large_pads": {
+          "width": 849,
+          "height": 1200
+        },
+        "large": {
+          "width": 849,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "94c897",
+        "index": 62,
+        "filename": "gragtheatron-b1a43f-94c897.jpg",
+        "orientation": "portrait",
+        "ratio": 0.6775,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 590
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 959
+        },
+        "large_pads": {
+          "width": 813,
+          "height": 1200
+        },
+        "large": {
+          "width": 813,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "f91555",
+        "index": 63,
+        "filename": "gragwasserii-80302c-f91555.jpg",
+        "orientation": "landscape",
+        "ratio": 1.3888888888888888,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 288
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 468
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 737
+        },
+        "large": {
+          "width": 1200,
+          "height": 864
+        }
+      },
+      {
+        "digest": "0f38ba",
+        "index": 64,
+        "filename": "gutfeelingatomic0105-085b1b-0f38ba.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7183333333333334,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 556
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 904
+        },
+        "large_pads": {
+          "width": 862,
+          "height": 1200
+        },
+        "large": {
+          "width": 862,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "23b4ad",
+        "index": 65,
+        "filename": "gutfeelingatomic0205-6ae6c4-23b4ad.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7183561643835616,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 556
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 904
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 1425
+        },
+        "large": {
+          "width": 1311,
+          "height": 1825
+        }
+      },
+      {
+        "digest": "856ea1",
+        "index": 66,
+        "filename": "hausmunik-7d410f-856ea1.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7133333333333334,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 560
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 911
+        },
+        "large_pads": {
+          "width": 856,
+          "height": 1200
+        },
+        "large": {
+          "width": 856,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "f9e6fd",
+        "index": 67,
+        "filename": "hermanosenroute07-46d412-f9e6fd.jpg",
+        "orientation": "landscape",
+        "ratio": 1.4150943396226414,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 282
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 459
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 723
+        },
+        "large": {
+          "width": 1200,
+          "height": 848
+        }
+      },
+      {
+        "digest": "2d3a71",
+        "index": 68,
+        "filename": "hofbraulandler-22ee26-2d3a71.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7066666666666667,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 566
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 848,
+          "height": 1200
+        },
+        "large": {
+          "width": 848,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "4897a0",
+        "index": 69,
+        "filename": "inflight-67ba02-4897a0.jpg",
+        "orientation": "landscape",
+        "ratio": 1.4150943396226414,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 282
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 459
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 723
+        },
+        "large": {
+          "width": 1200,
+          "height": 848
+        }
+      },
+      {
+        "digest": "77bd45",
+        "index": 70,
+        "filename": "ironing-ead27c-77bd45.jpg",
+        "orientation": "landscape",
+        "ratio": 1.3348164627363737,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 299
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 486
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 767
+        },
+        "large": {
+          "width": 1200,
+          "height": 899
+        }
+      },
+      {
+        "digest": "32b764",
+        "index": 71,
+        "filename": "itsatirething-c70c19-32b764.jpg",
+        "orientation": "landscape",
+        "ratio": 1.3921113689095128,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 287
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 466
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 735
+        },
+        "large": {
+          "width": 1200,
+          "height": 862
+        }
+      },
+      {
+        "digest": "93416b",
+        "index": 72,
+        "filename": "karatecowboy-cf9a1a-93416b.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7069109075770191,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 565
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 849,
+          "height": 1201
+        },
+        "large": {
+          "width": 849,
+          "height": 1201
+        }
+      },
+      {
+        "digest": "e663f4",
+        "index": 73,
+        "filename": "keinvorspiel-1-4d202b-e663f4.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7133333333333334,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 560
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 911
+        },
+        "large_pads": {
+          "width": 856,
+          "height": 1200
+        },
+        "large": {
+          "width": 856,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "fa96cf",
+        "index": 74,
+        "filename": "landlerschipper-f57f5f-fa96cf.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7066666666666667,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 566
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 848,
+          "height": 1200
+        },
+        "large": {
+          "width": 848,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "2e21b1",
+        "index": 75,
+        "filename": "lastchancetodance-bd01ae-2e21b1.jpg",
+        "orientation": "landscape",
+        "ratio": 1.3921113689095128,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 287
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 466
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 735
+        },
+        "large": {
+          "width": 1200,
+          "height": 862
+        }
+      },
+      {
+        "digest": "483391",
+        "index": 76,
+        "filename": "lessuisses2-3b765d-483391.jpg",
+        "orientation": "landscape",
+        "ratio": 1.426872770511296,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 280
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 455
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 717
+        },
+        "large": {
+          "width": 1200,
+          "height": 841
+        }
+      },
+      {
+        "digest": "04e85d",
+        "index": 77,
+        "filename": "losdos-39e28e-04e85d.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7066666666666667,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 566
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 848,
+          "height": 1200
+        },
+        "large": {
+          "width": 848,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "9d1c80",
+        "index": 78,
+        "filename": "malching-1-9dc2b2-9d1c80.jpg",
+        "orientation": "landscape",
+        "ratio": 1.4018691588785046,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 285
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 463
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 730
+        },
+        "large": {
+          "width": 1200,
+          "height": 856
+        }
+      },
+      {
+        "digest": "201b80",
+        "index": 79,
+        "filename": "mama_rosin_europatour_mai_20121-81a6ea-201b80.jpg",
+        "orientation": "portrait",
+        "ratio": 0.5780346820809249,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 692
+        },
+        "large_phones": {
+          "width": 600,
+          "height": 1038
+        },
+        "large_pads": {
+          "width": 600,
+          "height": 1038
+        },
+        "large": {
+          "width": 600,
+          "height": 1038
+        }
+      },
+      {
+        "digest": "cbfb37",
+        "index": 80,
+        "filename": "mamahuilfma-cdc440-cbfb37.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7133333333333334,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 560
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 911
+        },
+        "large_pads": {
+          "width": 856,
+          "height": 1200
+        },
+        "large": {
+          "width": 856,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "f53806",
+        "index": 81,
+        "filename": "massabsencerelease-6b4bb2-f53806.jpg",
+        "orientation": "landscape",
+        "ratio": 1.364256480218281,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 293
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 476
+        },
+        "large_pads": {
+          "width": 1000,
+          "height": 733
+        },
+        "large": {
+          "width": 1000,
+          "height": 733
+        }
+      },
+      {
+        "digest": "064a84",
+        "index": 82,
+        "filename": "massorchidred-91ce28-064a84.jpg",
+        "orientation": "landscape",
+        "ratio": 1.4150943396226414,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 282
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 459
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 723
+        },
+        "large": {
+          "width": 1200,
+          "height": 848
+        }
+      },
+      {
+        "digest": "284c1d",
+        "index": 83,
+        "filename": "monaco850-9c14e8-284c1d.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7066666666666667,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 566
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 848,
+          "height": 1200
+        },
+        "large": {
+          "width": 848,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "30dc60",
+        "index": 84,
+        "filename": "muffatunforfree-ced3b0-30dc60.jpg",
+        "orientation": "portrait",
+        "ratio": 0.675,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 592
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 962
+        },
+        "large_pads": {
+          "width": 810,
+          "height": 1200
+        },
+        "large": {
+          "width": 810,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "5d2fb3",
+        "index": 85,
+        "filename": "nonoyesnoabgesagt-a63b81-5d2fb3.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7066666666666667,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 566
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 848,
+          "height": 1200
+        },
+        "large": {
+          "width": 848,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "7371d5",
+        "index": 86,
+        "filename": "ohrmusch-d5824a-7371d5.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7066666666666667,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 566
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 689,
+          "height": 975
+        },
+        "large": {
+          "width": 689,
+          "height": 975
+        }
+      },
+      {
+        "digest": "75fe85",
+        "index": 87,
+        "filename": "ohrmusch2-0d3fd8-75fe85.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7066666666666667,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 566
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 689,
+          "height": 975
+        },
+        "large": {
+          "width": 689,
+          "height": 975
+        }
+      },
+      {
+        "digest": "444b37",
+        "index": 88,
+        "filename": "pan-96ac03-444b37.jpg",
+        "orientation": "portrait",
+        "ratio": 0.718562874251497,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 556
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 904
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 1425
+        },
+        "large": {
+          "width": 1200,
+          "height": 1670
+        }
+      },
+      {
+        "digest": "d7aa99",
+        "index": 89,
+        "filename": "patcheko_snake-9d31e4-d7aa99.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7083333333333334,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 564
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 917
+        },
+        "large_pads": {
+          "width": 850,
+          "height": 1200
+        },
+        "large": {
+          "width": 850,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "cfa822",
+        "index": 90,
+        "filename": "patchekos_milla_18_und_19_oktober-86dd8b-cfa822.jpg",
+        "orientation": "portrait",
+        "ratio": 0.91552734375,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 436
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 709
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 1118
+        },
+        "large": {
+          "width": 1400,
+          "height": 1529
+        }
+      },
+      {
+        "digest": "4e2206",
+        "index": 91,
+        "filename": "pavian-972efe-4e2206.jpg",
+        "orientation": "landscape",
+        "ratio": 1.4792899408284024,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 270
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 439
+        },
+        "large_pads": {
+          "width": 1000,
+          "height": 676
+        },
+        "large": {
+          "width": 1000,
+          "height": 676
+        }
+      },
+      {
+        "digest": "17e0f3",
+        "index": 92,
+        "filename": "pierreo-d05fb7-17e0f3.jpg",
+        "orientation": "portrait",
+        "ratio": 0.705,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 567
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 921
+        },
+        "large_pads": {
+          "width": 846,
+          "height": 1200
+        },
+        "large": {
+          "width": 846,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "9446e9",
+        "index": 93,
+        "filename": "pierreomermai2011-f1488d-9446e9.jpg",
+        "orientation": "landscape",
+        "ratio": 1.4101057579318448,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 283
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 460
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 726
+        },
+        "large": {
+          "width": 1200,
+          "height": 851
+        }
+      },
+      {
+        "digest": "795448",
+        "index": 94,
+        "filename": "putamadre-1-ba76e9-795448.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7091666666666666,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 564
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 916
+        },
+        "large_pads": {
+          "width": 850,
+          "height": 1200
+        },
+        "large": {
+          "width": 850,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "8d93b1",
+        "index": 95,
+        "filename": "racecar_b-bd4d8a-8d93b1.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7008333333333333,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 570
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 927
+        },
+        "large_pads": {
+          "width": 841,
+          "height": 1200
+        },
+        "large": {
+          "width": 841,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "d71b05",
+        "index": 96,
+        "filename": "radl-5a13e3-d71b05.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7083333333333334,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 564
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 917
+        },
+        "large_pads": {
+          "width": 850,
+          "height": 1200
+        },
+        "large": {
+          "width": 850,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "19d609",
+        "index": 97,
+        "filename": "scheune-fertig-00357c-19d609.jpg",
+        "orientation": "portrait",
+        "ratio": 0.707256046705588,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 565
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 848,
+          "height": 1199
+        },
+        "large": {
+          "width": 848,
+          "height": 1199
+        }
+      },
+      {
+        "digest": "2f2e09",
+        "index": 98,
+        "filename": "schipper-1fb5be-2f2e09.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7066666666666667,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 566
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 848,
+          "height": 1200
+        },
+        "large": {
+          "width": 848,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "c62d52",
+        "index": 99,
+        "filename": "shellacmassacre-f62969-c62d52.jpg",
+        "orientation": "portrait",
+        "ratio": 0.771,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 518
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 843
+        },
+        "large_pads": {
+          "width": 771,
+          "height": 1000
+        },
+        "large": {
+          "width": 771,
+          "height": 1000
+        }
+      },
+      {
+        "digest": "fd390e",
+        "index": 100,
+        "filename": "solodosmos2-8f2ae7-fd390e.jpg",
+        "orientation": "portrait",
+        "ratio": 0.4633333333333333,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 863
+        },
+        "large_phones": {
+          "width": 556,
+          "height": 1200
+        },
+        "large_pads": {
+          "width": 556,
+          "height": 1200
+        },
+        "large": {
+          "width": 556,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "ed1bd3",
+        "index": 101,
+        "filename": "spicynew-172b4a-ed1bd3.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7091666666666666,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 564
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 916
+        },
+        "large_pads": {
+          "width": 850,
+          "height": 1200
+        },
+        "large": {
+          "width": 850,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "c90267",
+        "index": 102,
+        "filename": "stammtischpuerto-2b61c3-c90267.jpg",
+        "orientation": "landscape",
+        "ratio": 1.4101057579318448,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 283
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 460
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 726
+        },
+        "large": {
+          "width": 1200,
+          "height": 851
+        }
+      },
+      {
+        "digest": "59efa1",
+        "index": 103,
+        "filename": "stoa-15e5dd-59efa1.jpg",
+        "orientation": "landscape",
+        "ratio": 1.4201183431952662,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 281
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 457
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 721
+        },
+        "large": {
+          "width": 1200,
+          "height": 845
+        }
+      },
+      {
+        "digest": "2ca601",
+        "index": 104,
+        "filename": "stolz230507-e4d1aa-2ca601.jpg",
+        "orientation": "portrait",
+        "ratio": 0.707256046705588,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 565
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 848,
+          "height": 1199
+        },
+        "large": {
+          "width": 848,
+          "height": 1199
+        }
+      },
+      {
+        "digest": "692a8b",
+        "index": 105,
+        "filename": "stolz270607-00c743-692a8b.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7066666666666667,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 566
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 848,
+          "height": 1200
+        },
+        "large": {
+          "width": 848,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "ff7772",
+        "index": 106,
+        "filename": "tenyearsofbeers1-43e88b-ff7772.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7126895450917797,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 561
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 912
+        },
+        "large_pads": {
+          "width": 893,
+          "height": 1253
+        },
+        "large": {
+          "width": 893,
+          "height": 1253
+        }
+      },
+      {
+        "digest": "da9ea6",
+        "index": 107,
+        "filename": "tournee-mai2012-9f933d-da9ea6.jpg",
+        "orientation": "portrait",
+        "ratio": 0.5782312925170068,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 691
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 1124
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 1770
+        },
+        "large": {
+          "width": 1400,
+          "height": 2421
+        }
+      },
+      {
+        "digest": "064f95",
+        "index": 108,
+        "filename": "triadtheatre-338d0f-064f95.jpg",
+        "orientation": "portrait",
+        "ratio": 0.5,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 800
+        },
+        "large_phones": {
+          "width": 600,
+          "height": 1200
+        },
+        "large_pads": {
+          "width": 600,
+          "height": 1200
+        },
+        "large": {
+          "width": 600,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "22ab25",
+        "index": 109,
+        "filename": "wiesnii-b7adca-22ab25.jpg",
+        "orientation": "portrait",
+        "ratio": 0.34138218151540384,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 1171
+        },
+        "large_phones": {
+          "width": 410,
+          "height": 1201
+        },
+        "large_pads": {
+          "width": 410,
+          "height": 1201
+        },
+        "large": {
+          "width": 410,
+          "height": 1201
+        }
+      },
+      {
+        "digest": "fa0497",
+        "index": 110,
+        "filename": "wildschuetze-006e0c-fa0497.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7066666666666667,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 566
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 848,
+          "height": 1200
+        },
+        "large": {
+          "width": 848,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "0f7926",
+        "index": 111,
+        "filename": "woaztaufe-079381-0f7926.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7066666666666667,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 566
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 919
+        },
+        "large_pads": {
+          "width": 848,
+          "height": 1200
+        },
+        "large": {
+          "width": 848,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "f30bb3",
+        "index": 112,
+        "filename": "zumhirschen2-09e364-f30bb3.jpg",
+        "orientation": "landscape",
+        "ratio": 1.4150943396226414,
+        "exif": null,
+        "thumb": {
+          "width": 400,
+          "height": 282
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 459
+        },
+        "large_pads": {
+          "width": 1024,
+          "height": 723
+        },
+        "large": {
+          "width": 1200,
+          "height": 848
+        }
+      }
+    ],
+    "dynamic": true,
+    "opts": {
+      "min_col_width": {
+        "desktop": 120,
+        "pad": 120,
+        "phone": 120
+      },
+      "gutter_width": 3,
+      "chunk_size": 15,
+      "first_chunk": 25
+    }
+  }
+}
