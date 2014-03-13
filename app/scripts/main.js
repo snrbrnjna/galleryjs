@@ -18,7 +18,7 @@ require.config({
         jquery: '../bower_components/jquery/jquery',
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/underscore/underscore',
-        jqueryui: '../bower_components/jqueryui/ui/jquery-ui',
+        jqueryui: '../bower_components/jqueryui/ui/jquery.ui.effect',
         imagesloaded: '../bower_components/imagesloaded/imagesloaded',
         eventEmitter: '../bower_components/eventEmitter', // needed for imagesloaded
         eventie: '../bower_components/eventie', // needed for imagesloaded

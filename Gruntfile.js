@@ -167,6 +167,7 @@ module.exports = function (grunt) {
                     paths: {
                         'templates': '../../.tmp/scripts/templates',
                         'jquery': '../../app/bower_components/jquery/jquery',
+                        'jqueryui': '../../app/bower_components/jqueryui/ui/jquery.ui.effect',
                         'underscore': '../../app/bower_components/underscore/underscore',
                         'backbone': '../../app/bower_components/backbone/backbone'
                     },
@@ -177,7 +178,14 @@ module.exports = function (grunt) {
                     // http://requirejs.org/docs/errors.html#sourcemapcomments
                     preserveLicenseComments: false,
                     useStrict: true,
-                    wrap: true
+                    wrap: true,
+                    findNestedDependencies: true,
+                    removeCombined: true,
+                    // jqueryui was the bomb.... jquery itself no prob to mix it 
+                    // in the gallery js
+                    // exclude: [
+                    //     'jquery'
+                    // ],
                     //uglify2: {} // https://github.com/mishoo/UglifyJS2
                 }
             }
@@ -246,8 +254,10 @@ module.exports = function (grunt) {
                     src: [
                         '*.{ico,txt}',
                         '.htaccess',
-                        'images/{,*/}*.{webp,gif}',
+                        'images/{,*/}*.{webp,gif,svg}',
                         'styles/fonts/{,*/}*.*',
+                        '*.json',
+                        '*.html', // remove, when htmlmin comes in again
                     ]
                 }]
             }
@@ -347,7 +357,9 @@ module.exports = function (grunt) {
         'useminPrepare',
         'requirejs',
         'imagemin',
-        'htmlmin',
+        // reinsert, when data-attribs for gallery opts are removed, as this
+        // destroys json strings in data attribs through escaping
+        // 'htmlmin', 
         'concat',
         'cssmin',
         'uglify',
