@@ -28,3 +28,5 @@ where human life or property may be at stake or endangered.
 >LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 >OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 >THE SOFTWARE.
+
+orig licence from: https://github.com/tlycken/bari-montecarlo/blob/master/LICENSE.md
