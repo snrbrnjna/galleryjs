@@ -11,7 +11,7 @@
   background-color: #fff;
 }
 .js .photos.loading { /* Loading indicator for Thumbs container */
-  background: url("/images/preloader-50.gif") no-repeat center 50px;
+  background: url("../images/preloader-50.gif") no-repeat center 50px;
   background-color: #fff;
   min-height: 250px; /* TODO calculate min-height when json loaded */
 }
@@ -24,7 +24,7 @@
 .js .photos .photo { opacity: 0; }
 .js .photos .photo.loading { 
   opacity: 1; 
-  background: url("/images/preloader-50.gif") no-repeat center;
+  background: url("../images/preloader-50.gif") no-repeat center;
 }
 .js .photos .photo.loading img { 
   opacity: 0; 
@@ -50,7 +50,7 @@
 }
 
 .stopper {
-  background: url("/images/preloader-50.gif") no-repeat center;
+  background: url("../images/preloader-50.gif") no-repeat center;
   background-color: #fff;
   width: 75px; height: 75px;
   margin: 10px auto 0;
@@ -86,7 +86,7 @@
     display: table;
     vertical-align: middle;
     text-align: center;
-    background: url("/images/preloader-50.gif") no-repeat center;
+    background: url("../images/preloader-50.gif") no-repeat center;
     min-height: 100px;
     position: absolute; top: 0; bottom: 0;
     width: 100%;
@@ -126,11 +126,11 @@
     right: .8em;
 }
 .slider .nav.prev.active, .slider .nav.prev:hover {  
-    background:url('/images/arrow_left.png') no-repeat center left;
+    background:url('../images/arrow_left.png') no-repeat center left;
     cursor: pointer;
 }
 .slider .nav.next.active, .slider .nav.next:hover {
-    background:url('/images/arrow_right.png') no-repeat center right;
+    background:url('../images/arrow_right.png') no-repeat center right;
     cursor: pointer;
 }
 /* Close Button */
