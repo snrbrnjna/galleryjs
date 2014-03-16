@@ -1,0 +1,1 @@
+"function"==typeof define&&define.amd?require(["rconfig","gallery/app"],function(a,b){$(function(){var a=$(".gallery-app");if(a.length){var c=new b({el:a});console.log("Gallery App is running...",c)}})}):$(function(){var a=$(".gallery-app");if(a.length){var b=new GalleryApp({el:a});console.log("Gallery App is running...",b)}});
