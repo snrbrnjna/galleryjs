@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="styles/devices.css">
         <link rel="stylesheet" href="styles/gallery.css">
         <!-- endbuild -->
+
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
@@ -26,7 +27,7 @@
 
 
         <!-- Gallery App -->
-        <div class="gallery-app" data-project="flyer-doc" data-opts='{"min_col_width":{"desktop":120,"pad":120,"phone":120},"gutter_width":3,"chunk_size":15,"first_chunk":25}'>
+        <div class="gallery-app" data-project="flyer-doc-remote" data-opts='{"min_col_width":{"desktop":120,"pad":120,"phone":120},"gutter_width":3,"chunk_size":15,"first_chunk":25}'>
             
             <!-- Container for Thumbs of First Page -->
             <div class="container photos loading"></div>
@@ -43,8 +44,8 @@
                     <a class="nav next" title="next [->]"></a>
                     <div class="close_button" title="close the slider [ESC]">
                         <div class="svg-icon">
-                            <span style="background-image: url('/images/icon-cross.png');">
-                                <img src="/images/icon-cross.svg">
+                            <span style="background-image: url('images/icon-cross.png');">
+                                <img src="images/icon-cross.svg">
                             </span>
                         </div>
                     </div>
@@ -58,8 +59,8 @@
                         </div>
                         <div class="cockpit_button">
                             <div class="menu_icon svg-icon">
-                                <span style="background-image: url('/images/icon-menu.png');">
-                                    <img src="/images/icon-menu.svg">
+                                <span style="background-image: url('images/icon-menu.png');">
+                                    <img src="images/icon-menu.svg">
                                 </span>
                             </div>
                         </div>
@@ -75,9 +76,12 @@
             </script>
         </div>
         <!-- End Gallery App -->
-
+        <!-- build:js scripts/vendor/jquery.js -->
+        <script src="bower_components/jquery/jquery.js"></script>
+        <!-- endbuild -->
+        <script src="scripts/gallery.app.js"></script>
         <!-- build:js scripts/main.js -->
-        <script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>
+        <script src="scripts/main.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -160,33 +160,27 @@ module.exports = function (grunt) {
         },
         requirejs: {
             dist: {
-                // Options: https://github.com/jrburke/r.js/blob/master/build/example.build.js
                 options: {
                     baseUrl: '<%= yeoman.app %>/scripts',
-                    optimize: 'none',
-                    paths: {
-                        'templates': '../../.tmp/scripts/templates',
-                        'jquery': '../../app/bower_components/jquery/jquery',
-                        'jqueryui': '../../app/bower_components/jqueryui/ui/jquery.ui.effect',
-                        'underscore': '../../app/bower_components/underscore/underscore',
-                        'backbone': '../../app/bower_components/backbone/backbone'
-                    },
-                    // TODO: Figure out how to make sourcemaps work with grunt-usemin
-                    // https://github.com/yeoman/grunt-usemin/issues/30
-                    //generateSourceMaps: true,
-                    // required to support SourceMaps
-                    // http://requirejs.org/docs/errors.html#sourcemapcomments
-                    preserveLicenseComments: false,
-                    useStrict: true,
-                    wrap: true,
+                    mainConfigFile: '<%= yeoman.app %>/scripts/rconfig.js',
                     findNestedDependencies: true,
-                    removeCombined: true,
-                    // jqueryui was the bomb.... jquery itself no prob to mix it 
-                    // in the gallery js
-                    // exclude: [
-                    //     'jquery'
-                    // ],
-                    //uglify2: {} // https://github.com/mishoo/UglifyJS2
+                    optimize: 'uglify2',
+                    keepBuildDir: true,
+                    // removeCombined: true,
+                    paths: {
+                        'almond': '../../app/bower_components/almond/almond',
+                        'jquery': 'empty:' // module is stubbed/shimmed in the endFile Fragment of the Wrapper
+                    },
+                    almond: true,
+                    name: 'almond',
+                    include: [
+                        'gallery/app'
+                    ],
+                    out: '<%= yeoman.dist %>/scripts/gallery.app.js',
+                    wrap: {
+                        startFile: '<%= yeoman.app %>/scripts/build/gallery.wrap.open.frag.js',
+                        endFile: '<%= yeoman.app %>/scripts/build/gallery.wrap.close.frag.js'
+                    }
                 }
             }
         },
@@ -205,10 +199,16 @@ module.exports = function (grunt) {
         },
         imagemin: {
             dist: {
+                options: {
+                    // http://stackoverflow.com/questions/21175673/grunt-contrib-imagemin-output-fatal-error-enoent-no-such-file-or-directory
+                    cache: false 
+                },
                 files: [{
                     expand: true,
                     cwd: '<%= yeoman.app %>/images',
-                    src: '**/*.{png,jpg,jpeg}',
+                    src: [
+                        '{,*/}*.{png,jpg,jpeg}'
+                    ],
                     dest: '<%= yeoman.dist %>/images'
                 }]
             }
@@ -223,6 +223,15 @@ module.exports = function (grunt) {
                 }
             }
         },
+        // for debugging the concatenated scripts: don't mangle nor compress em!
+        // uglify: {
+        //     options: {
+        //         mangle: false,
+        //         compress: false,
+        //         beautify: true,
+        //         preserveComments: 'all'
+        //     }
+        // },
         htmlmin: {
             dist: {
                 options: {
@@ -245,6 +254,16 @@ module.exports = function (grunt) {
             }
         },
         copy: {
+            prepare_dev: {
+                src: '<%= yeoman.app %>/index-dev.html',
+                dest: '<%= yeoman.app %>/index.html'
+
+            },
+            prepare_dist: {
+                src: '<%= yeoman.app %>/index-dist.html',
+                dest: '<%= yeoman.app %>/index.html'
+
+            },
             dist: {
                 files: [{
                     expand: true,
@@ -254,7 +273,7 @@ module.exports = function (grunt) {
                     src: [
                         '*.{ico,txt}',
                         '.htaccess',
-                        'images/{,*/}*.{webp,gif,svg}',
+                        'images/{,*/}*.{webp,gif,svg,png,gif,jpg}',
                         'styles/fonts/{,*/}*.*',
                         '*.json',
                         '*.html', // remove, when htmlmin comes in again
@@ -318,6 +337,7 @@ module.exports = function (grunt) {
         }
 
         grunt.task.run([
+            'copy:prepare_dev',
             'clean:server',
             'coffee:dist',
             'createDefaultTemplate',
@@ -350,6 +370,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('build', [
+        'copy:prepare_dist',
         'clean:dist',
         'coffee',
         'createDefaultTemplate',

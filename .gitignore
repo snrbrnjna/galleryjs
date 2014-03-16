@@ -6,4 +6,7 @@ app/bower_components
 .tmp
 test/bower_components/
 
+# index page is different for dev and dist task, therefor it is prepared by grunt
+app/index.html
+# do not add gallery images to git index
 app/images/galleries
