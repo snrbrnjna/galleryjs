@@ -22,7 +22,8 @@ module.exports = function (grunt) {
     // configurable paths
     var yeomanConfig = {
         app: 'app',
-        dist: 'dist'
+        dist: 'dist',
+        ghpages: 'gh-pages'
     };
 
     grunt.initConfig({
@@ -100,6 +101,15 @@ module.exports = function (grunt) {
                     middleware: function (connect) {
                         return [
                             mountFolder(connect, yeomanConfig.dist)
+                        ];
+                    }
+                }
+            },
+            ghpages: {
+                options: {
+                    middleware: function (connect) {
+                        return [
+                            mountFolder(connect, yeomanConfig.ghpages)
                         ];
                     }
                 }
@@ -277,7 +287,23 @@ module.exports = function (grunt) {
                         'images/{,*/}*.{webp,gif,svg,png,gif,jpg}',
                         'styles/fonts/{,*/}*.*',
                         '*.json',
-                        '*.html', // remove, when htmlmin comes in again
+                        '*.html' // remove, when htmlmin comes in again
+                    ]
+                }]
+            },
+            ghpages: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= yeoman.dist %>',
+                    dest: '<%= yeoman.ghpages %>',
+                    src: [
+                        '*.{ico,txt}',
+                        '.htaccess',
+                        'images/{,*/}*.{webp,gif,svg,png,gif,jpg}',
+                        'styles/fonts/{,*/}*.*',
+                        '*.json',
+                        '*.html'
                     ]
                 }]
             }
@@ -337,6 +363,10 @@ module.exports = function (grunt) {
             ]);
         }
 
+        if (target === 'ghpages') {
+            return grunt.task.run(['open:server', 'connect:ghpages:keepalive']);
+        }
+
         grunt.task.run([
             'copy:prepare_dev',
             'clean:server',
@@ -370,25 +400,36 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('build', [
-        'copy:prepare_dist',
-        'clean:dist',
-        'coffee',
-        'createDefaultTemplate',
-        'jst',
-        'useminPrepare',
-        'requirejs',
-        'imagemin',
-        // reinsert, when data-attribs for gallery opts are removed, as this
-        // destroys json strings in data attribs through escaping
-        // 'htmlmin', 
-        'concat',
-        'cssmin',
-        'uglify',
-        'copy',
-        'rev',
-        'usemin'
-    ]);
+    grunt.registerTask('build', function (target) {
+        
+        var buildTasks = [
+            'copy:prepare_dist',
+            'clean:dist',
+            'coffee',
+            'createDefaultTemplate',
+            'jst',
+            'useminPrepare',
+            'requirejs',
+            'imagemin',
+            // reinsert, when data-attribs for gallery opts are removed, as this
+            // destroys json strings in data attribs through escaping
+            // 'htmlmin', 
+            'concat',
+            'cssmin',
+            'uglify',
+            'copy',
+            'rev',
+            'usemin'
+        ];
+
+        if (target === 'ghpages') {
+            buildTasks.push(
+                'copy:ghpages' 
+            );
+        }
+
+        grunt.task.run(buildTasks);
+    });
 
     grunt.registerTask('default', [
         'jshint',

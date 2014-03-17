@@ -10,3 +10,6 @@ test/bower_components/
 app/index.html
 # do not add gallery images to git index
 app/images/galleries
+# ghpages is a branch of this repo, which is checked out inside this repo, so
+# keep it out here!!
+gh-pages
