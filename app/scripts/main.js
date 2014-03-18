@@ -18,8 +18,10 @@
     $(function () {
       var galleryEl = $('.gallery-app');
       if (galleryEl.length) {
+        // initialize Gallery
         var galleryApp = new GalleryAppClass({el: galleryEl});
-        console.log('Gallery App is running...', galleryApp);
+        // making gallery object available in DOM
+        galleryEl.data('gallery', galleryApp);
       }
     });
   }

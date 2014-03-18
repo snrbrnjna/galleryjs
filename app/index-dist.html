@@ -83,5 +83,40 @@
         <!-- build:js scripts/main.js -->
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
+
+        <!-- Piwik -->
+        <script type="text/javascript">
+          var _paq = _paq || [];
+          _paq.push(["trackPageView"]);
+          _paq.push(["enableLinkTracking"]);
+
+          (function() {
+            var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.brnjna.net/";
+            _paq.push(["setTrackerUrl", u+"piwik.php"]);
+            _paq.push(["setSiteId", "1"]);
+            var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+            g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+          })();
+
+          // tracking gallery usage:
+          $(function() {
+            var gal = $('.gallery-app').data('gallery');
+            if (gal) {
+              gal.model.on('slider:newImage', function(newLarge) {
+                setTimeout(function() {
+                  _paq.push(['setCustomUrl', window.location.href]);
+                  _paq.push(['trackPageView']);
+                }, 0);
+              });
+            }
+          });
+
+        </script>
+        <!-- Piwik Image Tracker -->
+        <noscript>
+            <img src="http://piwik.brnjna.net/piwik.php?idsite=1&amp;rec=1&amp;action_name=noscript" style="border:0" alt="" />
+        </noscript>
+        <!-- End Piwik -->
+        <!-- End Piwik Code -->
 </body>
 </html>
