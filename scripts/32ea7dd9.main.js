@@ -1,0 +1,1 @@
+!function(){function a(a){$(function(){var b=$(".gallery-app");if(b.length){var c=new a({el:b});b.data("gallery",c)}})}"function"==typeof define&&define.amd?require(["rconfig","gallery/app"],function(b,c){a(c)}):a(GalleryApp)}();
