@@ -1,4 +1,6 @@
+/* jshint indent: 4 */
 'use strict';
+
 var LIVERELOAD_PORT = 35729;
 var SERVER_PORT = 9000;
 var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
@@ -212,7 +214,7 @@ module.exports = function (grunt) {
             dist: {
                 options: {
                     // http://stackoverflow.com/questions/21175673/grunt-contrib-imagemin-output-fatal-error-enoent-no-such-file-or-directory
-                    cache: false 
+                    cache: false
                 },
                 files: [{
                     expand: true,
@@ -265,12 +267,12 @@ module.exports = function (grunt) {
             }
         },
         copy: {
-            prepare_dev: {
+            prepareDev: {
                 src: '<%= yeoman.app %>/index-dev.html',
                 dest: '<%= yeoman.app %>/index.html'
 
             },
-            prepare_dist: {
+            prepareDist: {
                 src: '<%= yeoman.app %>/index-dist.html',
                 dest: '<%= yeoman.app %>/index.html'
 
@@ -341,7 +343,7 @@ module.exports = function (grunt) {
         grunt.file.write('.tmp/scripts/templates.js', 'this.JST = this.JST || {};');
     });
 
-    grunt.registerTask('server', function () {
+    grunt.registerTask('server', function (target) {
         grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
         grunt.task.run(['serve:' + target]);
     });
@@ -368,7 +370,7 @@ module.exports = function (grunt) {
         }
 
         grunt.task.run([
-            'copy:prepare_dev',
+            'copy:prepareDev',
             'clean:server',
             'coffee:dist',
             'createDefaultTemplate',
@@ -403,7 +405,8 @@ module.exports = function (grunt) {
     grunt.registerTask('build', function (target) {
         
         var buildTasks = [
-            'copy:prepare_dist',
+            'jshint',
+            'copy:prepareDist',
             'clean:dist',
             'coffee',
             'createDefaultTemplate',
@@ -424,7 +427,7 @@ module.exports = function (grunt) {
 
         if (target === 'ghpages') {
             buildTasks.push(
-                'copy:ghpages' 
+                'copy:ghpages'
             );
         }
 

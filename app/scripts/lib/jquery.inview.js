@@ -1,3 +1,4 @@
+/* jshint camelcase: false */
 /**
  * author Christopher Blum
  *    - originally from https://github.com/protonet/jquery.inview
@@ -20,13 +21,13 @@ define([
 
   $.event.special.inview = {
     add: function(data) {
-      inviewObjects[data.guid + "-" + this[expando]] = { data: data, $element: $(this) };
+      inviewObjects[data.guid + '-' + this[expando]] = { data: data, $element: $(this) };
       bindToViewPortChangeEvents();
     },
 
     remove: function(data) {
       unbindToViewPortChangeEvents();
-      try { delete inviewObjects[data.guid + "-" + this[expando]]; } catch(e) {}
+      try { delete inviewObjects[data.guid + '-' + this[expando]]; } catch(e) {}
     }
   };
 
@@ -97,7 +98,7 @@ define([
             elementSize   = { height: $element.height(), width: $element.width() },
             elementOffset = $element.offset(),
             inView        = $element.data('inview'),
-            threshold     = $element.data('inview_opts').threshold, 
+            threshold     = $element.data('inview_opts').threshold,
             visiblePartX,
             visiblePartY,
             visiblePartsMerged;
@@ -141,10 +142,10 @@ define([
           visiblePartY = (viewportOffset.top > elementOffset.top ?
             'bottom' : (viewportOffset.top + viewportSize.height) < (elementOffset.top + elementSize.height) ?
             'top' : 'both');
-          visiblePartsMerged = visiblePartX + "-" + visiblePartY;
+          visiblePartsMerged = visiblePartX + '-' + visiblePartY;
           // uncomment if you want to trigger only if the current check result differs from teh last one
           // if (!inView || inView !== visiblePartsMerged) {
-            $element.data('inview', visiblePartsMerged).trigger('inview', [true, visiblePartX, visiblePartY]);
+          $element.data('inview', visiblePartsMerged).trigger('inview', [true, visiblePartX, visiblePartY]);
           // }
         } else if (inView) {
           $element.data('inview', false).trigger('inview', [false]);
@@ -154,7 +155,7 @@ define([
   }
 
   function bindToViewPortChangeEvents() {
-    $(w).bind("scroll.inview resize.inview", $.throttle(250, function() {
+    $(w).bind('scroll.inview resize.inview', $.throttle(250, function() {
       if (debug) {
         console.log('Hello inview.js checks it out!');
       }
@@ -162,21 +163,21 @@ define([
       checkInView();
     }));
 
-    // IE < 9 scrolls to focused elements without firing the "scroll" event
+    // IE < 9 scrolls to focused elements without firing the 'scroll' event
     // uncomment, if you want special treatment of IE < 9
     // if (!documentElement.addEventListener && documentElement.attachEvent) {
-    //   documentElement.attachEvent("onfocusin", function() {
+    //   documentElement.attachEvent('onfocusin', function() {
     //     viewportOffset = null;
     //   });
     // }
   }
   
   function unbindToViewPortChangeEvents() {
-    $(w).unbind("scroll.inview resize.inview");
+    $(w).unbind('scroll.inview resize.inview');
   }
 
   // Use setInterval in order to also make sure this captures elements within
-  // "overflow:scroll" elements or elements that appeared in the dom tree due to
+  // 'overflow:scroll' elements or elements that appeared in the dom tree due to
   // dom manipulation and reflow
   // old: $(window).scroll(checkInView);
   //

@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         //Allow using this built library as an AMD module
@@ -12,3 +13,4 @@
     }
 }(this, function () {
     //almond, and your modules will be inlined here
+/* jshint ignore:end */

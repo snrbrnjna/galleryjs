@@ -1,3 +1,4 @@
+/* jshint camelcase: false */
 /*
  * Gallery App
  */
@@ -5,11 +6,11 @@ define([
   'backbone',
   'underscore',
   'gallery/models/gallery.model',
-  'gallery/views/thumb.container.view', 
-  'gallery/views/thumb.container.dynamic.view', 
+  'gallery/views/thumb.container.view',
+  'gallery/views/thumb.container.dynamic.view',
   'gallery/views/slider.view',
   'gallery/utils/responsive.adapter'
-], 
+],
 function(Backbone, _, GalleryModel, ThumbContainerView, ThumbContainerDynamicView, SliderView, ResponsiveAdapter) {
   
   var GalleryApp = Backbone.View.extend({
@@ -27,7 +28,7 @@ function(Backbone, _, GalleryModel, ThumbContainerView, ThumbContainerDynamicVie
       first_chunk: 15
     },
     
-    initialize: function(options) {
+    initialize: function() {
       if (this.$el.length) {
         
         // Read in Options from gallery template
@@ -42,7 +43,7 @@ function(Backbone, _, GalleryModel, ThumbContainerView, ThumbContainerDynamicVie
         this.responsiveAdapter = new ResponsiveAdapter(this.opts);
         
         // Instanciate the ThumbContainerView (dynamic or standard?)
-        var thumbContainer = this.$el.find('.container.photos'); 
+        var thumbContainer = this.$el.find('.container.photos');
         var thumbContainerOptions = {
           model: this.model,
           el: thumbContainer,
@@ -62,7 +63,7 @@ function(Backbone, _, GalleryModel, ThumbContainerView, ThumbContainerDynamicVie
         // Instanciate the SliderView
         this.sliderView = new SliderView({
           el: this.$('.slider'),
-          model: this.model, 
+          model: this.model,
           responsiveAdapter: this.responsiveAdapter
         });
       }

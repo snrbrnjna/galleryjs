@@ -39,14 +39,14 @@ define(['jquery', 'isotope'], function($, nope1) {
     },
     
     _calculateCols: function(minColWidth, gutterWidth) {
-      if (this.debug) {console.log('Calculate the Params for the fluid masonry columns...')};
+      if (this.debug) {console.log('Calculate the Params for the fluid masonry columns...');}
       minColWidth += gutterWidth;
       var cols = Math.floor( (this.containerWidth - gutterWidth) / minColWidth );
       cols = Math.max( cols, 1 );
       var restWidth = this.containerWidth - cols*minColWidth;
       var colWidth;
       if (restWidth >= 0) {
-        colWidth = minColWidth + Math.floor(restWidth/cols); 
+        colWidth = minColWidth + Math.floor(restWidth/cols);
       } else if (restWidth < 0) {
         console.error(this);
         throw 'Margin to big for ' + cols + ' Columns';
@@ -72,11 +72,11 @@ define(['jquery', 'isotope'], function($, nope1) {
       });
     },
     
-    _masonryReset: function() {      
+    _masonryReset: function() {
       // Only reset, when not initialized yet, or when the size of the container 
       // has changed
-      if (this.masonry === undefined || 
-        !(this.containerWidth && this.containerWidth == this.element.width())) {      
+      if (this.masonry === undefined ||
+        !(this.containerWidth && this.containerWidth === this.element.width())) {
         // layout-specific props
         this.masonry = {};
         this._getFluidMasonryColumns();

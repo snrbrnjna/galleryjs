@@ -1,7 +1,7 @@
 define([
   'jquery',
   'backbone'
-], 
+],
 function($, Backbone) {
   /*
    * Model: ImageModel
@@ -13,7 +13,7 @@ function($, Backbone) {
     /*
      * options.gallery expected!
      */
-    initialize: function() {        
+    initialize: function() {
       // Reference the view on the model. TODO: do we need this?
       this.model.setThumbView(this);
       this.gallery = this.options.gallery;
