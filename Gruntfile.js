@@ -55,7 +55,9 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
                     '<%= yeoman.app %>/scripts/templates/*.{ejs,mustache,hbs}',
                     'test/spec/**/*.js'
-                ]
+                ],
+                tasks: ['copy:prepareDev']
+
             },
             jst: {
                 files: [
