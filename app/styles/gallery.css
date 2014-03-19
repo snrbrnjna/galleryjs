@@ -29,18 +29,12 @@
 .js .photos .photo.loading img { 
   opacity: 0; 
   -webkit-transition: opacity 0.5s ease-in-out;
-  -moz-transition: opacity 0.5s ease-in-out;
-  -ms-transition: opacity 0.5s ease-in-out;
-  -o-transition: opacity 0.5s ease-in-out;
   transition: opacity 0.5s ease-in-out;
 }
 .js .photos .photo.loaded { opacity: 1; background: none; }
 .js .photos .photo.loaded img { 
   opacity: 1; 
   -webkit-transition: opacity 0.5s ease-in-out;
-  -moz-transition: opacity 0.5s ease-in-out;
-  -ms-transition: opacity 0.5s ease-in-out;
-  -o-transition: opacity 0.5s ease-in-out;
   transition: opacity 0.5s ease-in-out;
 }
 
@@ -48,6 +42,37 @@
   display: block;
   width: 100%;
 }
+
+/* Selector (add2pdf) Button */
+.photo span.selector {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  cursor: pointer;
+  right: 0;
+  bottom: 0;
+  width: 58px;
+  height: 58px;
+  background: url(/images/add_button01_sprite.png) no-repeat 7px 3px;
+  z-index: 30;
+}
+.photo.loaded:hover span.selector {
+  visibility: visible;
+  opacity: 1;
+}
+.photo span.selector:hover {
+  background-position: -52px 3px;
+}
+.photo span.selector.selected {
+  visibility: visible;
+  opacity: 1;
+  background-position: -112px 3px;
+}
+.photo span.selector.selected:hover {
+  background-position: -172px 3px;
+}
+
+/* End Selector (add2pdf) Button */
 
 .stopper {
   background: url("../images/preloader-50.gif") no-repeat center;
@@ -106,8 +131,6 @@
     opacity: 0;
 }
 .slider .photo img {
-    -moz-box-shadow:    0 3px 5px #000;
-    -webkit-box-shadow: 0 3px 5px #000;
     box-shadow:         0 3px 5px #000;
     cursor: pointer;
 }
@@ -145,8 +168,6 @@
 }
 .close_button:hover {
   background: rgba(43,43,43,.80);
-  -moz-box-shadow: 0 0 1px #fff;
-  -webkit-box-shadow: 0 0 1px #fff;
   box-shadow: 0 0 2px #fff;
 }
 .close_button .svg-icon {
@@ -181,8 +202,6 @@
 }
 .cockpit_button:hover {
   background: rgba(43,43,43,.80);
-  -moz-box-shadow: 0 0 1px #fff;
-  -webkit-box-shadow: 0 0 1px #fff;
   box-shadow: 0 0 2px #fff;
 }
 .cockpit_button div.menu_icon { 

@@ -22,11 +22,18 @@ function($, Backbone) {
     },
     
     events: {
-      'click': 'openInSlider'
+      'click': 'openInSlider',
+      'click .selector': 'toggleSelector'
     },
     
     openInSlider: function() {
       this.gallery.trigger('thumb:clicked', this.model);
+    },
+
+    toggleSelector: function(evt) {
+      evt.stopImmediatePropagation();
+      this.selector && this.selector.toggleClass('selected'); // jshint ignore:line
+      console.log('toggglglglggggle!', this.selector);
     },
     
     render: function() {
@@ -36,6 +43,7 @@ function($, Backbone) {
         digest: this.model.get('digest')
       }).trim();
       this.setElement($.parseHTML(html));
+      this.selector = this.$('.selector');
       return this;
     }
     
