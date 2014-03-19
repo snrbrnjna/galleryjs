@@ -44,10 +44,10 @@
 }
 
 /* Selector (add2pdf) Button */
-.photo span.selector {
+span.selector {
   position: absolute;
-  visibility: hidden;
   opacity: 0;
+  transition: opacity .5s ease-in-out;
   cursor: pointer;
   right: 0;
   bottom: 0;
@@ -56,19 +56,17 @@
   background: url(/images/add_button01_sprite.png) no-repeat 7px 3px;
   z-index: 30;
 }
-.photo.loaded:hover span.selector {
-  visibility: visible;
+.loaded:hover span.selector {
   opacity: 1;
 }
-.photo span.selector:hover {
+span.selector:hover {
   background-position: -52px 3px;
 }
-.photo span.selector.selected {
-  visibility: visible;
+span.selector.selected {
   opacity: 1;
   background-position: -112px 3px;
 }
-.photo span.selector.selected:hover {
+span.selector.selected:hover {
   background-position: -172px 3px;
 }
 
