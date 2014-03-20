@@ -24,14 +24,14 @@ function($, Backbone) {
     
     events: {
       'click': 'openInSlider',
-      'click .selector': 'toggleSelector'
+      'click .selector': 'toggleSelected'
     },
     
     openInSlider: function() {
       this.gallery.trigger('thumb:clicked', this.model);
     },
 
-    toggleSelector: function(evt) {
+    toggleSelected: function(evt) {
       evt.stopImmediatePropagation();
       if (this.selector) {
         this.model.set('selected', !this.model.get('selected'));
@@ -40,9 +40,9 @@ function($, Backbone) {
 
     updateSelected: function(ImageModel, selected) {
       if (selected) {
-        this.selector.addClass('selected');
+        this.$el.addClass('selected');
       } else {
-        this.selector.removeClass('selected');
+        this.$el.removeClass('selected');
       }
     },
     

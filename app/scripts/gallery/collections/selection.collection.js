@@ -32,8 +32,6 @@ function (_, Backbone, nope, ImageModel, ImageCollection) {
       // - listen to its ImageCollection for any changes to the selected attribute 
       //   of its ImageModels
       initGallery: function() {
-        console.log('gallery fetched', arguments);
-
         this.galleryImages = this.gallery.get('images');
 
         // before we setup the change-listener, else we have 1 superfluos 
