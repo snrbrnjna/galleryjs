@@ -26,8 +26,6 @@ define([
       }
       var mt = window.getComputedStyle(document.body,':after')
         .getPropertyValue('content').match(/[a-zA-Z_\-0-9]+/g);
-      
-      console.log(mt);
 
       return this.mediaType = mt && mt.length>0 ? mt[0] : 'desktop';
     },

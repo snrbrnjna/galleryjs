@@ -40,17 +40,24 @@ function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView, Thu
           project: this.$el.data('project')
         });
 
-        // Init Selection
-        // TODO: Initialize Selection only when 
-        //        a) markup is set data-gal-selector
-        //        b) not on mobile
-        this.selection = new SelectionCollection([], {
-          gallery: this.model
-        });
         
         // Setup responsive Adapter
         this.responsiveAdapter = new ResponsiveAdapter(this.opts);
         
+        // Init Selection only
+        //   a) when there is the data attrib data-gal-selector
+        //   b) on desktop
+        if (this.responsiveAdapter.getMediaType() !== 'desktop') {
+          // attr because we need a DOM manipulation here so that the css 
+          // recognizes this setting
+          this.$el.attr('data-gal-selection', false);
+        }
+        if (this.$el.data('gal-selection')) {
+          this.selection = new SelectionCollection([], {
+            gallery: this.model
+          });
+        }
+
         // Instanciate the ThumbContainerView (dynamic or standard?)
         var thumbContainer = this.$el.find('.container.photos');
         var thumbContainerOptions = {
