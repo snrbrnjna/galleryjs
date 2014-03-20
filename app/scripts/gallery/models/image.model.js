@@ -8,9 +8,8 @@
  */
 define([
   'underscore',
-  'backbone',
-  'gallery/utils/image.view.cache'
-], function(_, Backbone, ImageViewCache) {
+  'backbone'
+], function(_, Backbone) {
   var ImageModel = Backbone.Model.extend({
 
     idAttribute: 'digest',
