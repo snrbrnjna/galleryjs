@@ -1,8 +1,8 @@
 define([
   'jquery',
-  'imagesloaded', 
+  'imagesloaded',
   'lib/jquery.inview',
-  'underscore', 
+  'underscore',
   'backbone',
   'gallery/views/thumb.container.view',
   'gallery/views/thumb.view'
@@ -23,9 +23,6 @@ define([
       this.thumbTemplate = this.getThumbTemplate();
       
       this.loadedImages = 0;
-      this.imagesToLoad;
-      this.firstChunk = this.options.gallery_opts.first_chunk;
-      this.chunkSize = this.options.gallery_opts.chunk_size;
       this.threshold = 300;
       
       this.constructor.__super__.initialize.apply(this, arguments);
@@ -39,37 +36,44 @@ define([
     
     // override
     initThumbs: function() {
-      
+      // get options from fetched GalleryModel
+      var galleryOpts = this.model.get('opts');
+      this.firstChunk = this.responsiveAdapter.getOptionByMediaType(galleryOpts, 'first_chunk');
+      this.chunkSize = this.responsiveAdapter.getOptionByMediaType(galleryOpts, 'chunk_size');
+
+      // init Layout with options from fetched GalleryModel
+      this.initMasonry(galleryOpts);
+
       this.imagesToLoad = this.model.get('images').models.slice(); // slice() means clone()
       
       // Render initial chunk of thumbs 
-      var rendered_thumb_elements = this._renderChunk(this.firstChunk);
+      var renderedThumbElements = this._renderChunk(this.firstChunk);
       
       // Reset Loading indicator on Container
       this.$el.removeClass('loading');
       
       // Check when Thumbs are loaded => Hide indicator & re-arrange masonry
-      this._checkImagesLoaded(rendered_thumb_elements);
+      this._checkImagesLoaded(renderedThumbElements);
     },
         
     renderNextChunk: function() {
-      // HACK, when imagesLoaded doesn't reach 'always' callback
-      this.timeout_bind = window.setTimeout(_.bind(this._bindInview, this), 2000);
+      // HACK, when imagesLoaded doesn't reach 'always' callback (TODO: muss das noch sein?)
+      this.timeoutBind = window.setTimeout(_.bind(this._bindInview, this), 2000);
       // unbind stopper
       this._unbindInview();
       // render next chunk of thumbs
-      var rendered_thumb_elements = this._renderChunk(this.chunkSize);
+      var renderedThumbElements = this._renderChunk(this.chunkSize);
       // register loaded images
-      this._checkImagesLoaded(rendered_thumb_elements);
+      this._checkImagesLoaded(renderedThumbElements);
     },
     
     // Binds this._onStopperAppeared function to inview event
     _bindInview: function() {
-      window.clearTimeout(this.timeout_bind);
-      if (this.imagesToLoad.length && !this._listening_for_inview) {
+      window.clearTimeout(this.timeoutBind);
+      if (this.imagesToLoad.length && !this._listeningForInview) {
         this.stopper.show();
         this.stopper.on('inview', { threshold: this.threshold }, _.bind(this._onStopperAppeared, this));
-        this._listening_for_inview = true;
+        this._listeningForInview = true;
         $(window).trigger('scroll');
       } else {
         this.stopper.hide();
@@ -78,7 +82,7 @@ define([
     // Unbinds this._onStopperAppeared
     _unbindInview: function() {
       this.stopper.off('inview');
-      this._listening_for_inview = false;
+      this._listeningForInview = false;
     },
     // Handler for 'endless-scroll' like inview.js events
     _onStopperAppeared: function(event, isInView, visiblePartX, visiblePartY) {
@@ -91,14 +95,15 @@ define([
     },
     
     // returns number of remaining imagesToLoad
-    _renderChunk: function(chunkSize) {      
+    _renderChunk: function(chunkSize) {
       // Itearting over the loaded ImageModel objects and render them
-      var rendered_thumb_elements = new Array();
+      var renderedThumbElements = [];
+      var imageModel;
       for(var i=0;i<chunkSize;i++) {
         imageModel = this.imagesToLoad.shift();
         if (imageModel) {
           var thumbView = new ThumbView({
-            model: imageModel, 
+            model: imageModel,
             gallery: this.model,
             template: this.thumbTemplate,
             responsiveAdapter: this.responsiveAdapter
@@ -106,23 +111,23 @@ define([
           thumbView = thumbView.render();
           this.$el.append(thumbView.$el);
           this.$el.isotope('appended', thumbView.$el);
-          rendered_thumb_elements.push(thumbView.el);
+          renderedThumbElements.push(thumbView.el);
         } else {
           break;
         }
       }
-      return rendered_thumb_elements;
+      return renderedThumbElements;
     },
     
-    _checkImagesLoaded: function(rendered_thumb_elements) {
+    _checkImagesLoaded: function(renderedThumbElements) {
       var instance = this;
 
       // Register imagesLoaded on newly rendered thumbs for switching 
       // loading/loaded classes
-      ImagesLoaded(rendered_thumb_elements)
+      new ImagesLoaded(renderedThumbElements)
         .on('progress', function(imagesLoaded, loadingImage) {
           if (loadingImage.isLoaded) {
-            var thumbItem = instance.switchThumbClass(loadingImage.img);
+            instance.switchThumbClass(loadingImage.img);
             instance.arrangeThumbs();
           }
         })
@@ -141,9 +146,9 @@ define([
         });
       
       // Check if some images are loaded yet 'before' ImagesLoaded call
-      $(rendered_thumb_elements).each(function(idx, thumbImg) {
+      $(renderedThumbElements).each(function(idx, thumbImg) {
         if ($(thumbImg).prop('complete')) {
-          var thumbItem = instance.switchThumbClass(thumbImg.img);
+          instance.switchThumbClass(thumbImg.img);
           instance.arrangeThumbs();
         }
       });
@@ -163,7 +168,7 @@ define([
     
     onSliderClosing: function(lastCurrentlargeView) {
       if (lastCurrentlargeView) {
-        this.scrollToThumb(lastCurrentlargeView.model);      
+        this.scrollToThumb(lastCurrentlargeView.model);
       }
     },
     

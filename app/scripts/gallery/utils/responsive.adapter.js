@@ -15,7 +15,6 @@ define([
    */
   var ResponsiveAdapter = function(opts) {
     this.mediaType = this.setMediaType();
-    this.opts = opts;
   };
   
   _.extend(ResponsiveAdapter.prototype, {
@@ -39,25 +38,15 @@ define([
     },
     
     /*
-     * minimum width of cell (thumb) in masonry layout (thumb can get till 
-     * double in size, depending on container-width)
+     * Expects an options-Hash opts and a key of this Hash. The described value 
+     * can be a directly returned single value or an object Hash with the
+     * mediaTypes managed by this adapter as keys.
      */
-    getMasonryMinColWidth: function() {
-      if ($.isPlainObject(this.opts['min_col_width'])) {
-        return this.opts['min_col_width'][this.mediaType];
+    getOptionByMediaType: function(opts, key) {
+      if ($.isPlainObject(opts[key])) {
+        return opts[key][this.mediaType];
       } else {
-        return this.opts['min_col_width'];
-      }
-    },
-    
-    /*
-     * Width of gutter (= space between masonry cells)
-     */
-    getMasonryGutterWidth: function() {
-      if ($.isPlainObject(this.opts['gutter_width'])) {
-        return this.opts['gutter_width'][this.mediaType];
-      } else {
-        return this.opts['gutter_width'];
+        return opts[key];
       }
     },
     
