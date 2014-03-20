@@ -14,11 +14,12 @@ function($, Backbone) {
      * options.gallery expected!
      */
     initialize: function() {
-      // Reference the view on the model. TODO: do we need this?
       this.model.setThumbView(this);
       this.gallery = this.options.gallery;
       this.template = this.options.template;
       this.responsiveAdapter = this.options.responsiveAdapter;
+
+      this.listenTo(this.model, 'change:selected', this.updateSelected);
     },
     
     events: {
@@ -32,8 +33,17 @@ function($, Backbone) {
 
     toggleSelector: function(evt) {
       evt.stopImmediatePropagation();
-      this.selector && this.selector.toggleClass('selected'); // jshint ignore:line
-      console.log('toggglglglggggle!', this.selector);
+      if (this.selector) {
+        this.model.set('selected', !this.model.get('selected'));
+      }
+    },
+
+    updateSelected: function(ImageModel, selected) {
+      if (selected) {
+        this.selector.addClass('selected');
+      } else {
+        this.selector.removeClass('selected');
+      }
     },
     
     render: function() {
@@ -44,6 +54,7 @@ function($, Backbone) {
       }).trim();
       this.setElement($.parseHTML(html));
       this.selector = this.$('.selector');
+      this.updateSelected(this.model, this.model.get('selected'));
       return this;
     }
     

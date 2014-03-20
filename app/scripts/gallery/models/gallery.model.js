@@ -2,7 +2,7 @@
  * GalleryModel
  * ----------
  */
-define(['backbone', 'gallery/collections/image.collection'], 
+define(['backbone', 'gallery/collections/image.collection'],
   function(Backbone, ImageCollection) {
 
   var GalleryModel = Backbone.Model.extend({
@@ -32,7 +32,7 @@ define(['backbone', 'gallery/collections/image.collection'],
     },
     
     toggleSliderState: function() {
-      this.sliderState = (this.sliderState == 'closed' ? 'opened' : 'closed');
+      this.sliderState = (this.sliderState === 'closed' ? 'opened' : 'closed');
     },
 
     url: function() {
@@ -40,15 +40,15 @@ define(['backbone', 'gallery/collections/image.collection'],
     },
 
     parse: function(response) {
-      var gallery_hash = response.gallery;
-      image_options = {presets: gallery_hash.presets};
+      var galleryHash = response.gallery;
+      var imageOptions = {presets: galleryHash.presets};
       if (this.attributes && this.attributes.images) {
-        this.attributes.images.reset(gallery_hash.images, image_options); // Reset Collection
+        this.attributes.images.reset(galleryHash.images, imageOptions); // Reset Collection
       } else {
         // Init Collection on response Hash
-        gallery_hash.images = new ImageCollection(gallery_hash.images, image_options);
+        galleryHash.images = new ImageCollection(galleryHash.images, imageOptions);
       }
-      return gallery_hash;
+      return galleryHash;
     },
     
     setCurrent: function(imageModel) {

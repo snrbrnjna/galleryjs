@@ -7,13 +7,15 @@
  *
  */
 define([
-  'backbone'
-], function(Backbone) {
+  'underscore',
+  'backbone',
+  'gallery/utils/image.view.cache'
+], function(_, Backbone, ImageViewCache) {
   var ImageModel = Backbone.Model.extend({
 
     idAttribute: 'digest',
 
-    // Default attributes for the todo item.
+    // Default attributes for the GalleryImage.
     defaults: function() {
       return {
         thumb: {
@@ -33,7 +35,7 @@ define([
         index: undefined,
         orientation: undefined, // landscape | portrait
         ratio: 0, // < 1 => portrait | > 1 landscape TODO: Doppelung
-        exif: {} 
+        exif: {}
       };
     },
     
@@ -41,25 +43,27 @@ define([
     // a baseurl for every preset (minimum: thumb & large).
     initialize: function(attrs, options) {
       // set the src attribute for every preset
-      _.forEach(options.presets, _.bind(function(preset, preset_key) {
-        this.attributes[preset_key]['src'] = preset['baseurl'] + '/' + attrs['filename'];
-      }, this));
+      if (options !== undefined) {
+        _.forEach(options.presets, _.bind(function(preset, presetKey) {
+          this.attributes[presetKey]['src'] = preset['baseurl'] + '/' + attrs['filename'];
+        }, this));
+      }
     },
     
     getThumbView: function() {
-      return this.attributes.thumb['_view'];
+      return this._thumbView;
     },
     
     setThumbView: function(thumbView) {
-      this.attributes.thumb['_view'] = thumbView;
+      this._thumbView = thumbView;
     },
     
     getLargeView: function() {
-      return this.attributes.large['_view'];
+      return this._largeView;
     },
     
-    setLargeView: function(thumbView) {
-      this.attributes.large['_view'] = thumbView;
+    setLargeView: function(largeView) {
+      this._largeView = largeView;
     },
         
     index: function() {

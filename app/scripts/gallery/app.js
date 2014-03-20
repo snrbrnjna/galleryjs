@@ -6,12 +6,13 @@ define([
   'backbone',
   'underscore',
   'gallery/models/gallery.model',
+  'gallery/collections/selection.collection',
   'gallery/views/thumb.container.view',
   'gallery/views/thumb.container.dynamic.view',
   'gallery/views/slider.view',
   'gallery/utils/responsive.adapter'
 ],
-function(Backbone, _, GalleryModel, ThumbContainerView, ThumbContainerDynamicView, SliderView, ResponsiveAdapter) {
+function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView, ThumbContainerDynamicView, SliderView, ResponsiveAdapter) {
   
   var GalleryApp = Backbone.View.extend({
     
@@ -37,6 +38,14 @@ function(Backbone, _, GalleryModel, ThumbContainerView, ThumbContainerDynamicVie
         // Initialize the GalleryModel
         this.model = new GalleryModel({
           project: this.$el.data('project')
+        });
+
+        // Init Selection
+        // TODO: Initialize Selection only when 
+        //        a) markup is set data-gal-selector
+        //        b) not on mobile
+        this.selection = new SelectionCollection([], {
+          gallery: this.model
         });
         
         // Setup responsive Adapter

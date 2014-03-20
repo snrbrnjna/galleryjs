@@ -17,6 +17,7 @@ require.config({
   paths: {
     jquery: '../bower_components/jquery/jquery',
     backbone: '../bower_components/backbone/backbone',
+    localstorage: '../bower_components/backbone.localstorage/backbone.localstorage',
     underscore: '../bower_components/underscore/underscore',
     jqueryui: '../bower_components/jqueryui/ui/jquery.ui.effect',
     imagesloaded: '../bower_components/imagesloaded/imagesloaded',
