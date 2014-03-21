@@ -10,4 +10,15 @@ header {
 
 .selection.indicator {
   cursor: pointer;
+  color: #333;
+  background: #E80AFC;
+  padding: 4px 9px;
+  border: 2px solid #E80AFC;
+}
+.selection.indicator.filtered {
+  color: #000;
+  border-color: #000;
+}
+.selection.indicator:hover {
+  border-color: #eee;
 }

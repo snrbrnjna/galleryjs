@@ -62,9 +62,7 @@ define([
     },
 
     remove: function() {
-      this.$el.isotope('remove', this.$el.children(), function() {
-        console.log('items removed: ', arguments);
-      });
+      this.$el.isotope('remove', this.$el.children());
     },
         
     renderNextChunk: function() {
