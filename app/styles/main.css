@@ -1,3 +1,9 @@
 body {
-    background: #fafafa;
+  background: #fafafa;
+  font-family: OpenSans, Arial, Helvetica;
+}
+
+header {
+  background: #62c700;
+  padding: .5em;
 }

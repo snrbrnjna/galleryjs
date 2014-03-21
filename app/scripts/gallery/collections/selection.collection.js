@@ -32,22 +32,25 @@ function (_, Backbone, nope, ImageModel, ImageCollection) {
       // - listen to its ImageCollection for any changes to the selected attribute 
       //   of its ImageModels
       initGallery: function() {
-        this.galleryImages = this.gallery.get('images');
+        var galleryImages = this.gallery.get('images');
 
         // before we setup the change-listener, else we have 1 superfluos 
         // callback-roundtrip
         this.fetch();
 
-        this.listenTo(this.galleryImages, 'change:selected', this.selectionChanged);
+        this.listenTo(galleryImages, 'change:selected', this.selectionChanged);
       },
 
       parse: function(response) {
-        _.each(response, function(selectionModel) {
-          var imageModel = this.galleryImages.get(selectionModel.digest);
-          if (imageModel) {
-            imageModel.set('selected', true);
-          }
-        }, this);
+        if (this.gallery) {
+          var galleryImages = this.gallery.get('images');
+          _.each(response, function(selectionModel) {
+            var imageModel = galleryImages.get(selectionModel.digest);
+            if (imageModel) {
+              imageModel.set('selected', true, {initializing: true});
+            }
+          }, this);
+        }
         return response;
       },
 

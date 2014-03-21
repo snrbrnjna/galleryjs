@@ -10,9 +10,11 @@ define([
   'gallery/views/thumb.container.view',
   'gallery/views/thumb.container.dynamic.view',
   'gallery/views/slider.view',
-  'gallery/utils/responsive.adapter'
+  'gallery/utils/responsive.adapter',
+  'gallery/views/selection.indicator.view'
 ],
-function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView, ThumbContainerDynamicView, SliderView, ResponsiveAdapter) {
+function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
+  ThumbContainerDynamicView, SliderView, ResponsiveAdapter, SelectionIndicator) {
   
   var GalleryApp = Backbone.View.extend({
     
@@ -30,7 +32,9 @@ function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView, Thu
         // Setup responsive Adapter
         this.responsiveAdapter = new ResponsiveAdapter();
         
-        // Init Selection only
+        // Init SelectionCollection only
+        // TODO: sollte in jedem Fall initialisiert werden. Wenn nicht aktiv, dann
+        //       ohne gallery object.
         //   a) when there is the data attrib data-gal-selector
         //   b) on desktop
         if (this.responsiveAdapter.getMediaType() !== 'desktop') {
@@ -41,6 +45,9 @@ function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView, Thu
         if (this.$el.data('gal-selection')) {
           this.selection = new SelectionCollection([], {
             gallery: this.model
+          });
+          this.selectionIndicator = new SelectionIndicator({
+            collection: this.selection
           });
         }
 
