@@ -7,6 +7,10 @@ function(Backbone) {
 
     el: '.selection.indicator',
 
+    events: {
+      'click': 'filter'
+    },
+
     initialize: function() {
       if (this.$el.length && this.collection) {
         if (!this.collection.gallery) {
@@ -28,6 +32,16 @@ function(Backbone) {
 
     selectionSynced: function(collection, resp, opts) {
       this.render();
+    },
+
+    filter: function() {
+      // TODO: CAUTION!!!!! gallery can be null
+      if (!this.$el.hasClass('filtered')) {
+        this.collection.gallery.set('images', this.collection);
+      } else {
+        this.collection.gallery.fetch();
+      }
+      this.$el.toggleClass('filtered');
     },
 
     selectionChanged: function(opts) {

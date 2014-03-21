@@ -64,14 +64,9 @@ define([
       // 2) options coming with the fetched json data
       // 3) default options
       var galleryOpts = _.extend({}, this.defaultOpts, galleryHash.opts, this.attributes.opts);
-      if (this.attributes && this.attributes.images) {
-        this.attributes.images.reset(galleryHash.images, imageOptions); // Reset Collection
-        this.attributes.opts = galleryOpts;
-      } else {
-        // Init Collection on response Hash
-        galleryHash.images = new ImageCollection(galleryHash.images, imageOptions);
-        galleryHash.opts = galleryOpts;
-      }
+      // Init Collection on response Hash
+      galleryHash.images = new ImageCollection(galleryHash.images, imageOptions);
+      galleryHash.opts = galleryOpts;
 
       return galleryHash;
     },

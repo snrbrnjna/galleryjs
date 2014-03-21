@@ -34,15 +34,20 @@ define([
       this.listenTo(this.model, 'slider:closing', this.onSliderClosing);
     },
     
-    // override
-    initThumbs: function() {
+    initGallery: function() {
       // get options from fetched GalleryModel
       var galleryOpts = this.model.get('opts');
       this.firstChunk = this.responsiveAdapter.getOptionByMediaType(galleryOpts, 'first_chunk');
       this.chunkSize = this.responsiveAdapter.getOptionByMediaType(galleryOpts, 'chunk_size');
 
-      // init Layout with options from fetched GalleryModel
-      this.initMasonry(galleryOpts);
+      this.constructor.__super__.initGallery.apply(this, arguments);
+    },
+
+    // override
+    initThumbs: function() {
+      this.remove(); // remove old Thumbs
+
+      this._listeningForInview = false;
 
       this.imagesToLoad = this.model.get('images').models.slice(); // slice() means clone()
       
@@ -54,6 +59,12 @@ define([
       
       // Check when Thumbs are loaded => Hide indicator & re-arrange masonry
       this._checkImagesLoaded(renderedThumbElements);
+    },
+
+    remove: function() {
+      this.$el.isotope('remove', this.$el.children(), function() {
+        console.log('items removed: ', arguments);
+      });
     },
         
     renderNextChunk: function() {

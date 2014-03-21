@@ -7,3 +7,7 @@ header {
   background: #62c700;
   padding: .5em;
 }
+
+.selection.indicator {
+  cursor: pointer;
+}

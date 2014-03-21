@@ -52,14 +52,12 @@ function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
         }
 
         // Instanciate the ThumbContainerView (dynamic or standard?)
-        var thumbContainer = this.$el.find('.container.photos');
         var thumbContainerOptions = {
           model: this.model,
-          el: thumbContainer,
           itemSelector: '.photo',
           responsiveAdapter: this.responsiveAdapter
         };
-        if (thumbContainer.find('.photo').length) {
+        if (this.$('.container.photos .photo').length) {
           this.containerView = new ThumbContainerView(thumbContainerOptions);
         } else {
           this.containerView = new ThumbContainerDynamicView(thumbContainerOptions);

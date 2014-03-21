@@ -8,21 +8,24 @@ define([
   'underscore',
   'backbone',
   'localstorage',
-  'gallery/models/image.model',
-  'gallery/collections/image.collection'
+  'gallery/models/image.model'
 ],
-function (_, Backbone, nope, ImageModel, ImageCollection) {
+function (_, Backbone, nope, ImageModel) {
     
-    var SelectionCollection = ImageCollection.extend({
+    var SelectionCollection = Backbone.Collection.extend({
 
+      // Reference to this collection's model.
+      model: ImageModel,
+
+      // Selection is saved in localStorage
       localStorage: new Backbone.LocalStorage('GallerySelection'),
 
       initialize: function (models, options) {
         this.gallery = options.gallery;
 
         // wait for the ImageCollection to be fetched 
-        // => fetch selection from localStorage
-        this.listenToOnce(this.gallery, 'change', this.initGallery);
+        // => listenTo it & fetch selection from localStorage
+        this.listenTo(this.gallery, 'change', this.initGallery);
       },
 
       // Called, when the GalleryModel is initialized/loaded

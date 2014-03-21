@@ -16,12 +16,14 @@ function($, nope, nope2, _, Backbone, isotope, ThumbView) {
    * listens to 'slider:newImage' on GalleryModel => scrollToThumb
    * listens to 'resize.thumbContainer' on window => rearrange Thumbs
    *
-   * The cosntructor needs the following options
+   * The constructor needs the following options
    * - model
    * - el 
    */
   var ThumbContainerView = Backbone.View.extend({
   
+    el: '.container.photos', // default, can be overridden with constructor
+
     defaults: {
       itemSelector: '.photo'
     },
@@ -34,30 +36,37 @@ function($, nope, nope2, _, Backbone, isotope, ThumbView) {
       this.responsiveAdapter = this.options.responsiveAdapter;
 
       // wait for the ImageCollection to be fetched
-      this.listenToOnce(this.model, 'change', this.initThumbs);
+      this.listenTo(this.model, 'change', this.galleryFetched);
       
       // handle resize
       $(window).on('resize.thumbContainer', _.bind($.debounce(200, this.resize), this));
     },
+
+    galleryFetched: function() {
+      this.initGallery();
+      this.initThumbs();
+    },
     
+    initGallery: function() {
+      // initialize masonry/isotope on the thumb Container
+      this.initMasonry(this.model.get('opts'));
+    },
+
     initThumbs: function() {
       // initialize ThumbViews by iterating over existing thumbs in this container
       // and connect the ThumbViews with their respective thumb DOM element
-      var galleryModel = this.model;
-      var images = galleryModel.get('images');
+      var imageCollection = this.model.get('images');
       this.$(this.options.itemSelector).each(function() {
         var thumbContainer = $(this);
         // the digest has to be the id of the Thumb container
-        var imageModel = images.get(thumbContainer.attr('id'));
+        var imageModel = imageCollection.get(thumbContainer.attr('id'));
         new ThumbView({
           model: imageModel,
           el: thumbContainer,
-          gallery: galleryModel
+          gallery: this.model
         });
       });
 
-      // initialize masonry/isotope on the thumb Container
-      this.initMasonry(galleryModel.get('opts'));
             
       // Fade in initialized thumbs... (see gallery.css for details)
       // better to fade in every thumb on its own, when its loaded... (TODO) 
