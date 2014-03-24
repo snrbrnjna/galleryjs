@@ -44,7 +44,8 @@ function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
         }
         if (this.$el.data('gal-selection')) {
           this.selection = new SelectionCollection([], {
-            gallery: this.model
+            gallery: this.model,
+            storageKey: this.$el.data('gal-selection')
           });
           this.selectionIndicator = new SelectionIndicator({
             collection: this.selection

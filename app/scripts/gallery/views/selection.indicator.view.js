@@ -1,3 +1,11 @@
+/* SelectionIndicator
+ * ---------------
+ *
+ * A view Component indicating the number of selected images. 
+ * It serves also as a btton for toggling between the selection and all the 
+ * images in the current gallery.
+ *
+ */
 define([
   'backbone'
 ],
@@ -35,7 +43,6 @@ function(Backbone) {
     },
 
     filter: function() {
-      // TODO: CAUTION!!!!! gallery can be null
       if (!this.$el.hasClass('filtered')) {
         this.collection.gallery.set('images', this.collection);
       } else {

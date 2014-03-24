@@ -1,7 +1,8 @@
 /* SelectionCollection
  * ---------------
  *
- * The collection of selected ImageModel objects.
+ * The collection of selected ImageModel objects. Is saved in localStorage of
+ * the client browser.
  *
  */
 define([
@@ -17,11 +18,13 @@ function (_, Backbone, nope, ImageModel) {
       // Reference to this collection's model.
       model: ImageModel,
 
-      // Selection is saved in localStorage
-      localStorage: new Backbone.LocalStorage('GallerySelection'),
-
       initialize: function (models, options) {
         this.gallery = options.gallery;
+
+        // Selection is saved in localStorage
+        if (options.storageKey) {
+          this.localStorage = new Backbone.LocalStorage(options.storageKey);
+        }
 
         // wait for the ImageCollection to be fetched 
         // => listenTo it & fetch selection from localStorage
@@ -50,7 +53,7 @@ function (_, Backbone, nope, ImageModel) {
           _.each(response, function(selectionModel) {
             var imageModel = galleryImages.get(selectionModel.digest);
             if (imageModel) {
-              imageModel.set('selected', true, {initializing: true});
+              imageModel.set('selected', true);
             }
           }, this);
         }
