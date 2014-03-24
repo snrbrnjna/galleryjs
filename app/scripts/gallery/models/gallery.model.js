@@ -105,16 +105,20 @@ define([
     getNext: function() {
       if (this._current) {
         var images = this.attributes.images;
-        if (this._current.index() < images.length-1) {
-          return images.at(this._current.index() + 1);
+        var currentIndex = this._current.index();
+        if (currentIndex < images.length-1) {
+          return images.at(currentIndex + 1);
         }
       }
     },
     
     // ImageModel instance
     getPrev: function() {
-      if (this._current && this._current.index() > 0) {
-        return this.attributes.images.at(this._current.index() - 1);
+      if (this._current) {
+        var currentIndex = this._current.index();
+        if (currentIndex > 0) {
+          return this.attributes.images.at(currentIndex - 1);
+        }
       }
     }
   });

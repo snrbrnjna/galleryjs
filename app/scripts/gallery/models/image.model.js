@@ -66,6 +66,9 @@ define([
     },
         
     index: function() {
+      if (this.attributes.index === undefined) {
+        return this.collection ? this.collection.indexOf(this) : undefined;
+      }
       return this.attributes.index;
     }
   });

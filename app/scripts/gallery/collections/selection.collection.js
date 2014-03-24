@@ -62,6 +62,10 @@ function (_, Backbone, nope, ImageModel) {
         var selectionModel = this.get(imageModel.id);
         if (selected && !selectionModel) {
           var selectedImage = imageModel.clone();
+          // selected images have no fixed index, they are sorted by their insert-
+          // order, but can be removed again later, so no index is stored
+          // see ImageModel#index
+          selectedImage.set('index', undefined);
           this.add(selectedImage);
           selectedImage.save();
         } else if (selectionModel) {
