@@ -11,10 +11,10 @@ define([
   'gallery/views/thumb.container.dynamic.view',
   'gallery/views/slider.view',
   'gallery/utils/responsive.adapter',
-  'gallery/views/selection.indicator.view'
+  'gallery/views/selection.button.view'
 ],
 function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
-  ThumbContainerDynamicView, SliderView, ResponsiveAdapter, SelectionIndicator) {
+  ThumbContainerDynamicView, SliderView, ResponsiveAdapter, SelectionButton) {
   
   var GalleryApp = Backbone.View.extend({
     
@@ -47,7 +47,7 @@ function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
             gallery: this.model,
             storageKey: this.$el.data('gal-selection')
           });
-          this.selectionIndicator = new SelectionIndicator({
+          this.selectionButton = new SelectionButton({
             collection: this.selection
           });
         }

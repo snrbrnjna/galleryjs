@@ -8,17 +8,17 @@ header {
   padding: .5em;
 }
 
-.selection.indicator {
+.selection.button {
   cursor: pointer;
   color: #333;
   background: #E80AFC;
   padding: 4px 9px;
   border: 2px solid #E80AFC;
 }
-.selection.indicator.filtered {
+.selection.button.filtered {
   color: #000;
   border-color: #000;
 }
-.selection.indicator:hover {
+.selection.button:hover {
   border-color: #eee;
 }

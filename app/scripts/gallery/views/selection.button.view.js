@@ -1,4 +1,4 @@
-/* SelectionIndicator
+/* SelectionButton
  * ---------------
  *
  * A view Component indicating the number of selected images. 
@@ -11,9 +11,9 @@ define([
 ],
 function(Backbone) {
 
-  var SelectionIndicator = Backbone.View.extend({
+  var SelectionButton = Backbone.View.extend({
 
-    el: '.selection.indicator',
+    el: '.selection.button',
 
     events: {
       'click': 'filter'
@@ -63,6 +63,6 @@ function(Backbone) {
 
   });
 
-  return SelectionIndicator;
+  return SelectionButton;
 
 });
