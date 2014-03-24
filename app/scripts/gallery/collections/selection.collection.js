@@ -18,13 +18,11 @@ function (_, Backbone, nope, ImageModel) {
       // Reference to this collection's model.
       model: ImageModel,
 
+      // Selection is saved in localStorage
+      localStorage: new Backbone.LocalStorage('GallerySelection'),
+
       initialize: function (models, options) {
         this.gallery = options.gallery;
-
-        // Selection is saved in localStorage
-        if (options.storageKey) {
-          this.localStorage = new Backbone.LocalStorage(options.storageKey);
-        }
 
         // wait for the ImageCollection to be fetched 
         // => listenTo it & fetch selection from localStorage
