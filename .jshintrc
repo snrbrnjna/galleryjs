@@ -21,7 +21,8 @@
     "jquery": true,
     "globals": {
         "define": false,
-        "require": true
+        "require": true,
+        "Modernizr": false
     },
     "sub": true
 }

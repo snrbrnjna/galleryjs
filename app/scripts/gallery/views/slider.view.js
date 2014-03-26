@@ -3,7 +3,7 @@ define([
   'jqueryui',
   'vendor/jquery.touchSwipe',
   'vendor/jquery.throttle-debounce',
-  'underscore', 
+  'underscore',
   'backbone',
   'gallery/views/large.view',
   'gallery/views/cockpit.view'
@@ -43,11 +43,11 @@ define([
       
       // Init Elements
       this.tray = this.$('.tray');
-      this.current_box = this.$('.photo.current'); //TODO: Options
-      this.prev_box = this.$('.photo.prev');
-      this.next_box = this.$('.photo.next');
-      this.nav_prev = this.$('.nav.prev'); // TODO: Options
-      this.nav_next = this.$('.nav.next'); // TODO: Options
+      this.currentBox = this.$('.photo.current'); //TODO: Options
+      this.prevBox = this.$('.photo.prev');
+      this.nextBox = this.$('.photo.next');
+      this.navPrev = this.$('.nav.prev'); // TODO: Options
+      this.navNext = this.$('.nav.next'); // TODO: Options
       this.current = undefined;
       
       this.responsiveAdapter = this.options.responsiveAdapter;
@@ -56,19 +56,19 @@ define([
       // Check, when Thumb was clicked
       this.listenTo(this.model, 'thumb:clicked', this.openSlider);
       // Listen on window resize to resize the current, the prev and the next large
-      $(window).on("resize.slider", _.bind($.debounce(200, this.resize), this));
+      $(window).on('resize.slider', _.bind($.debounce(200, this.resize), this));
       // Listen to keyboard
       $(window).on('keyup.slider', _.bind(this.keys, this));
       // Listen to mousemove for hovering the prev/next buttons - only on 
       // non-touch devices (mixed devices (surface et al) don't get hover help)
       this.touchable = ('ontouchstart' in window);
-      if (!this.touchable) { 
+      if (!this.touchable) {
         this.tray.on('mousemove.slider', _.bind($.throttle(150, this.mousemove), this));
       }
             
       // Init Cockpit
       this.cockpit = new CockpitView({
-        model: this.model, 
+        model: this.model,
         cockpit: this.options.cockpit,
         slider: this
       });
@@ -158,15 +158,15 @@ define([
     // "hover" effect for prev/next buttons while mouse is over image
     mousemove: function(evt) {
       var mouseCmd = this._mapMouseEvent(evt);
-      if (mouseCmd == 'nav.prev') {
-        this.nav_next.removeClass('active');
-        this.nav_prev.addClass('active');
-      } else if (mouseCmd == 'nav.next') {
-        this.nav_prev.removeClass('active');
-        this.nav_next.addClass('active');
+      if (mouseCmd === 'nav.prev') {
+        this.navNext.removeClass('active');
+        this.navPrev.addClass('active');
+      } else if (mouseCmd === 'nav.next') {
+        this.navPrev.removeClass('active');
+        this.navNext.addClass('active');
       } else {
-        this.nav_prev.removeClass('active');
-        this.nav_next.removeClass('active');
+        this.navPrev.removeClass('active');
+        this.navNext.removeClass('active');
       }
     },
     
@@ -177,14 +177,14 @@ define([
         // touch events get the current page coordinates in another fashion than
         // pure old click events
         var pageX = (
-          evt.changedTouches && evt.changedTouches.length ? 
+          evt.changedTouches && evt.changedTouches.length ?
             evt.changedTouches[0].pageX :
             evt.pageX
         );
         var offsetX = pageX - $(evt.target).offset().left;
         var offsetRelX = offsetX / this.current.getWidth();
         return (offsetRelX < 0.45 ? 'nav.prev' : 'nav.next');
-      } else if ($target.closest('.cockpit').length == 0) { 
+      } else if ($target.closest('.cockpit').length === 0) {
         // $.closest => all targets within the specified .cockpit container
         return 'ESC';
       }
@@ -197,7 +197,8 @@ define([
     openSlider: function(imageModel) {
       this._setDimensions();
       this._setCurrent(imageModel);
-      this.$el.addClass('open');$('body').removeClass('slider_closed');
+      this.$el.addClass('open');
+      $('body').removeClass('slider_closed');
       this.$el.addClass('visible', 800);
       this.$el.swipe('enable');
       this.model.toggleSliderState();
@@ -205,18 +206,18 @@ define([
     
     showNext: function() {
       if (this.next) {
-        var new_next_box = this.$el.find('#prev');
+        var newNextBox = this.$el.find('#prev');
         
         this.prev = this.current;
-        this.prev_box = this.current_box.attr('id','prev');        
+        this.prevBox = this.currentBox.attr('id','prev');
         this.current = this.next;
         this.model.setCurrent(this.next.model);
-        this.current_box = this.next_box.attr('id','current');
-        this.next_box = new_next_box.attr('id','next');
+        this.currentBox = this.nextBox.attr('id','current');
+        this.nextBox = newNextBox.attr('id','next');
         
-        this.prev_box.switchClass('current','prev', {duration:300,queue:true,easing:'linear'});
-        this.current_box.switchClass('next', 'current', {duration:300,queue:true,easing:'linear'});
-        this.next_box.switchClass('prev', 'next', {duration:0,queue:true});
+        this.prevBox.switchClass('current','prev', {duration:300,queue:true,easing:'linear'});
+        this.currentBox.switchClass('next', 'current', {duration:300,queue:true,easing:'linear'});
+        this.nextBox.switchClass('prev', 'next', {duration:0,queue:true});
         
         this._setNext();
         this._currentChanged();
@@ -224,19 +225,19 @@ define([
     },
     
     showPrev: function() {
-      if (this.prev) { 
-        var new_prev_box = this.$el.find('#next');
+      if (this.prev) {
+        var newPrevBox = this.$el.find('#next');
         
         this.next = this.current;
-        this.next_box = this.current_box.attr('id','next');
+        this.nextBox = this.currentBox.attr('id','next');
         this.current = this.prev;
         this.model.setCurrent(this.prev.model);
-        this.current_box = this.prev_box.attr('id','current');
-        this.prev_box = new_prev_box.attr('id', 'prev');
+        this.currentBox = this.prevBox.attr('id','current');
+        this.prevBox = newPrevBox.attr('id', 'prev');
         
-        this.next_box.switchClass('current', 'next', {duration:300,queue:true,easing:'linear'});
-        this.current_box.switchClass('prev', 'current', {duration:300,queue:true,easing:'linear'});
-        this.prev_box.switchClass('next', 'prev');
+        this.nextBox.switchClass('current', 'next', {duration:300,queue:true,easing:'linear'});
+        this.currentBox.switchClass('prev', 'current', {duration:300,queue:true,easing:'linear'});
+        this.prevBox.switchClass('next', 'prev');
         
         this._setPrev();
         this._currentChanged();
@@ -246,7 +247,8 @@ define([
     closeSlider: function() {
       this.model.trigger('slider:closing', this.current);
     
-      this.$el.removeClass('open visible', 800);$('body').addClass('slider_closed');
+      this.$el.removeClass('open visible', 800);
+      $('body').addClass('slider_closed');
       this._setCurrent(undefined);
       this.current = this.next = this.perv = undefined;
       this.$('.photo').empty();
@@ -254,7 +256,7 @@ define([
       this._setHashbang('', 'ÄMPTI');
       // window.location.hash = '!';
     
-      this.$el.swipe("disable");
+      this.$el.swipe('disable');
       this.model.toggleSliderState();
     },
     
@@ -266,15 +268,15 @@ define([
       }
     },
     
-    _currentChanged: function() {      
+    _currentChanged: function() {
       this._setHashbang(this.current.model.id, 'Image ' + this.current.model.id);
       
       this.model.trigger('slider:newImage', this.current);
       
-      if (this.next) { this.nav_next.removeClass('visuallyhidden'); } 
-      else { this.nav_next.addClass('visuallyhidden'); }
-      if (this.prev) { this.nav_prev.removeClass('visuallyhidden'); } 
-      else { this.nav_prev.addClass('visuallyhidden'); }
+      if (this.next) { this.navNext.removeClass('visuallyhidden'); }
+      else { this.navNext.addClass('visuallyhidden'); }
+      if (this.prev) { this.navPrev.removeClass('visuallyhidden'); }
+      else { this.navPrev.addClass('visuallyhidden'); }
       
     },
     
@@ -283,7 +285,7 @@ define([
       var largeView = this._loadOrGetLarge(imageModel);
       if (largeView) {
         this.current = largeView;
-        this.current_box.html(this.current.$el);
+        this.currentBox.html(this.current.$el);
         this._currentChanged();
         this._setNext();
         this._setPrev();
@@ -291,25 +293,23 @@ define([
     } ,
     
     _setNext: function() {
-      var imageCollection = this.model.get('images');
       this.next = this._loadOrGetLarge(this.model.getNext());
       if (this.next) {
-        this.next_box.html(this.next.$el);
-        this.nav_next.removeClass('visuallyhidden');
+        this.nextBox.html(this.next.$el);
+        this.navNext.removeClass('visuallyhidden');
       } else {
-        this.nav_next.addClass('visuallyhidden');
+        this.navNext.addClass('visuallyhidden');
       }
       return this.next;
     },
     
     _setPrev: function() {
-      var imageCollection = this.model.get('images');
       this.prev = this._loadOrGetLarge(this.model.getPrev());
       if (this.prev) {
-        this.prev_box.html(this.prev.$el);
-        this.nav_prev.removeClass('visuallyhidden');
+        this.prevBox.html(this.prev.$el);
+        this.navPrev.removeClass('visuallyhidden');
       } else {
-        this.nav_prev.addClass('visuallyhidden');
+        this.navPrev.addClass('visuallyhidden');
       }
       return this.prev;
     },
@@ -318,9 +318,9 @@ define([
     _loadOrGetLarge: function(imageModel) {
       if (imageModel) {
         var largeView = (
-          imageModel.getLargeView() || 
+          imageModel.getLargeView() ||
           new LargeView({
-            model: imageModel, 
+            model: imageModel,
             slider: this
           })
         );
