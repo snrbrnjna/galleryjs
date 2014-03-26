@@ -1,3 +1,4 @@
+/* global parseUri */
 /*
  * GalleryModel
  * ----------
@@ -5,9 +6,10 @@
 define([
   'underscore',
   'backbone',
-  'gallery/collections/image.collection'
+  'gallery/collections/image.collection',
+  'plugins/plugins'
 ],
-  function(_, Backbone, ImageCollection) {
+  function(_, Backbone, ImageCollection, nope) {
 
   var GalleryModel = Backbone.Model.extend({
 
@@ -55,7 +57,8 @@ define([
     
     parse: function(response) {
       var galleryHash = response.gallery;
-      var imageOptions = {presets: galleryHash.presets};
+      // Prepare and parse data
+      var imageOptions = {presets: this._parsePresets(galleryHash.presets)};
       // Precedence in these options:
       // 1) options given as attributes into the constructor (the ones written in data-attributes)
       // 2) options coming with the fetched json data
@@ -71,6 +74,23 @@ define([
       }
 
       return galleryHash;
+    },
+
+    _parsePresets: function(presetHash) {
+      _.forEach(presetHash, function(preset, presetKey) {
+        // normalize baseUrl (can also be a path in the parsed json)
+        var baseUrl = preset['baseurl'];
+        if (!baseUrl.match(/http:\/\/|https:\/\//)) {
+          var uri = parseUri(window.location.href);
+          var root = uri.protocol+ '://' + uri.host + (uri.port ? ':' + uri.port : '');
+          if (baseUrl.indexOf('/') === 0) { // absolute path
+            preset['baseurl'] = root + baseUrl;
+          } else { // relative path
+            preset['baseurl'] = root + uri.directory + baseUrl;
+          }
+        }
+      });
+      return presetHash;
     },
     
     toggleSliderState: function() {
