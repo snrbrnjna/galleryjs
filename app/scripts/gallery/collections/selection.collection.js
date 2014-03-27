@@ -45,6 +45,7 @@ function (_, Backbone, nope, ImageModel) {
         this.listenTo(galleryImages, 'change:selected', this.selectionChanged);
       },
 
+      // called by SelectionCollection#fetch
       parse: function(response) {
         if (this.gallery) {
           var galleryImages = this.gallery.get('images');

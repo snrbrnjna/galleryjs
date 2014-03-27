@@ -1,4 +1,4 @@
-/* SelectionButton
+/* SelectionToggleButton
  * ---------------
  *
  * A view Component indicating the number of selected images. 
@@ -11,7 +11,7 @@ define([
 ],
 function(Backbone) {
 
-  var SelectionButton = Backbone.View.extend({
+  var SelectionToggleButton = Backbone.View.extend({
 
     el: '.selection.button',
 
@@ -53,16 +53,25 @@ function(Backbone) {
 
     selectionChanged: function(opts) {
       if (!opts.parse) {
+        // toggle filter if selection empty and currently filtered.
+        if (this.collection.length === 0 && this.$el.hasClass('filtered')) {
+          this.filter();
+        }
         this.render();
       }
     },
 
     render: function() {
       this.$el.html(this.collection.length + ' photos');
+      if (this.collection.length) {
+        this.$el.addClass('active');
+      } else {
+        this.$el.removeClass('active');
+      }
     }
 
   });
 
-  return SelectionButton;
+  return SelectionToggleButton;
 
 });

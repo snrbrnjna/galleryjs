@@ -11,10 +11,10 @@ define([
   'gallery/views/thumb.container.dynamic.view',
   'gallery/views/slider.view',
   'gallery/utils/responsive.adapter',
-  'gallery/views/selection.button.view'
+  'gallery/views/selection.toggle.button'
 ],
 function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
-  ThumbContainerDynamicView, SliderView, ResponsiveAdapter, SelectionButton) {
+  ThumbContainerDynamicView, SliderView, ResponsiveAdapter, SelectionToggleButton) {
   
   var GalleryApp = Backbone.View.extend({
     
@@ -33,6 +33,7 @@ function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
         this.responsiveAdapter = new ResponsiveAdapter();
         
         // Init SelectionCollection only
+        // Raus hier! und in main.js...
         // TODO: sollte in jedem Fall initialisiert werden. Wenn nicht aktiv, dann
         //       ohne gallery object.
         //   a) when there is the data attrib data-gal-selector
@@ -44,10 +45,9 @@ function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
         }
         if (this.$el.data('gal-selection')) {
           this.selection = new SelectionCollection([], {
-            gallery: this.model,
-            storageKey: this.$el.data('gal-selection')
+            gallery: this.model
           });
-          this.selectionButton = new SelectionButton({
+          this.selectionToggleButton = new SelectionToggleButton({
             collection: this.selection
           });
         }
