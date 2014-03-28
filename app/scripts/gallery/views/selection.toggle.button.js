@@ -5,6 +5,8 @@
  * It serves also as a btton for toggling between the selection and all the 
  * images in the current gallery.
  *
+ * Collection: SelectionCollection
+ *
  */
 define([
   'backbone'
@@ -13,21 +15,22 @@ function(Backbone) {
 
   var SelectionToggleButton = Backbone.View.extend({
 
-    el: '.selection.button',
+    el: '.selection .button.toggle',
 
     events: {
-      'click': 'filter'
+      'click': 'toggle'
     },
 
     initialize: function() {
       if (this.$el.length && this.collection) {
-        if (!this.collection.gallery) {
-          this.collection.fetch();
-        }
-        this.listenTo(this.collection, 'add', this.itemAdded);
-        this.listenTo(this.collection, 'remove', this.itemRemoved);
         this.listenToOnce(this.collection, 'sync', this.selectionSynced);
       }
+    },
+
+    selectionSynced: function(collection, resp, opts) {
+      this.render();
+      this.listenTo(this.collection, 'add', this.itemAdded);
+      this.listenTo(this.collection, 'remove', this.itemRemoved);
     },
 
     itemAdded: function(model, col, opts) {
@@ -38,8 +41,10 @@ function(Backbone) {
       this.selectionChanged(opts);
     },
 
-    selectionSynced: function(collection, resp, opts) {
-      this.render();
+    toggle: function() {
+      if (this.$el.hasClass('active')) {
+        this.filter();
+      }
     },
 
     filter: function() {
@@ -52,13 +57,11 @@ function(Backbone) {
     },
 
     selectionChanged: function(opts) {
-      if (!opts.parse) {
-        // toggle filter if selection empty and currently filtered.
-        if (this.collection.length === 0 && this.$el.hasClass('filtered')) {
-          this.filter();
-        }
-        this.render();
+      // toggle filter if selection empty and currently filtered.
+      if (this.collection.length === 0 && this.$el.hasClass('filtered')) {
+        this.filter();
       }
+      this.render();
     },
 
     render: function() {

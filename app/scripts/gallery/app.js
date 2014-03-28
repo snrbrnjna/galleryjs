@@ -11,10 +11,12 @@ define([
   'gallery/views/thumb.container.dynamic.view',
   'gallery/views/slider.view',
   'gallery/utils/responsive.adapter',
-  'gallery/views/selection.toggle.button'
+  'gallery/views/selection.toggle.button',
+  'gallery/views/selection.pdf.button'
 ],
 function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
-  ThumbContainerDynamicView, SliderView, ResponsiveAdapter, SelectionToggleButton) {
+  ThumbContainerDynamicView, SliderView, ResponsiveAdapter, SelectionToggleButton,
+  SelectionPdfButton) {
   
   var GalleryApp = Backbone.View.extend({
     
@@ -23,58 +25,80 @@ function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
     initialize: function() {
       if (this.$el.length) {
         
-        // Initialize the GalleryModel
-        this.model = new GalleryModel({
-          project: this.$el.data('project'),
-          opts: this.$el.data('opts')
-        });
+        // Init Model
+        this.initGalleryModel();
 
         // Setup responsive Adapter
         this.responsiveAdapter = new ResponsiveAdapter();
         
-        // Init SelectionCollection only
-        // Raus hier! und in main.js...
-        // TODO: sollte in jedem Fall initialisiert werden. Wenn nicht aktiv, dann
-        //       ohne gallery object.
-        //   a) when there is the data attrib data-gal-selector
-        //   b) on desktop
-        if (this.responsiveAdapter.getMediaType() !== 'desktop') {
-          // attr because we need a DOM manipulation here so that the css 
-          // recognizes this setting
-          this.$el.attr('data-gal-selection', false);
-        }
-        if (this.$el.data('gal-selection')) {
-          this.selection = new SelectionCollection([], {
-            gallery: this.model
-          });
-          this.selectionToggleButton = new SelectionToggleButton({
-            collection: this.selection
-          });
+        // Init Selection
+        if (this.responsiveAdapter.getMediaType() === 'desktop') {
+          this.initSelection();
+        } else {
+          this.$el.removeAttr('data-gal-selection');
         }
 
-        // Instanciate the ThumbContainerView (dynamic or standard?)
-        var thumbContainerOptions = {
-          model: this.model,
-          itemSelector: '.photo',
-          responsiveAdapter: this.responsiveAdapter
-        };
-        if (this.$('.container.photos .photo').length) {
-          this.containerView = new ThumbContainerView(thumbContainerOptions);
-        } else {
-          this.containerView = new ThumbContainerDynamicView(thumbContainerOptions);
-        }
+        // Init ThumbContainerView
+        this.initThumbContainer();
         
         // Fetch Gallery Data from Server
         this.model.fetch();
 
         // Instanciate the SliderView
-        this.sliderView = new SliderView({
-          el: this.$('.slider'),
-          model: this.model,
-          responsiveAdapter: this.responsiveAdapter
+        this.initSlider();
+      }
+    },
+
+    // Initialize the GalleryModel
+    initGalleryModel: function() {
+      this.model = new GalleryModel({
+        project: this.$el.data('project'),
+        opts: this.$el.data('opts')
+      });
+    },
+
+    // Init SelectionCollection only when there is the data attrib data-gal-selector
+    initSelection: function() {
+      if (this.$el.data('gal-selection')) {
+        // init selection collection
+        this.selection = new SelectionCollection([], {
+          gallery: this.model
+        });
+
+        // init toggle button
+        this.selectionToggleButton = new SelectionToggleButton({
+          collection: this.selection
+        });
+
+        // init pdf button
+        this.selectionPdfButton = new SelectionPdfButton({
+          collection: this.selection
         });
       }
+    },
+
+    // Instanciate the ThumbContainerView (dynamic or standard?)
+    initThumbContainer: function() {
+      var thumbContainerOptions = {
+        model: this.model,
+        itemSelector: '.photo',
+        responsiveAdapter: this.responsiveAdapter
+      };
+      if (this.$('.container.photos .photo').length) {
+        this.containerView = new ThumbContainerView(thumbContainerOptions);
+      } else {
+        this.containerView = new ThumbContainerDynamicView(thumbContainerOptions);
+      }
+    },
+
+    initSlider: function() {
+      this.sliderView = new SliderView({
+        el: this.$('.slider'),
+        model: this.model,
+        responsiveAdapter: this.responsiveAdapter
+      });
     }
+
   });
   
   return GalleryApp;

@@ -8,17 +8,24 @@ header {
   padding: .5em;
 }
 
-.selection.button {
-  cursor: pointer;
+.selection .button {
+  opacity: .5;
   color: #333;
   background: #E80AFC;
   padding: 4px 9px;
   border: 2px solid #E80AFC;
+  cursor: pointer;
 }
-.selection.button.filtered {
+.selection .button.active {
+  opacity: 1;
+}
+.selection .button.active.filtered {
   color: #000;
   border-color: #000;
 }
-.selection.button:hover {
+.selection .button.active:hover {
   border-color: #eee;
+}
+.selection .button.error {
+  border-color: red;
 }
