@@ -40,6 +40,7 @@ define([
 
     selectionSynced: function(collection, resp, opts) {
       this.renderActive();
+      this.$el.addClass('initialized');
       this.listenTo(this.collection, 'add', this.itemAdded);
       this.listenTo(this.collection, 'remove', this.itemRemoved);
     },

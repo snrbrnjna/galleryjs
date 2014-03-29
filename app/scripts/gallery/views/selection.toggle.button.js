@@ -29,6 +29,7 @@ function(Backbone) {
 
     selectionSynced: function(collection, resp, opts) {
       this.render();
+      this.$el.addClass('initialized');
       this.listenTo(this.collection, 'add', this.itemAdded);
       this.listenTo(this.collection, 'remove', this.itemRemoved);
     },

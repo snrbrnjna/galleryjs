@@ -9,12 +9,16 @@ header {
 }
 
 .selection .button {
+  display: none;
   opacity: .5;
   color: #333;
   background: #E80AFC;
   padding: 4px 9px;
   border: 2px solid #E80AFC;
   cursor: pointer;
+}
+.selection .button.initialized {
+  display: inline-block;
 }
 .selection .button.active {
   opacity: 1;
