@@ -130,7 +130,7 @@ define([
     },
 
     renderLoading: function() {
-      this.$el.html('Loading...');
+      this.$el.html('Loading PDF');
       this.$el.removeClass('active');
       this.$el.addClass('loading');
     },

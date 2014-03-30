@@ -4,7 +4,7 @@ body {
 }
 
 header {
-  background: #62c700;
+  background: #00AFC7;
   padding: .5em;
 }
 
@@ -12,16 +12,16 @@ header {
   display: none;
   opacity: .5;
   color: #333;
-  background: #E80AFC;
+  background: #EF89F8;
   padding: 4px 9px;
   border: 2px solid #E80AFC;
-  cursor: pointer;
 }
 .selection .button.initialized {
   display: inline-block;
 }
 .selection .button.active {
   opacity: 1;
+  cursor: pointer;
 }
 .selection .button.active.filtered {
   color: #000;
@@ -32,4 +32,26 @@ header {
 }
 .selection .button.error {
   border-color: red;
+}
+.selection .button.loading {
+  opacity: 1;
+  color: #fff;
+  border-color: #EF89F8;
+  -webkit-animation: glowIt 2s infinite;  
+  animation: glowIt 2s infinite;
+}
+@-webkit-keyframes glowIt {
+    0% { 
+        background-color: #EF89F8; 
+        -webkit-box-shadow: 0 0 9px #ccc; 
+    }
+    50% { 
+        border-color: #ff6b6f;
+        background-color: #ff6b6f; 
+        -webkit-box-shadow: 0 0 18px #ff6b6f; 
+        }
+    100% { 
+        background-color: #EF89F8; 
+        -webkit-box-shadow: 0 0 9px #ccc; 
+    }
 }
