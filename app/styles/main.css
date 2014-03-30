@@ -8,6 +8,14 @@ header {
   padding: .5em;
 }
 
+h1 {
+  font-family: grutchshadedregular, Helvetica, OpenSans, Arial;
+  font-size: 4em;
+  font-weight: normal;
+  color: #40445C;
+  margin: 0;
+}
+
 .selection .button {
   display: none;
   opacity: .5;
