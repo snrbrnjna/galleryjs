@@ -6,9 +6,9 @@ A [backbone](http://backbonejs.org/) app for a full width [masonry](http://mason
 
 Install via [bower](http://bower.io/):
 
-{% highlight %} 
+``` bash 
 bower install gallery.js
-{% endhighlight %}
+```
 
 Or get the latest script and stylesheet files from the [repo](tree/master/lib).
 
@@ -28,12 +28,12 @@ Hava a look at [index-dev.html](blob/master/app/index-dev.html) inside the ``Gal
 ### JS
 Inizialize the gallery in your main.js:
 
-{% highlight javascript %} 
+``` js
 var galleryEl = $('.gallery-app');
 if (galleryEl.length) {
     new GalleryApp({el: galleryEl});
 }
-{% endhighlight %}
+```
 
 ## Example Gallery
 
