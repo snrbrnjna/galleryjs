@@ -10,7 +10,7 @@ Install via [bower](http://bower.io/):
 bower install gallery.js
 ```
 
-Or get the latest script and stylesheet files from the [repo](/snrbrnjna/galleryjs/tree/master/lib).
+Or get the latest script and stylesheet files from the [repo](/lib).
 
 ### Development
 - Clone Repo
@@ -23,7 +23,7 @@ Or get the latest script and stylesheet files from the [repo](/snrbrnjna/gallery
 ## Integrate
 
 ### HTML
-Hava a look at [index-dev.html](/snrbrnjna/galleryjs/blob/master/app/index-dev.html) inside the ``Gallery-App`` comments for the HTML markup needed for gallery.js.
+Hava a look at [index-dev.html](/app/index-dev.html) inside the ``Gallery-App`` comments for the HTML markup needed for gallery.js.
 
 ### JS
 Inizialize the gallery in your main.js:
