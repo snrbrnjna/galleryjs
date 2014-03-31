@@ -37,14 +37,6 @@ module.exports = function (grunt) {
                 nospawn: true,
                 livereload: true
             },
-            coffee: {
-                files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
-                tasks: ['coffee:dist']
-            },
-            coffeeTest: {
-                files: ['test/spec/{,*/}*.coffee'],
-                tasks: ['coffee:test']
-            },
             livereload: {
                 options: {
                     livereload: LIVERELOAD_PORT
@@ -152,28 +144,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-        coffee: {
-            dist: {
-                files: [{
-                    // rather than compiling multiple files here you should
-                    // require them into your main .coffee file
-                    expand: true,
-                    cwd: '<%= yeoman.app %>/scripts',
-                    src: '{,*/}*.coffee',
-                    dest: '.tmp/scripts',
-                    ext: '.js'
-                }]
-            },
-            test: {
-                files: [{
-                    expand: true,
-                    cwd: 'test/spec',
-                    src: '{,*/}*.coffee',
-                    dest: '.tmp/spec',
-                    ext: '.js'
-                }]
-            }
-        },
         requirejs: {
             dist: {
                 options: {
@@ -198,12 +168,21 @@ module.exports = function (grunt) {
         },
         uglify: {
             options: {
-                banner: '/* <%= pkg.name %> v<%= pkg.version %>, (c) 2014 <%= pkg.author %>, licenced under <%= pkg.licence %> */\n'
+                banner: '/*!\n * <%= pkg.name %> v<%= pkg.version %>, (c) ' +
+                    '<%= grunt.template.today("yyyy") %> <%= pkg.author %>, ' +
+                    'licenced under <%= pkg.licence %>\n' +
+                    ' * see <%= pkg.repository.url %>\n' +
+                    ' */\n',
+                preserveComments: 'some'
             }
         },
         cssmin: {
             options: {
-                banner: '/* <%= pkg.name %> v<%= pkg.version %>, (c) 2014 <%= pkg.author %>, licenced under <%= pkg.licence %> */\n'
+                banner: '/*!\n * <%= pkg.name %> v<%= pkg.version %>, (c) ' +
+                '<%= grunt.template.today("yyyy") %> <%= pkg.author %>, ' +
+                'licenced under <%= pkg.licence %>\n' +
+                ' * see <%= pkg.repository.url %>\n' +
+                ' */\n',
             }
         },
         useminPrepare: {
@@ -321,11 +300,6 @@ module.exports = function (grunt) {
                 }]
             }
         },
-        bower: {
-            all: {
-                rjsConfig: '<%= yeoman.app %>/scripts/main.js'
-            }
-        },
         jst: {
             options: {
                 amd: true
@@ -347,6 +321,14 @@ module.exports = function (grunt) {
                     ]
                 }
             }
+        },
+        bump: {
+            options: {
+                files: ['package.json', 'bower.json'],
+                updateConfigs: ['pkg'],
+                push: false,
+                commitFiles: []
+            }
         }
     });
 
@@ -367,7 +349,6 @@ module.exports = function (grunt) {
         if (target === 'test') {
             return grunt.task.run([
                 'clean:server',
-                'coffee',
                 'createDefaultTemplate',
                 'jst',
                 'connect:test',
@@ -383,7 +364,6 @@ module.exports = function (grunt) {
         grunt.task.run([
             'copy:prepareDev',
             'clean:server',
-            'coffee:dist',
             'createDefaultTemplate',
             'jst',
             'connect:livereload',
@@ -396,7 +376,6 @@ module.exports = function (grunt) {
         isConnected = Boolean(isConnected);
         var testTasks = [
                 'clean:server',
-                'coffee',
                 'createDefaultTemplate',
                 'jst',
                 'connect:test',
@@ -419,7 +398,6 @@ module.exports = function (grunt) {
             'jshint',
             'copy:prepareDist',
             'clean:dist',
-            'coffee',
             'createDefaultTemplate',
             'jst',
             'useminPrepare',
@@ -445,6 +423,17 @@ module.exports = function (grunt) {
         }
 
         grunt.task.run(buildTasks);
+    });
+
+    grunt.registerTask('bumpPrepare', function (target) {
+        if (target) {
+            grunt.task.run([
+                'bump-only:' + target,
+                'build:dist'
+            ]);
+        } else {
+            grunt.warn('no target given for bump task. Has to be one of "patch", "minor", "mayor"');
+        }
     });
 
     grunt.registerTask('default', [
