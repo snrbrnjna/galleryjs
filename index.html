@@ -10,18 +10,26 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <link rel="stylesheet" href="styles/c404ec14.main.css">
+        <link rel="stylesheet" href="styles/480222be.main.css">
+        <link rel="stylesheet" href="styles/f6af8b32.gallery.css">
 
-        <script src="scripts/vendor/d7100892.modernizr.js"></script>
+        <script src="scripts/vendor/207c8dd4.modernizr.js"></script>
     </head>
     <body>
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
+        <header>
+            <h1>Have a Gallery</h1>
+            <div class="selection">
+                <span class="toggle button" title="toggle selection"></span>
+                <span class="pdf button" title="download selected photos as PDF document" data-url="http://api.brnjna.net/pdf" data-title="Flyer Auswahl" data-key="flyer"></span>
+            </div>
+        </header>
 
         <!-- Gallery App -->
-        <div class="gallery-app" data-project="flyer-doc-remote" data-opts='{"min_col_width":{"desktop":120,"pad":120,"phone":120},"gutter_width":3,"chunk_size":15,"first_chunk":25}'>
+        <div class="gallery-app" data-project="flyer-doc-remote" data-gal-selection="true">
             
             <!-- Container for Thumbs of First Page -->
             <div class="container photos loading"></div>
@@ -66,13 +74,16 @@
             <script type="text/html" id="template-thumb">
               <div class="photo loading" id="<%= digest %>">
                   <img src="<%= src %>"/>
+                  <span class="selector"></div>
               </div>
             </script>
         </div>
         <!-- End Gallery App -->
-        <script src="scripts/vendor/488e3e7a.jquery.js"></script>
-        <script src="scripts/80bd87a1.gallery.app.js"></script>
-        <script src="scripts/32ea7dd9.main.js"></script>
+        <script src="scripts/vendor/21250df8.jquery.js"></script>
+
+
+        <script src="scripts/ae21d27e.gallery.pkgd.js"></script>
+        <script src="scripts/7c64b454.main.js"></script>
 
         <!-- Piwik -->
         <script type="text/javascript">
