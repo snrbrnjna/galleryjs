@@ -23,8 +23,9 @@ module.exports = function (grunt) {
 
     // configurable paths
     var yeomanConfig = {
-        app: 'app',
-        dist: 'dist',
+        app: 'app', // dev app
+        dist: 'dist', // dist for webap
+        lib: 'lib', // dist for library
         ghpages: 'gh-pages'
     };
 
@@ -179,24 +180,30 @@ module.exports = function (grunt) {
                     baseUrl: '<%= yeoman.app %>/scripts',
                     mainConfigFile: '<%= yeoman.app %>/scripts/rconfig.js',
                     findNestedDependencies: true,
-                    optimize: 'uglify2',
-                    keepBuildDir: true,
-                    // removeCombined: true,
+                    optimize: 'none', //uglify2',
                     paths: {
                         'almond': '../../app/bower_components/almond/almond',
                         'jquery': 'empty:' // module is stubbed/shimmed in the endFile Fragment of the Wrapper
                     },
                     almond: true,
-                    name: 'almond',
-                    include: [
-                        'gallery/app'
-                    ],
-                    out: '<%= yeoman.dist %>/scripts/gallery.app.js',
+                    name: 'gallery/app',
+                    include: ['almond'],
+                    out: '<%= yeoman.dist %>/scripts/gallery.pkgd.js',
                     wrap: {
                         startFile: '<%= yeoman.app %>/scripts/build/gallery.wrap.open.frag.js',
                         endFile: '<%= yeoman.app %>/scripts/build/gallery.wrap.close.frag.js'
                     }
                 }
+            }
+        },
+        uglify: {
+            options: {
+                banner: '/* <%= pkg.name %> v<%= pkg.version %>, (c) 2014 <%= pkg.author %>, licenced under <%= pkg.licence %> */\n'
+            }
+        },
+        cssmin: {
+            options: {
+                banner: '/* <%= pkg.name %> v<%= pkg.version %>, (c) 2014 <%= pkg.author %>, licenced under <%= pkg.licence %> */\n'
             }
         },
         useminPrepare: {
@@ -228,25 +235,6 @@ module.exports = function (grunt) {
                 }]
             }
         },
-        cssmin: {
-            dist: {
-                files: {
-                    '<%= yeoman.dist %>/styles/main.css': [
-                        '.tmp/styles/{,*/}*.css',
-                        '<%= yeoman.app %>/styles/{,*/}*.css'
-                    ]
-                }
-            }
-        },
-        // for debugging the concatenated scripts: don't mangle nor compress em!
-        // uglify: {
-        //     options: {
-        //         mangle: false,
-        //         compress: false,
-        //         beautify: true,
-        //         preserveComments: 'all'
-        //     }
-        // },
         htmlmin: {
             dist: {
                 options: {
@@ -278,6 +266,26 @@ module.exports = function (grunt) {
                 src: '<%= yeoman.app %>/index-dist.html',
                 dest: '<%= yeoman.app %>/index.html'
 
+            },
+            lib: {
+                files: {
+                    '<%= yeoman.lib %>/gallery.pkgd.js': [
+                        '<%= yeoman.dist %>/scripts/gallery.pkgd.js'
+                    ],
+                    '<%= yeoman.lib %>/gallery.css': [
+                        '<%= yeoman.dist %>/styles/gallery.css'
+                    ]
+                }
+            },
+            libMin: {
+                files: {
+                    '<%= yeoman.lib %>/gallery.pkgd.min.js': [
+                        '<%= yeoman.dist %>/scripts/gallery.pkgd.js'
+                    ],
+                    '<%= yeoman.lib %>/gallery.min.css': [
+                        '<%= yeoman.dist %>/styles/gallery.css'
+                    ]
+                }
             },
             dist: {
                 files: [{
@@ -421,9 +429,11 @@ module.exports = function (grunt) {
             // destroys json strings in data attribs through escaping
             // 'htmlmin', 
             'concat',
+            'copy:lib',
             'cssmin',
             'uglify',
-            'copy',
+            'copy:libMin',
+            'copy:dist',
             'rev',
             'usemin'
         ];

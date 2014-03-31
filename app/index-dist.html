@@ -10,9 +10,11 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <!-- build:css(.tmp) styles/main.css -->
+        <!-- build:css(app) styles/main.css -->
         <link rel="stylesheet" href="styles/fonts.css">
         <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+        <!-- build:css(app) styles/gallery.css -->
         <link rel="stylesheet" href="styles/devices.css">
         <link rel="stylesheet" href="styles/gallery.css">
         <!-- endbuild -->
@@ -88,7 +90,11 @@
         <!-- build:js scripts/vendor/jquery.js -->
         <script src="bower_components/jquery/jquery.js"></script>
         <!-- endbuild -->
-        <script src="scripts/gallery.app.js"></script>
+
+
+        <!-- build:js(dist) scripts/gallery.pkgd.js -->
+        <script src="scripts/gallery.pkgd.js"></script>
+        <!-- endbuild -->
         <!-- build:js scripts/main.js -->
         <script src="scripts/main.js"></script>
         <!-- endbuild -->

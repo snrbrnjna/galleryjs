@@ -1,6 +1,14 @@
 {
-  "name": "gallery",
+  "name": "gallery.js",
   "version": "0.3.0",
+  "author": "Snr Brnjna <snr@brnjna.net>",
+  "description": "a little responsive full width masonry gallery",
+  "keywords": "gallery, masonry, responsive, backbone",
+  "licence": "modified MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/snrbrnjna/galleryjs.git"
+  },
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
