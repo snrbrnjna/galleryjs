@@ -53,7 +53,7 @@
   bottom: 0;
   width: 58px;
   height: 58px;
-  background: url(/images/add_button01_sprite.png) no-repeat 7px 3px;
+  background: url(../images/add_button01_sprite.png) no-repeat 7px 3px;
   z-index: 30;
 }
 .loaded:hover span.selector {
