@@ -1,6 +1,6 @@
 {
-  "name": "galleryjs",
-  "version": "0.3.0",
+  "name": "gallery.js",
+  "version": "0.4.0",
   "dependencies": {
     "jquery": "~1.9.0",
     "underscore": "~1.4.3",
