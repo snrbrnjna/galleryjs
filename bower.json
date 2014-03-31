@@ -1,6 +1,15 @@
 {
   "name": "gallery.js",
   "version": "0.4.0",
+  "main": [
+    "lib/gallery.min.css", 
+    "lib/gallery.pkgd.min.js"
+  ],
+  "ignore": [
+    ".jshintrc",
+    ".yo-rc.json",
+    "notes.md"
+  ],
   "dependencies": {
     "jquery": "~1.9.0",
     "underscore": "~1.4.3",
