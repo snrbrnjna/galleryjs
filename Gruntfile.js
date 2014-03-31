@@ -326,8 +326,8 @@ module.exports = function (grunt) {
             options: {
                 files: ['package.json', 'bower.json'],
                 updateConfigs: ['pkg'],
-                push: false,
-                commitFiles: []
+                push: true,
+                commitFiles: ['-a']
             }
         }
     });
@@ -425,11 +425,12 @@ module.exports = function (grunt) {
         grunt.task.run(buildTasks);
     });
 
-    grunt.registerTask('bumpPrepare', function (target) {
+    grunt.registerTask('releaseLib', function (target) {
         if (target) {
             grunt.task.run([
                 'bump-only:' + target,
-                'build:dist'
+                'build:dist',
+                'bump-commit'
             ]);
         } else {
             grunt.warn('no target given for bump task. Has to be one of "patch", "minor", "mayor"');
