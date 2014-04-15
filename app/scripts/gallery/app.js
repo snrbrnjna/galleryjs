@@ -28,11 +28,8 @@ function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
         // Init Model
         this.initGalleryModel();
 
-        // Setup responsive Adapter
-        this.responsiveAdapter = new ResponsiveAdapter();
-        
         // Init Selection
-        if (this.responsiveAdapter.getMediaType() === 'desktop') {
+        if (ResponsiveAdapter.getMediaType() === 'desktop') {
           this.initSelection();
         } else {
           this.$el.removeAttr('data-gal-selection');
@@ -81,8 +78,7 @@ function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
     initThumbContainer: function() {
       var thumbContainerOptions = {
         model: this.model,
-        itemSelector: '.photo',
-        responsiveAdapter: this.responsiveAdapter
+        itemSelector: '.photo'
       };
       if (this.$('.container.photos .photo').length) {
         this.containerView = new ThumbContainerView(thumbContainerOptions);
@@ -94,8 +90,7 @@ function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
     initSlider: function() {
       this.sliderView = new SliderView({
         el: this.$('.slider'),
-        model: this.model,
-        responsiveAdapter: this.responsiveAdapter
+        model: this.model
       });
     }
 

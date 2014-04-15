@@ -5,9 +5,10 @@ define([
   'underscore',
   'backbone',
   'lib/isotope.patcheko',
-  'gallery/views/thumb.view'
+  'gallery/views/thumb.view',
+  'gallery/utils/responsive.adapter'
 ],
-function($, nope, nope2, _, Backbone, isotope, ThumbView) {
+function($, nope, nope2, _, Backbone, isotope, ThumbView, ResponsiveAdapter) {
   
   /*
    * Model: GalleryModel
@@ -31,9 +32,6 @@ function($, nope, nope2, _, Backbone, isotope, ThumbView) {
     initialize: function(options) {
       // merge defaults and options
       this.options = _.extend({}, this.defaults, this.options);
-      
-      // Checks on which device we are.
-      this.responsiveAdapter = this.options.responsiveAdapter;
 
       // wait for the ImageCollection to be fetched
       this.listenTo(this.model, 'change', this.galleryFetched);
@@ -84,8 +82,8 @@ function($, nope, nope2, _, Backbone, isotope, ThumbView) {
         // we want to handle resizing differently depending on the current slider state
         resizable: false,
         masonry: {
-          minColWidth: this.responsiveAdapter.getOptionByMediaType(galleryOpts, 'min_col_width'),
-          gutterWidth: this.responsiveAdapter.getOptionByMediaType(galleryOpts, 'gutter_width')
+          minColWidth: ResponsiveAdapter.getOptionByMediaType(galleryOpts, 'min_col_width'),
+          gutterWidth: ResponsiveAdapter.getOptionByMediaType(galleryOpts, 'gutter_width')
         }
       });
     },

@@ -5,8 +5,9 @@ define([
   'underscore',
   'backbone',
   'gallery/views/thumb.container.view',
-  'gallery/views/thumb.view'
-], function($, ImagesLoaded, nope, _, Backbone, ThumbContainerView, ThumbView) {
+  'gallery/views/thumb.view',
+  'gallery/utils/responsive.adapter'
+], function($, ImagesLoaded, nope, _, Backbone, ThumbContainerView, ThumbView, ResponsiveAdapter) {
   
   /*
    * Adds the Thumbs in the Gallery json dynamically, when the json is loaded, to 
@@ -37,8 +38,8 @@ define([
     initGallery: function() {
       // get options from fetched GalleryModel
       var galleryOpts = this.model.get('opts');
-      this.firstChunk = this.responsiveAdapter.getOptionByMediaType(galleryOpts, 'first_chunk');
-      this.chunkSize = this.responsiveAdapter.getOptionByMediaType(galleryOpts, 'chunk_size');
+      this.firstChunk = ResponsiveAdapter.getOptionByMediaType(galleryOpts, 'first_chunk');
+      this.chunkSize = ResponsiveAdapter.getOptionByMediaType(galleryOpts, 'chunk_size');
 
       this.constructor.__super__.initGallery.apply(this, arguments);
     },
@@ -114,8 +115,7 @@ define([
           var thumbView = new ThumbView({
             model: imageModel,
             gallery: this.model,
-            template: this.thumbTemplate,
-            responsiveAdapter: this.responsiveAdapter
+            template: this.thumbTemplate
           });
           thumbView = thumbView.render();
           this.$el.append(thumbView.$el);

@@ -1,8 +1,10 @@
 define([
-  'jquery', 
+  'jquery',
   'underscore',
-  'backbone'],
-function($, _, Backbone) {
+  'backbone',
+  'gallery/utils/responsive.adapter'
+],
+function($, _, Backbone, ResponsiveAdapter) {
   /*
    * Model: ImageModel
    * Element: Large <img>
@@ -15,12 +17,11 @@ function($, _, Backbone) {
     
     initialize: function() {
       this.slider = this.options.slider;
-      this.responsiveAdapter = this.slider.responsiveAdapter;
       
       this.currentSliderRatio = undefined;
       this.curDims =  {};
       
-      this.largeAttrs = this.responsiveAdapter.presetMapperLarge(this.model);
+      this.largeAttrs = ResponsiveAdapter.presetMapperLarge(this.model);
       
       // Set this.$el to new img
       this.setElement($('<img/>'));
@@ -31,7 +32,7 @@ function($, _, Backbone) {
         .css({
           'max-width': this.largeAttrs.width,
           'max-height': this.largeAttrs.height
-      });
+        });
       
       this.model.setLargeView(this);
     },
@@ -42,7 +43,7 @@ function($, _, Backbone) {
 
     resize: function() {
       // Don't do nothing, if the tray size hasn't changed
-      if (this.currentSliderRatio != this.slider.ratio) {
+      if (this.currentSliderRatio !== this.slider.ratio) {
         
         // Save current Tray Ratio for next calc..
         this.currentSliderRatio = this.slider.ratio;
@@ -73,16 +74,16 @@ function($, _, Backbone) {
     /*
      * Berechnet die tatsächlichen Dimension-Werte      
      */
-    _calculateDims: function() {    
+    _calculateDims: function() {
       var imgOrient = this.model.get('orientation');
-      if (imgOrient == 'landscape') {
+      if (imgOrient === 'landscape') {
         this._setLargeToFullWith();
         // to high for the slider, when set to full slider width?
         if (this.curDims['px'][1] > this.slider.height) {
           if (this.debug) {console.log('ups, image to high for slider, when set to full slider width!');}
           this._setLargeToFullHeight();
         }
-      } else if (imgOrient == 'portrait') {
+      } else if (imgOrient === 'portrait') {
         this._setLargeToFullHeight();
         // to wide for the slider, when set to full slider height?
         if (this.curDims['px'][0] > this.slider.width) {
@@ -100,8 +101,8 @@ function($, _, Backbone) {
         Math.min(Math.floor(this.slider.width/this.model.get('ratio')), this.largeAttrs.height)
       ];
       if (this.debug) {
-        console.log('100% width =>'+ this.slider.width +'x'+ 
-          this.curDims['px'][1] +'px; Container: '+ 
+        console.log('100% width =>'+ this.slider.width +'x'+
+          this.curDims['px'][1] +'px; Container: '+
           this.slider.width +'x'+ this.slider.height +'px.');
       }
     },
@@ -113,8 +114,8 @@ function($, _, Backbone) {
         Math.min(this.slider.height, this.largeAttrs.height)
       ];
       if (this.debug) {
-        console.log('100% height =>'+ this.curDims['px'][0] +'x'+ 
-          this.curDims['px'][1] +'px; container: ' + 
+        console.log('100% height =>'+ this.curDims['px'][0] +'x'+
+          this.curDims['px'][1] +'px; container: ' +
           this.slider.width +'x'+ this.slider.height +'px.');
       }
     },

@@ -50,8 +50,6 @@ define([
       this.navNext = this.$('.nav.next'); // TODO: Options
       this.current = undefined;
       
-      this.responsiveAdapter = this.options.responsiveAdapter;
-      
       // Register Handlers
       // Check, when Thumb was clicked
       this.listenTo(this.model, 'thumb:clicked', this.openSlider);

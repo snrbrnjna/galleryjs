@@ -9,32 +9,27 @@ define([
    * Knows how diverse Modules react different in some aspects to different 
    * devices.
    * Knows which preset to choose for the device on which we are. 
-   * i.e. replaces thumb with thumb_phone
+   * i.e. replaces large with large_phone
    *
-   * opts comes with the different values from the gallery template (config.yml)
    */
-  var ResponsiveAdapter = function(opts) {
-    this.mediaType = this.setMediaType();
-  };
-  
-  _.extend(ResponsiveAdapter.prototype, {
-    
-    setMediaType: function() {
-      if (!window.getComputedStyle) {
-        return this.mediaType = 'desktop';
-      }
-      var mt = window.getComputedStyle(document.body,':after')
-        .getPropertyValue('content').match(/[a-zA-Z_\-0-9]+/g);
+  var ResponsiveAdapter = {
 
-      return this.mediaType = mt && mt.length>0 ? mt[0] : 'desktop';
-    },
-    
     /*
      * Mediatype is defined in devices.css with media queries. 
      * Default values for media types are 'desktop', 'pads', 'phones'
      */
     getMediaType: function() {
-      return this.mediaType;
+      if (this.mediaType) {
+        return this.mediaType;
+      } else {
+        if (!window.getComputedStyle) {
+          return this.mediaType = 'desktop'; // jshint ignore:line
+        }
+        var mt = window.getComputedStyle(document.body,':after')
+          .getPropertyValue('content').match(/[a-zA-Z_\-0-9]+/g);
+
+        return this.mediaType = mt && mt.length>0 ? mt[0] : 'desktop'; // jshint ignore:line
+      }
     },
     
     /*
@@ -44,7 +39,7 @@ define([
      */
     getOptionByMediaType: function(opts, key) {
       if ($.isPlainObject(opts[key])) {
-        return opts[key][this.mediaType];
+        return opts[key][this.getMediaType()];
       } else {
         return opts[key];
       }
@@ -52,7 +47,7 @@ define([
     
     presetMapperThumb: function(imageModel) {
       var preset;
-      switch(this.mediaType) {
+      switch(this.getMediaType()) {
         case 'desktop':
         case 'pad':
         case 'phone':
@@ -64,7 +59,7 @@ define([
 
     presetMapperLarge: function(imageModel) {
       var preset;
-      switch(this.mediaType) {
+      switch(this.getMediaType()) {
         case 'desktop':
           preset = imageModel.get('large');
           break;
@@ -78,7 +73,7 @@ define([
       return preset;
     }
     
-  });
+  };
   
   return ResponsiveAdapter;
 });

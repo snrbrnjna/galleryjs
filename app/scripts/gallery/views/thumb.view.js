@@ -1,8 +1,9 @@
 define([
   'jquery',
-  'backbone'
+  'backbone',
+  'gallery/utils/responsive.adapter'
 ],
-function($, Backbone) {
+function($, Backbone, ResponsiveAdapter) {
   /*
    * Model: ImageModel
    * Element: Thumb Container
@@ -17,7 +18,6 @@ function($, Backbone) {
       this.model.setThumbView(this);
       this.gallery = this.options.gallery;
       this.template = this.options.template;
-      this.responsiveAdapter = this.options.responsiveAdapter;
 
       this.listenTo(this.model, 'change:selected', this.updateSelected);
     },
@@ -47,12 +47,13 @@ function($, Backbone) {
     },
     
     render: function() {
-      var preset = this.responsiveAdapter.presetMapperThumb(this.model);
-      var html = this.template({
-        src: preset['src'],
-        digest: this.model.get('digest'),
-        meta: this.model.get('meta')
-      }).trim();
+      var preset = ResponsiveAdapter.presetMapperThumb(this.model);
+      var html = this.template($.extend(
+        {
+          src: preset['src']
+        },
+        this.model.attributes
+      )).trim();
       this.setElement($.parseHTML(html));
       this.selector = this.$('.selector');
       this.updateSelected(this.model, this.model.get('selected'));
