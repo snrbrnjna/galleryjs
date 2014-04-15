@@ -8,8 +8,9 @@
  */
 define([
   'underscore',
-  'backbone'
-], function(_, Backbone) {
+  'backbone',
+  'gallery/utils/responsive.adapter'
+], function(_, Backbone, ResponsiveAdapter) {
   var ImageModel = Backbone.Model.extend({
 
     idAttribute: 'digest',
@@ -34,7 +35,8 @@ define([
         index: undefined,
         orientation: undefined, // landscape | portrait
         ratio: 0, // < 1 => portrait | > 1 landscape TODO: Doppelung
-        exif: {}
+        exif: {},
+        meta: {}
       };
     },
     
@@ -47,6 +49,16 @@ define([
           this.attributes[presetKey]['src'] = preset['baseurl'] + '/' + attrs['filename'];
         }, this));
       }
+    },
+
+    // Returns the preset Hash for the Thumb on the current device
+    getThumb: function() {
+      return ResponsiveAdapter.presetMapperThumb(this);
+    },
+
+    // Returns the preset Hash for the Large on the current device
+    getLarge: function() {
+      return ResponsiveAdapter.presetMapperLarge(this);
     },
     
     getThumbView: function() {

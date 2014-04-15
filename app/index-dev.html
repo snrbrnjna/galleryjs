@@ -79,8 +79,8 @@
             <!-- End Slider -->
 
             <script type="text/html" id="template-thumb">
-              <div class="photo loading" id="<%= digest %>">
-                  <img src="<%= src %>"/>
+              <div class="photo loading" id="<%= img.get('digest') %>">
+                  <img src="<%= img.getThumb().src %>"/>
                   <span class="selector"></div>
               </div>
             </script>

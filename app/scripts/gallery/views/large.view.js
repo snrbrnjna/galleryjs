@@ -1,10 +1,9 @@
 define([
   'jquery',
   'underscore',
-  'backbone',
-  'gallery/utils/responsive.adapter'
+  'backbone'
 ],
-function($, _, Backbone, ResponsiveAdapter) {
+function($, _, Backbone) {
   /*
    * Model: ImageModel
    * Element: Large <img>
@@ -21,7 +20,7 @@ function($, _, Backbone, ResponsiveAdapter) {
       this.currentSliderRatio = undefined;
       this.curDims =  {};
       
-      this.largeAttrs = ResponsiveAdapter.presetMapperLarge(this.model);
+      this.largeAttrs = this.model.getLarge();
       
       // Set this.$el to new img
       this.setElement($('<img/>'));
