@@ -28,6 +28,9 @@
         "orientation": "portrait",
         "ratio": 0.708,
         "exif": null,
+        "meta": {
+          "title": "Test-Titel"
+          },
         "thumb": {
           "width": 240,
           "height": 338

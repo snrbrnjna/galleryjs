@@ -50,7 +50,8 @@ function($, Backbone) {
       var preset = this.responsiveAdapter.presetMapperThumb(this.model);
       var html = this.template({
         src: preset['src'],
-        digest: this.model.get('digest')
+        digest: this.model.get('digest'),
+        meta: this.model.get('meta')
       }).trim();
       this.setElement($.parseHTML(html));
       this.selector = this.$('.selector');
