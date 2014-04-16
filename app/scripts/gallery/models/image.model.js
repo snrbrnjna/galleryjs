@@ -31,6 +31,7 @@ define([
           _view: undefined
         },
         filename: undefined,
+        filenameOrig: undefined,
         digest: undefined,
         index: undefined,
         orientation: undefined, // landscape | portrait
@@ -48,6 +49,8 @@ define([
         _.forEach(options.presets, _.bind(function(preset, presetKey) {
           this.attributes[presetKey]['src'] = preset['baseurl'] + '/' + attrs['filename'];
         }, this));
+        // set orig-filename
+        this.attributes['filenameOrig'] = attrs['filename'].replace('-' + attrs['digest'], '');
       }
     },
 
