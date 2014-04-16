@@ -1,6 +1,6 @@
 {
   "name": "gallery.js",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "author": "Snr Brnjna <snr@brnjna.net>",
   "description": "a little responsive full width masonry gallery",
   "keywords": "gallery, masonry, responsive, backbone",
