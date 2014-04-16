@@ -60,13 +60,7 @@
                         </div>
                     </div>
                     <div class="cockpit">
-                        <div class="cockpit_body">
-                            <!-- <nav>EXIF Data, Filename, Toggle Fullscreen</nav> -->
-                            <div>
-                                <span class="line index"></span>
-                                <span class="line filename"></span>
-                            </div>
-                        </div>
+                        <div class="cockpit_body"></div>
                         <div class="cockpit_button">
                             <div class="menu_icon svg-icon">
                                 <span style="background-image: url('images/icon-menu.png');">
@@ -83,6 +77,13 @@
               <div class="photo loading" id="<%= img.get('digest') %>">
                   <img src="<%= img.getThumb().src %>"/>
                   <span class="selector"></div>
+              </div>
+            </script>
+
+            <script type="text/html" id="template-cockpitBody">
+              <div>
+                  <span class="line index"><%= img.index()+1 %> / <%= img.collection.length %></span>
+                  <span class="line filename"><%= img.get('filenameOrig') %></span>
               </div>
             </script>
         </div>

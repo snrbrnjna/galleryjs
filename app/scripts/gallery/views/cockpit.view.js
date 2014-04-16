@@ -1,5 +1,5 @@
 define([
-  'jquery', 
+  'jquery',
   'vendor/jquery.touchSwipe',
   'underscore',
   'backbone'
@@ -18,9 +18,10 @@ function($, nope, _, Backbone) {
         if (this.isActive()) { // activate cockpit: initialize buttons, etc
           this.button = this.$('.cockpit_button');
           this.body = this.$('.cockpit_body').addClass('hidden');
+          this._bodyTemplate = this.getTemplate();
           this.slider = this.options.slider;
           
-          this.listenTo(this.model, 'slider:newImage', this.updateImage);
+          this.listenTo(this.model, 'slider:newImage', this.onNewImage);
 
           // not over built in events => doesn't work well on touch devices
           // this falls back to mouse events, when no touch events supported
@@ -44,15 +45,36 @@ function($, nope, _, Backbone) {
     isActive: function() {
       return this.options.cockpit;
     },
+
+    isOpen: function() {
+      return !this.body.hasClass('hidden');
+    },
     
     toggleBody: function(evt) {
       this.body.toggleClass('hidden');
+      this.update(this.model.getCurrent());
+    },
+
+    onNewImage: function(largeView) {
+      this.update(largeView.model);
     },
     
-    updateImage: function(largeView) {
-      var imageModel = largeView.model;
-      this.body.find('.index').html(imageModel.index()+1 +' / '+ this.model.get('images').length);
-      this.body.find('.filename').html(imageModel.get('filename'));
+    update: function(imageModel) {
+      if (this.isOpen()) {
+        this.body.html(this._bodyTemplate({img: imageModel}));
+      }
+    },
+
+    getTemplate: function() {
+      var tmpl = $('#template-cockpitBody');
+      if (tmpl.length) {
+        return _.template(tmpl.html());
+      } else {
+        console.error('Missing Template for Cockpit ($("#template-cockpitBody")! => Cockpit not initialized.');
+        this.options.cockpit = false;
+        this.$el.hide();
+      }
+      
     }
   });
   
