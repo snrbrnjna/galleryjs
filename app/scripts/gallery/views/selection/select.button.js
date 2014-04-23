@@ -11,8 +11,8 @@ function (Backbone) {
 
     initialize: function() {
       if (this.model && this.el) {
-        this.updateSelected(this.model, this.model.get('selected'));
         this.listenTo(this.model, 'change:selected', this.updateSelected);
+        this.updateSelected(this.model, this.model.get('selected'));
       }
     },
 

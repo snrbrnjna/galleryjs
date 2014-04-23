@@ -10,6 +10,7 @@ define([
   
   /*
    * Model: GalleryModel
+   * Element: is set by the constructor (see app.js)
    *
    * listens to 'thumb:clicked' on GalleryModel
    * listens to 'resize.slider' on window
@@ -20,23 +21,13 @@ define([
    * triggers 'slider:newImage' with current LargeView object on GalleryModel
    */
   var SliderView = Backbone.View.extend({
-    
-    defaults: {
-      cockpit: true
-    },
-
-    // now the app initializes the slider with a ref to its slider DOM element
-    // el: '.gallery .slider',
-    
+        
     events: {
       'click .nav.prev': 'showPrev',
       'click .nav.next': 'showNext'
     },
     
     initialize: function() {
-      // Merge defaults and options
-      this.options = _.extend({}, this.defaults, this.options);
-      
       // Mark with slider_closed class
       $('body').addClass('slider_closed');
       
@@ -66,7 +57,6 @@ define([
       // Init Cockpit
       this.cockpit = new CockpitView({
         model: this.model,
-        cockpit: this.options.cockpit,
         slider: this
       });
       

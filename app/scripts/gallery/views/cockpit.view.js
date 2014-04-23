@@ -15,22 +15,19 @@ function($, nope, _, Backbone) {
     
     initialize: function() {
       if (this.$el.length) { // only when there's a cockpit on deck
-        if (this.isActive()) { // activate cockpit: initialize buttons, etc
-          this.button = this.$('.cockpit_button');
-          this.body = this.$('.cockpit_body').addClass('hidden');
-          this._bodyTemplate = this.getTemplate();
-          this.slider = this.options.slider;
-          
-          this.listenTo(this.model, 'slider:newImage', this.onNewImage);
 
-          // not over built in events => doesn't work well on touch devices
-          // this falls back to mouse events, when no touch events supported
-          this.button.swipe({
-            tap: _.bind(this.toggleBody, this)
-          });
-        } else { // hide and do nothing with CockpitView
-          this.$el.hide();
-        }
+        this.button = this.$('.cockpit_button');
+        this.body = this.$('.cockpit_body').addClass('hidden');
+        this._bodyTemplate = this.getTemplate();
+        this.slider = this.options.slider;
+        
+        this.listenTo(this.model, 'slider:newImage', this.onNewImage);
+
+        // not over built in events => doesn't work well on touch devices
+        // this falls back to mouse events, when no touch events supported
+        this.button.swipe({
+          tap: _.bind(this.toggleBody, this)
+        });
       }
     },
     
@@ -40,10 +37,6 @@ function($, nope, _, Backbone) {
       Backbone.View.prototype.remove.call(this); // call super()
       // could also be written as:
       // this.constructor.__super__.remove.call(this);
-    },
-    
-    isActive: function() {
-      return this.options.cockpit;
     },
 
     isOpen: function() {
@@ -71,7 +64,6 @@ function($, nope, _, Backbone) {
         return _.template(tmpl.html());
       } else {
         console.error('Missing Template for Cockpit ($("#template-cockpitBody")! => Cockpit not initialized.');
-        this.options.cockpit = false;
         this.$el.hide();
       }
       

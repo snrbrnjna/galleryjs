@@ -44,7 +44,7 @@
   width: 100%;
 }
 
-/* Selector (add2pdf) Button */
+/* Select Button */
 [data-gal-selection="true"] span.selector {
   position: absolute;
   opacity: 0;
@@ -74,8 +74,7 @@
 .loaded span.selector.selected:hover {
   background-position: -172px 3px;
 }
-
-/* End Selector (add2pdf) Button */
+/* End Select Button */
 
 .stopper {
   background-color: #fff;
