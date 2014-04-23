@@ -38,6 +38,10 @@ h1 {
 .selection .button.active:hover {
   border-color: #eee;
 }
+.selection .button.toggle:after {
+  content: ' photos';
+}
+
 .selection .button.error {
   border-color: red;
 }
