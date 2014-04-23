@@ -11,8 +11,8 @@ define([
   'gallery/views/thumb.container.dynamic.view',
   'gallery/views/slider.view',
   'gallery/utils/responsive.adapter',
-  'gallery/views/selection.toggle.button',
-  'gallery/views/selection.pdf.button'
+  'gallery/views/selection/toggle.button',
+  'gallery/views/selection/pdf.button'
 ],
 function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
   ThumbContainerDynamicView, SliderView, ResponsiveAdapter, SelectionToggleButton,
