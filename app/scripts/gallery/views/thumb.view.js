@@ -1,8 +1,9 @@
 define([
   'jquery',
-  'backbone'
+  'backbone',
+  'gallery/views/selection/select.button'
 ],
-function($, Backbone) {
+function($, Backbone, SelectButton) {
   /*
    * Model: ImageModel
    * Element: Thumb Container
@@ -17,13 +18,10 @@ function($, Backbone) {
       this.model.setThumbView(this);
       this.gallery = this.options.gallery;
       this.template = this.options.template;
-
-      this.listenTo(this.model, 'change:selected', this.updateSelected);
     },
     
     events: {
-      'click': 'openInSlider',
-      'click .selector': 'toggleSelected'
+      'click': 'openInSlider'
     },
     
     openInSlider: function() {
@@ -48,8 +46,12 @@ function($, Backbone) {
     render: function() {
       var html = this.template({img: this.model}).trim();
       this.setElement($.parseHTML(html));
-      this.selector = this.$('.selector');
-      this.updateSelected(this.model, this.model.get('selected'));
+      if (!this.selectButton) {
+        this.selectButton = new SelectButton({
+          model: this.model,
+          el: this.$('.selector')
+        });
+      }
       return this;
     }
     

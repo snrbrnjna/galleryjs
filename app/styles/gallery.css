@@ -67,11 +67,11 @@
 .loaded span.selector:hover {
   background-position: -52px 3px;
 }
-.loaded.selected span.selector {
+.loaded span.selector.selected {
   opacity: 1;
   background-position: -112px 3px;
 }
-.loaded.selected span.selector:hover {
+.loaded span.selector.selected:hover {
   background-position: -172px 3px;
 }
 
