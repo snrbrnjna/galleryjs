@@ -1,20 +1,19 @@
 /* SelectionToggleButton
  * ---------------
  *
- * A view Component indicating the number of selected images. 
- * It serves also as a btton for toggling between the selection and all the 
- * images in the current gallery.
+ * A view Component for toggling between the Images in the selection and all the 
+ * images of the current gallery.
  *
  * Collection: SelectionCollection
  *
  */
 define([
   'backbone',
-  'gallery/views/selection/indicator'
+  'gallery/views/selection/component'
 ],
-function(Backbone, SelectionIndicator) {
+function(Backbone, SelectionComponent) {
 
-  var SelectionToggleButton = SelectionIndicator.extend({
+  var SelectionToggleButton = SelectionComponent.extend({
 
     el: '.selection .button.toggle',
 
@@ -42,7 +41,6 @@ function(Backbone, SelectionIndicator) {
       if (this.collection.length === 0 && this.$el.hasClass('filtered')) {
         this.filter();
       }
-      this.render();
     }
 
   });

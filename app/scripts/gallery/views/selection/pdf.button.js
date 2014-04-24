@@ -15,10 +15,11 @@
  * Collection: SelectionCollection
  */
 define([
-  'backbone'
-], function(Backbone) {
+  'backbone',
+  'gallery/views/selection/component'
+], function(Backbone, SelectionComponent) {
 
-  var SelectionPdfButton = Backbone.View.extend({
+  var SelectionPdfButton = SelectionComponent.extend({
 
     el: '.selection .button.pdf',
 
@@ -33,27 +34,8 @@ define([
         this.folioData.url = this.$el.data('url');
         this.folioData.title = this.$el.data('title');
         this.folioData.key = this.$el.data('key');
-        // listen for initial SelectionCollection sync
-        this.listenToOnce(this.collection, 'sync', this.selectionSynced);
-      }
-    },
-
-    selectionSynced: function(collection, resp, opts) {
-      this.renderActive();
-      this.$el.addClass('initialized');
-      this.listenTo(this.collection, 'add', this.itemAdded);
-      this.listenTo(this.collection, 'remove', this.itemRemoved);
-    },
-
-    itemAdded: function(model, col, opts) {
-      if (col.length === 1) {
-        this.renderActive();
-      }
-    },
-
-    itemRemoved: function(model, col, opts) {
-      if (col.length === 0) {
-        this.renderActive();
+        
+        SelectionComponent.prototype.initialize.apply(this, arguments);
       }
     },
 
@@ -69,7 +51,7 @@ define([
             success: function(data) {
               if (data.folio.exists) {
                 this.downloadPdf(data.folio.url);
-                this.renderActive();
+                this.renderActive(this.collection.length > 0);
               } else {
                 this.tryAgain(data.folio.url, 1500);
               }
@@ -91,7 +73,7 @@ define([
         success: function(resp) {
           window.clearTimeout(this.timeoutId);
           this.downloadPdf(url);
-          this.renderActive();
+          this.renderActive(this.collection.length > 0);
         }.bind(this),
         error: function(resp) {
           window.clearTimeout(this.timeoutId);
@@ -135,14 +117,10 @@ define([
       this.$el.addClass('loading');
     },
 
-    renderActive: function() {
+    renderActive: function(active) {
       this.$el.html('Download PDF');
       this.$el.removeClass('loading');
-      if (this.collection.length) {
-        this.$el.addClass('active');
-      } else {
-        this.$el.removeClass('active');
-      }
+      SelectionComponent.prototype.renderActive.apply(this, arguments);
     }
 
   });

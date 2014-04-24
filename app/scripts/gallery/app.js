@@ -12,11 +12,12 @@ define([
   'gallery/views/slider.view',
   'gallery/utils/responsive.adapter',
   'gallery/views/selection/toggle.button',
-  'gallery/views/selection/pdf.button'
+  'gallery/views/selection/pdf.button',
+  'gallery/views/selection/indicator'
 ],
 function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
   ThumbContainerDynamicView, SliderView, ResponsiveAdapter, SelectionToggleButton,
-  SelectionPdfButton) {
+  SelectionPdfButton, SelectionIndicator) {
   
   var GalleryApp = Backbone.View.extend({
     
@@ -60,6 +61,11 @@ function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
         // init selection collection
         this.selection = new SelectionCollection([], {
           gallery: this.model
+        });
+
+        // init selection indicator
+        this.selectionIndicator = new SelectionIndicator({
+          collection: this.selection
         });
 
         // init toggle button
