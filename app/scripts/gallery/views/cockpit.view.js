@@ -2,9 +2,10 @@ define([
   'jquery',
   'vendor/jquery.touchSwipe',
   'underscore',
-  'backbone'
+  'backbone',
+  'gallery/views/selection/select.button'
 ],
-function($, nope, _, Backbone) {
+function($, nope, _, Backbone, SelectButton) {
   
   /*
    * Model: GalleryModel
@@ -45,17 +46,34 @@ function($, nope, _, Backbone) {
     
     toggleBody: function(evt) {
       this.body.toggleClass('hidden');
-      this.update(this.model.getCurrent());
+      this.renderBody(this.model.getCurrent());
     },
 
     onNewImage: function(largeView) {
-      this.update(largeView.model);
+      this.renderBody(largeView.model);
     },
     
-    update: function(imageModel) {
+    renderBody: function(imageModel) {
       if (this.isOpen()) {
+        // render image meta
         this.body.html(this._bodyTemplate({img: imageModel}));
+        
+        // update SelectButton if present in template
+        var selector = this.$('.selector');
+        if (selector.length) {
+          this.updateSelectButton(selector, imageModel);
+        }
       }
+    },
+
+    updateSelectButton: function(selector, imageModel) {
+      if (this.selectButton) { // remove old SelectButton if present
+        this.selectButton.remove();
+      }
+      this.selectButton = new SelectButton({
+        model: imageModel,
+        el: selector
+      });
     },
 
     getTemplate: function() {

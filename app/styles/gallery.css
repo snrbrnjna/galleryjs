@@ -46,32 +46,39 @@
 
 /* Select Button */
 [data-gal-selection="true"] span.selector {
-  position: absolute;
   opacity: 0;
   transition: opacity .5s ease-in-out;
   -webkit-transition-delay: .5s;
   transition-delay: .5s;
   cursor: pointer;
-  right: 0;
-  bottom: 0;
   width: 58px;
   height: 58px;
   background: url(../images/add_button01_sprite.png) no-repeat 7px 3px;
   z-index: 30;
+}
+[data-gal-selection="true"] .photo span.selector {
+  position: absolute;
+  right: 0; bottom: 0;
+}
+[data-gal-selection="true"] .cockpit span.selector {
+  opacity: 1;
 }
 .loaded:hover span.selector {
   -webkit-transition-delay: 0s;
   transition-delay: 0s;
   opacity: 1;
 }
-.loaded span.selector:hover {
+.loaded span.selector:hover,
+.cockpit span.selector:hover {
   background-position: -52px 3px;
 }
-.loaded span.selector.selected {
+.loaded span.selector.selected,
+.cockpit span.selector.selected {
   opacity: 1;
   background-position: -112px 3px;
 }
-.loaded span.selector.selected:hover {
+.loaded span.selector.selected:hover,
+.cockpit span.selector.selected:hover {
   background-position: -172px 3px;
 }
 /* End Select Button */
@@ -218,11 +225,18 @@
 /* Cockpit Body */
 .cockpit .cockpit_body div {
   float: left;
-  margin: 3px 0 6px 52px;
   text-align: left;
+  margin: 2px 0 6px;
   padding: 3px 10px;
 }
-.cockpit_body div span.line {
+.cockpit .cockpit_body div:first-child {
+  margin: 2px 0 6px 52px;
+}
+.cockpit span.selector {
+  float: left;
+  margin-top: -15px;
+}
+.cockpit_body span.line {
   float: left;
   clear: both;
 }
