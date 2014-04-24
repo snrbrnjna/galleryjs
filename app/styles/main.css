@@ -22,7 +22,7 @@ h1 {
   color: #333;
   background: #EF89F8;
   padding: 4px 9px;
-  border: 2px solid #E80AFC;
+  border: 1px solid #E80AFC;
 }
 .selection .button.initialized {
   display: inline-block;
@@ -30,16 +30,21 @@ h1 {
 .selection .button.active {
   opacity: 1;
   cursor: pointer;
+  box-shadow: 1px 1px 4px 0px #333; /* button */
+}
+.selection .button.active:hover,
+.selection .button.active.filtered:hover {
+  box-shadow: 1px 1px 1px 0px #333; /* button half pressed */
 }
 .selection .button.active.filtered {
+  box-shadow: none; /* button pressed */
   color: #000;
-  border-color: #000;
 }
-.selection .button.active:hover {
-  border-color: #eee;
+.selection .indicator:after {
+  content: ' Photos';
 }
-.selection .button.toggle:after {
-  content: ' photos';
+.selection .button.toggle:before {
+  content: 'Filter ';
 }
 
 .selection .button.error {
