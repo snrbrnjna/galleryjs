@@ -107,7 +107,7 @@
 }
 
 .slider .tray {
-    position:absolute; top:0.8em;bottom:0.8em;left:0.8em;right:0.8em;
+    position:absolute; top:12px;bottom:12px;left:12px;right:12px;
 }
 
 .slider .photo {
@@ -133,7 +133,7 @@
     opacity: 0;
 }
 .slider .photo img {
-    box-shadow:         0 3px 5px #000;
+    box-shadow: 0 3px 5px #000;
     cursor: pointer;
 }
 
@@ -145,10 +145,10 @@
     background: none;
 }
 .slider .nav.prev {  
-    left: .8em;
+    left: 12px;
 }
 .slider .nav.next {
-    right: .8em;
+    right: 12px;
 }
 .slider .nav.prev.active, .slider .nav.prev:hover {  
     background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAATtJREFUeNrU2sENgzAMBVBA7MIaHLoE00DmQWICjp2AeZBSUFWpcGnj+Ps7lqqWHsJ/VBHEaR1jrEqulnz+8etzKA1whp9u3yUjGnL4aVmWNWeghhm+PmrbtkdJgEv42xxwD1APbwmAhLcCwMJbAKDh0QB4eCTAJDwKYBYeATANrw0wD68JoITXAtDCawCo4XMB9PA5ABfhpQA34SUAV+FTAe7Cixb18zz3x1vvpa2SPAf2fW8rR5UMGIZhrYQ9HDYgfOZAfLfzQom/gDuE5D7gCiG9E7tB5DwLuUDkPo3SERrrASpCa0VGQ2iuiSkI7a6EOQLRFzJFoDpzZghkb9QEge5OwxEW+wNQhNUODQxhuUcGQVjvUqojGPvEF0TXdc+s0c4LQXqN8VqjZBxmhyH8OP6r6tL/bvMSYABl9kRUnApwlQAAAABJRU5ErkJggg==') no-repeat center left;
@@ -179,10 +179,9 @@
 .cockpit { z-index: 40;}
 .cockpit .cockpit_body {
   position: absolute;
-  bottom: -.8em;
+  left: -6px; bottom: -12px;
   min-width: 200px;
   max-width: 100%;
-  left: -.4em;
   background: rgba(3,3,3,.80);
   border-radius: 4px 4px 0 0;
   height: 46px;
@@ -192,7 +191,7 @@
 }
 .cockpit .cockpit_button {
   position: absolute;
-  bottom: -2px;
+  left: 6px; bottom: -2px;
   width: 44px;
   height: 38px;
   background: rgba(3,3,3,.50);
@@ -200,7 +199,6 @@
   text-align: center;
   z-index: 20;
   cursor: pointer;
-  left: 6px;
 }
 .cockpit_button:hover {
   background: rgba(43,43,43,.80);
@@ -212,10 +210,11 @@
 }
 
 /* Cockpit Body */
-.cockpit .cockpit_body nav, .cockpit .cockpit_body div {
-  margin: .2em 0 .4em 4em;
+.cockpit .cockpit_body div {
+  float: left;
+  margin: 3px 0 6px 52px;
   text-align: left;
-  padding: 0 10px;
+  padding: 3px 10px;
 }
 .cockpit_body div span.line {
   float: left;
