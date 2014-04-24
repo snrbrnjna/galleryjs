@@ -1,4 +1,11 @@
-/**** Photo demo ****/
+/* Loading indicator (override in your styles!)*/
+.loading, 
+.stopper,
+.slider .photo {
+  background-image: url("../images/preloader-50.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
 /* Hide from both screenreaders and browsers: h5bp.com/u */
 .hidden {
@@ -11,7 +18,7 @@
   background-color: #fff;
 }
 .js .photos.loading { /* Loading indicator for Thumbs container */
-  background: url("../images/preloader-50.gif") no-repeat center 50px;
+  background-position: center 50px;
   background-color: #fff;
   min-height: 250px; /* TODO calculate min-height when json loaded */
 }
@@ -24,7 +31,6 @@
 .js .photos .photo { opacity: 0; }
 .js .photos .photo.loading { 
   opacity: 1; 
-  background: url("../images/preloader-50.gif") no-repeat center;
 }
 .js .photos .photo.loading img { 
   opacity: 0; 
@@ -73,7 +79,6 @@
 /* End Selector (add2pdf) Button */
 
 .stopper {
-  background: url("../images/preloader-50.gif") no-repeat center;
   background-color: #fff;
   width: 75px; height: 75px;
   margin: 10px auto 0;
@@ -109,7 +114,6 @@
     display: table;
     vertical-align: middle;
     text-align: center;
-    background: url("../images/preloader-50.gif") no-repeat center;
     min-height: 100px;
     position: absolute; top: 0; bottom: 0;
     width: 100%;
@@ -147,11 +151,11 @@
     right: .8em;
 }
 .slider .nav.prev.active, .slider .nav.prev:hover {  
-    background:url('../images/arrow_left.png') no-repeat center left;
+    background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAATtJREFUeNrU2sENgzAMBVBA7MIaHLoE00DmQWICjp2AeZBSUFWpcGnj+Ps7lqqWHsJ/VBHEaR1jrEqulnz+8etzKA1whp9u3yUjGnL4aVmWNWeghhm+PmrbtkdJgEv42xxwD1APbwmAhLcCwMJbAKDh0QB4eCTAJDwKYBYeATANrw0wD68JoITXAtDCawCo4XMB9PA5ABfhpQA34SUAV+FTAe7Cixb18zz3x1vvpa2SPAf2fW8rR5UMGIZhrYQ9HDYgfOZAfLfzQom/gDuE5D7gCiG9E7tB5DwLuUDkPo3SERrrASpCa0VGQ2iuiSkI7a6EOQLRFzJFoDpzZghkb9QEge5OwxEW+wNQhNUODQxhuUcGQVjvUqojGPvEF0TXdc+s0c4LQXqN8VqjZBxmhyH8OP6r6tL/bvMSYABl9kRUnApwlQAAAABJRU5ErkJggg==') no-repeat center left;
     cursor: pointer;
 }
 .slider .nav.next.active, .slider .nav.next:hover {
-    background:url('../images/arrow_right.png') no-repeat center right;
+    background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAATJJREFUeNrU2s0NgkAQhmGZ0AtNePBgE1SzbD0kVODRCqiHZBX8iXIx7sz3ze4mJGrC8D6CJhKblNKh5tUq9g0fj2NtgDV+2L3mghDNztM0XZ6QYXdG6gDM83xu7ssTIQYzgidCjOa4IcRwlgtCjOfREQKYSUUIaC4NIcA3h4IQ8CUKRwjhiwKKYACgCBYAhmACIAg2wBzhATBFeAHMEJ4AE4Q3QI0oAaBClALYEOM4nmq8hN5rWZa/75K0BfXHvu/Xu2zHGs9ATI9bhK/PQKwJkB1fAkAV7w1Qx3sCTOK9AGbxHgDTeDbAPJ4JgMSzALB4BgAajwbA45EASjwKQItHAKjx1gB6vCXAJd4K4BavBnRdd/WM39Z6/IwtpO8VMueot9wf9fHHc9pqav+7zU2AAQAqwkUSxzB2dgAAAABJRU5ErkJggg==') no-repeat center right;
     cursor: pointer;
 }
 /* Close Button */
