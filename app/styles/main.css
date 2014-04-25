@@ -22,6 +22,7 @@ h1 {
   color: #333;
   background: #EF89F8;
   padding: 4px 9px;
+  margin: 2px 0;
   border: 1px solid #E80AFC;
 }
 .selection .button.initialized {
@@ -71,4 +72,19 @@ h1 {
         background-color: #EF89F8; 
         -webkit-box-shadow: 0 0 9px #ccc; 
     }
+}
+
+@media (max-width: 640px) {
+  header {font-size: 90%;}
+}
+
+@media (max-width: 500px) {
+  header {font-size: 75%;}
+}
+
+@media (max-width: 400px) {
+  .selection .button {padding: 4px;}
+}
+@media (max-width: 350px) {
+  header {font-size: 70%;}
 }
