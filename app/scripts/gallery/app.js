@@ -50,6 +50,7 @@ function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
     // Initialize the GalleryModel
     initGalleryModel: function() {
 
+      // get Gallery source
       var src = this.$el.data('src');
       if (src === undefined) {
         if (this.$el.data('project')) {
@@ -58,6 +59,7 @@ function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
         }
       }
 
+      // initialize GalleryModel
       this.model = new GalleryModel({
         src: src,
         opts: this.$el.data('opts')
@@ -66,10 +68,11 @@ function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
 
     // Init SelectionCollection only when there is the data attrib data-gal-selector
     initSelection: function() {
-      if (this.$el.data('gal-selection')) {
+      if (this.$el.data('gal-selection') !== undefined) {
         // init selection collection
         this.selection = new SelectionCollection([], {
-          gallery: this.model
+          gallery: this.model,
+          key: this.$el.data('gal-selection')
         });
 
         // init selection indicator

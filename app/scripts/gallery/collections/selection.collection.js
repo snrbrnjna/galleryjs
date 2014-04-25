@@ -22,8 +22,14 @@ function (_, Backbone, nope, ImageModel) {
       initialize: function (models, options) {
         this.gallery = options.gallery;
 
+        // A Selection for the given Gallery only or a more global one given by
+        // data-gal-selection attribute?
+        this.key = typeof(options.key) === 'boolean' ?
+          'GallerySelection-' + this.gallery.id :
+          'GallerySelection-' + options.key;
+
         // Selection is saved in localStorage
-        this.localStorage = new Backbone.LocalStorage('GallerySelection-' + this.gallery.id);
+        this.localStorage = new Backbone.LocalStorage(this.key);
 
         // wait for the ImageCollection to be fetched 
         // => listenTo it & fetch selection from localStorage
