@@ -49,8 +49,17 @@ function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
 
     // Initialize the GalleryModel
     initGalleryModel: function() {
+
+      var src = this.$el.data('src');
+      if (src === undefined) {
+        if (this.$el.data('project')) {
+          src = this.$el.data('project') + '.json';
+          console.warn('"data-project" as a data source for galleryjs is deprecated! Use "data-src" instead!');
+        }
+      }
+
       this.model = new GalleryModel({
-        project: this.$el.data('project'),
+        src: src,
         opts: this.$el.data('opts')
       });
     },

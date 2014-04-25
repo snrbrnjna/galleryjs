@@ -13,17 +13,17 @@ define([
 
   var GalleryModel = Backbone.Model.extend({
 
-    idAttribute: 'project',
+    idAttribute: 'src',
 
     url: function() {
-      return this.get('project') + '.json';
+      return this.get('src');
     },
 
     // Default attributes for the gallery. they get automatically wired before 
     // initialize call.
     defaults: function() {
       return {
-        project: '',
+        src: '',
         title: '',
         presets: {
           thumb: {
@@ -40,14 +40,14 @@ define([
     // These are the fallback Options, if neither the json, nor the markup gives 
     // us any.
     defaultOpts: {
-      min_col_width: {
+      min_col_width: { // jshint ignore:line
         desktop: 320,
         pad: 320,
         phone: 300
       },
-      gutter_width: 3,
-      chunk_size: 8,
-      first_chunk: 15
+      gutter_width: 3, // jshint ignore:line
+      chunk_size: 8, // jshint ignore:line
+      first_chunk: 15 // jshint ignore:line
     },
     
     initialize: function() {
