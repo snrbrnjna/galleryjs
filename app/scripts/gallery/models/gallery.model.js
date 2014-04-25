@@ -7,13 +7,12 @@ define([
   'underscore',
   'backbone',
   'gallery/collections/image.collection',
-  'plugins/plugins'
+  'plugins/plugins',
+  'md5'
 ],
-  function(_, Backbone, ImageCollection, nope) {
+  function(_, Backbone, ImageCollection, nope, md5) {
 
   var GalleryModel = Backbone.Model.extend({
-
-    idAttribute: 'src',
 
     url: function() {
       return this.get('src');
@@ -51,6 +50,7 @@ define([
     },
     
     initialize: function() {
+      this.id = md5(this.get('src'));
       this.sliderState = 'closed';
       this._current = undefined;
     },

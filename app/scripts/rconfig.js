@@ -23,6 +23,7 @@ require.config({
     eventEmitter: '../bower_components/eventEmitter', // needed for imagesloaded
     eventie: '../bower_components/eventie', // needed for imagesloaded
     'vendor/jquery.touchSwipe': '../bower_components/jquery-touchswipe/jquery.touchswipe',
-    isotope: '../bower_components/isotope/jquery.isotope'
+    isotope: '../bower_components/isotope/jquery.isotope',
+    md5: '../bower_components/js-md5/js/md5'
   }
 });

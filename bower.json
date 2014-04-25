@@ -2,7 +2,7 @@
   "name": "gallery.js",
   "version": "0.5.1",
   "main": [
-    "lib/gallery.min.css", 
+    "lib/gallery.min.css",
     "lib/gallery.pkgd.min.js"
   ],
   "ignore": [
@@ -21,7 +21,8 @@
     "jquery-touchswipe": "~1.6.4",
     "isotope": "~1.5.26",
     "almond": "~0.2.9",
-    "backbone.localstorage": "~1.1.7"
+    "backbone.localstorage": "~1.1.7",
+    "js-md5": "~1.1.0"
   },
   "devDependencies": {}
 }
