@@ -27,21 +27,6 @@ function($, Backbone, SelectButton) {
     openInSlider: function() {
       this.gallery.trigger('thumb:clicked', this.model);
     },
-
-    toggleSelected: function(evt) {
-      evt.stopImmediatePropagation();
-      if (this.selector) {
-        this.model.set('selected', !this.model.get('selected'));
-      }
-    },
-
-    updateSelected: function(ImageModel, selected) {
-      if (selected) {
-        this.$el.addClass('selected');
-      } else {
-        this.$el.removeClass('selected');
-      }
-    },
     
     render: function() {
       var html = this.template({img: this.model}).trim();
