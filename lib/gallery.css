@@ -25,7 +25,14 @@
   /*  .site .header {background: green !important;}*/
 }
 
-/**** Photo demo ****/
+/* Loading indicator (override in your styles!)*/
+.loading, 
+.stopper,
+.slider .photo {
+  background-image: url("../images/preloader-50.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
 /* Hide from both screenreaders and browsers: h5bp.com/u */
 .hidden {
@@ -38,7 +45,7 @@
   background-color: #fff;
 }
 .js .photos.loading { /* Loading indicator for Thumbs container */
-  background: url("../images/preloader-50.gif") no-repeat center 50px;
+  background-position: center 50px;
   background-color: #fff;
   min-height: 250px; /* TODO calculate min-height when json loaded */
 }
@@ -49,21 +56,15 @@
 }
 /* fade out/in of thumbs */
 .js .photos .photo { opacity: 0; }
-.js .photos .photo.loading { 
-  opacity: 1; 
-  background: url("../images/preloader-50.gif") no-repeat center;
+.js .photos .photo img { 
+  opacity: 0;
+  -webkit-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
 }
-.js .photos .photo.loading img { 
-  opacity: 0; 
-  -webkit-transition: opacity 0.5s ease-in-out;
-  transition: opacity 0.5s ease-in-out;
-}
+.js .photos .photo.loading { opacity: 1; }
+.js .photos .photo.loading img { opacity: 0; }
 .js .photos .photo.loaded { opacity: 1; background: none; }
-.js .photos .photo.loaded img { 
-  opacity: 1; 
-  -webkit-transition: opacity 0.5s ease-in-out;
-  transition: opacity 0.5s ease-in-out;
-}
+.js .photos .photo.loaded img { opacity: 1; }
 
 .photos .photo img {
   display: block;
@@ -75,6 +76,8 @@
   position: absolute;
   opacity: 0;
   transition: opacity .5s ease-in-out;
+  -webkit-transition-delay: .5s;
+  transition-delay: .5s;
   cursor: pointer;
   right: 0;
   bottom: 0;
@@ -84,6 +87,8 @@
   z-index: 30;
 }
 .loaded:hover span.selector {
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
   opacity: 1;
 }
 .loaded span.selector:hover {
@@ -100,7 +105,6 @@
 /* End Selector (add2pdf) Button */
 
 .stopper {
-  background: url("../images/preloader-50.gif") no-repeat center;
   background-color: #fff;
   width: 75px; height: 75px;
   margin: 10px auto 0;
@@ -109,38 +113,45 @@
 
 /**** Slider ****/
 
-.slider.visible {
-    opacity: 1;
-}
-.slider.open {
-    z-index: 20;
+.slider {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(43,43,43,.98);
+  overflow: hidden;
+  z-index: -1;
+  display: block;
+  opacity: 0;
+  -webkit-transition-property: opacity, z-index;
+  transition-property: opacity, z-index;
+  -webkit-transition-duration: .8s;
+  transition-duration: .8s;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
 }
 
-.slider {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-/*    IE fix ??*/
-/*    _position: absolute;*/
-/*    _top: expression(eval(document.body.scrollTop));*/
-    background: rgba(43,43,43,.98);
-    overflow: hidden;
-    z-index: -1;
-    display: block;
-    opacity: 0;
+.slider.visible {
+  opacity: 1;
+  z-index: 20;
 }
 
 .slider .tray {
-    position:absolute; top:0.8em;bottom:0.8em;left:0.8em;right:0.8em;
+    position:absolute; top:12px;bottom:12px;left:12px;right:12px;
 }
 
 .slider .photo {
     display: table;
     vertical-align: middle;
     text-align: center;
-    background: url("../images/preloader-50.gif") no-repeat center;
     min-height: 100px;
     position: absolute; top: 0; bottom: 0;
     width: 100%;
     margin: auto;
+
+    -webkit-transition-property: opacity, left, right;
+    transition-property: opacity, left, right;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+    -webkit-transition-timing-function: linear;
+    transition-timing-function: linear;
 }
 .slider .photo.prev {
     left: -100%;
@@ -156,7 +167,7 @@
     opacity: 0;
 }
 .slider .photo img {
-    box-shadow:         0 3px 5px #000;
+    box-shadow: 0 3px 5px #000;
     cursor: pointer;
 }
 
@@ -168,17 +179,17 @@
     background: none;
 }
 .slider .nav.prev {  
-    left: .8em;
+    left: 12px;
 }
 .slider .nav.next {
-    right: .8em;
+    right: 12px;
 }
 .slider .nav.prev.active, .slider .nav.prev:hover {  
-    background:url('../images/arrow_left.png') no-repeat center left;
+    background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAATtJREFUeNrU2sENgzAMBVBA7MIaHLoE00DmQWICjp2AeZBSUFWpcGnj+Ps7lqqWHsJ/VBHEaR1jrEqulnz+8etzKA1whp9u3yUjGnL4aVmWNWeghhm+PmrbtkdJgEv42xxwD1APbwmAhLcCwMJbAKDh0QB4eCTAJDwKYBYeATANrw0wD68JoITXAtDCawCo4XMB9PA5ABfhpQA34SUAV+FTAe7Cixb18zz3x1vvpa2SPAf2fW8rR5UMGIZhrYQ9HDYgfOZAfLfzQom/gDuE5D7gCiG9E7tB5DwLuUDkPo3SERrrASpCa0VGQ2iuiSkI7a6EOQLRFzJFoDpzZghkb9QEge5OwxEW+wNQhNUODQxhuUcGQVjvUqojGPvEF0TXdc+s0c4LQXqN8VqjZBxmhyH8OP6r6tL/bvMSYABl9kRUnApwlQAAAABJRU5ErkJggg==') no-repeat center left;
     cursor: pointer;
 }
 .slider .nav.next.active, .slider .nav.next:hover {
-    background:url('../images/arrow_right.png') no-repeat center right;
+    background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAATJJREFUeNrU2s0NgkAQhmGZ0AtNePBgE1SzbD0kVODRCqiHZBX8iXIx7sz3ze4mJGrC8D6CJhKblNKh5tUq9g0fj2NtgDV+2L3mghDNztM0XZ6QYXdG6gDM83xu7ssTIQYzgidCjOa4IcRwlgtCjOfREQKYSUUIaC4NIcA3h4IQ8CUKRwjhiwKKYACgCBYAhmACIAg2wBzhATBFeAHMEJ4AE4Q3QI0oAaBClALYEOM4nmq8hN5rWZa/75K0BfXHvu/Xu2zHGs9ATI9bhK/PQKwJkB1fAkAV7w1Qx3sCTOK9AGbxHgDTeDbAPJ4JgMSzALB4BgAajwbA45EASjwKQItHAKjx1gB6vCXAJd4K4BavBnRdd/WM39Z6/IwtpO8VMueot9wf9fHHc9pqav+7zU2AAQAqwkUSxzB2dgAAAABJRU5ErkJggg==') no-repeat center right;
     cursor: pointer;
 }
 /* Close Button */
@@ -202,10 +213,9 @@
 .cockpit { z-index: 40;}
 .cockpit .cockpit_body {
   position: absolute;
-  bottom: -.8em;
+  left: -6px; bottom: -12px;
   min-width: 200px;
   max-width: 100%;
-  left: -.4em;
   background: rgba(3,3,3,.80);
   border-radius: 4px 4px 0 0;
   height: 46px;
@@ -215,7 +225,7 @@
 }
 .cockpit .cockpit_button {
   position: absolute;
-  bottom: -2px;
+  left: 6px; bottom: -2px;
   width: 44px;
   height: 38px;
   background: rgba(3,3,3,.50);
@@ -223,7 +233,6 @@
   text-align: center;
   z-index: 20;
   cursor: pointer;
-  left: 6px;
 }
 .cockpit_button:hover {
   background: rgba(43,43,43,.80);
@@ -235,10 +244,11 @@
 }
 
 /* Cockpit Body */
-.cockpit .cockpit_body nav, .cockpit .cockpit_body div {
-  margin: .2em 0 .4em 4em;
+.cockpit .cockpit_body div {
+  float: left;
+  margin: 3px 0 6px 52px;
   text-align: left;
-  padding: 0 10px;
+  padding: 3px 10px;
 }
 .cockpit_body div span.line {
   float: left;
