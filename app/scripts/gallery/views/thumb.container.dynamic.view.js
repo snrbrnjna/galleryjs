@@ -166,7 +166,7 @@ define([
     // TODO: Refactor into ThumbView
     switchThumbClass: function(img) {
       var thumbItem = $(img).parent();
-      return thumbItem.switchClass('loading', 'loaded');
+      return thumbItem.toggleClass('loading loaded');
     },
     
     onNewSliderImage: function(largeView) {

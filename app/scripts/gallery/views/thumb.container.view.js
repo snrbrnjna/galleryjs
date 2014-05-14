@@ -1,6 +1,5 @@
 define([
   'jquery',
-  'jqueryui',
   'vendor/jquery.throttle-debounce',
   'underscore',
   'backbone',
@@ -8,7 +7,7 @@ define([
   'gallery/views/thumb.view',
   'gallery/utils/responsive.adapter'
 ],
-function($, nope, nope2, _, Backbone, isotope, ThumbView, ResponsiveAdapter) {
+function($, nope, _, Backbone, isotope, ThumbView, ResponsiveAdapter) {
   
   /*
    * Model: GalleryModel
@@ -64,12 +63,10 @@ function($, nope, nope2, _, Backbone, isotope, ThumbView, ResponsiveAdapter) {
           gallery: this.model
         });
       });
-
             
       // Fade in initialized thumbs... (see gallery.css for details)
-      // better to fade in every thumb on its own, when its loaded... (TODO) 
       this.$el.removeClass('loading'); // hide loading indicator
-      this.$el.find(this.options.itemSelector).addClass('loaded', 400); // fade in thumbs
+      this.$el.find(this.options.itemSelector).addClass('loaded'); // fade in thumbs
     },
   
     /*

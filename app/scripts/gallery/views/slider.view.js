@@ -1,13 +1,12 @@
 define([
   'jquery',
-  'jqueryui',
   'vendor/jquery.touchSwipe',
   'vendor/jquery.throttle-debounce',
   'underscore',
   'backbone',
   'gallery/views/large.view',
   'gallery/views/cockpit.view'
-], function($, nope, nope2, nope3, _, Backbone, LargeView, CockpitView) {
+], function($, nope, nope2, _, Backbone, LargeView, CockpitView) {
   
   /*
    * Model: GalleryModel
@@ -197,7 +196,7 @@ define([
       this._setCurrent(imageModel);
       this.$el.addClass('open');
       $('body').removeClass('slider_closed');
-      this.$el.addClass('visible', 800);
+      this.$el.addClass('visible');
       this.$el.swipe('enable');
       this.model.toggleSliderState();
     },
@@ -213,9 +212,9 @@ define([
         this.currentBox = this.nextBox.attr('id','current');
         this.nextBox = newNextBox.attr('id','next');
         
-        this.prevBox.switchClass('current','prev', {duration:300,queue:true,easing:'linear'});
-        this.currentBox.switchClass('next', 'current', {duration:300,queue:true,easing:'linear'});
-        this.nextBox.switchClass('prev', 'next', {duration:0,queue:true});
+        this.prevBox.toggleClass('current prev');
+        this.currentBox.toggleClass('next current');
+        this.nextBox.toggleClass('prev next');
         
         this._setNext();
         this._currentChanged();
@@ -233,9 +232,9 @@ define([
         this.currentBox = this.prevBox.attr('id','current');
         this.prevBox = newPrevBox.attr('id', 'prev');
         
-        this.nextBox.switchClass('current', 'next', {duration:300,queue:true,easing:'linear'});
-        this.currentBox.switchClass('prev', 'current', {duration:300,queue:true,easing:'linear'});
-        this.prevBox.switchClass('next', 'prev');
+        this.nextBox.toggleClass('current next');
+        this.currentBox.toggleClass('prev current');
+        this.prevBox.toggleClass('next prev');
         
         this._setPrev();
         this._currentChanged();
@@ -245,14 +244,15 @@ define([
     closeSlider: function() {
       this.model.trigger('slider:closing', this.current);
     
-      this.$el.removeClass('open visible', 800);
+      this.$el.removeClass('open visible');
       $('body').addClass('slider_closed');
+
       this._setCurrent(undefined);
       this.current = this.next = this.perv = undefined;
+      
       this.$('.photo').empty();
     
       this._setHashbang('', 'ÄMPTI');
-      // window.location.hash = '!';
     
       this.$el.swipe('disable');
       this.model.toggleSliderState();
