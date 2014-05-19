@@ -4,16 +4,31 @@
  * The collection of ImageModel objects.
  *
  */
-define(['backbone', 'gallery/models/image.model'],
-  function(Backbone, ImageModel) {
-    
-    var ImageCollection = Backbone.Collection.extend({
+define([
+  'backbone', 
+  'localstorage',
+  'gallery/models/image.model'
+], function(Backbone, nope, ImageModel) {
+  
+  var ImageCollection = Backbone.Collection.extend({
 
-      // Reference to this collection's model.
-      model: ImageModel
+    // Reference to this collection's model.
+    model: ImageModel,
 
-    });
-    
-    return ImageCollection;
-  }
-);
+    // Make Collection a LocalStorage Collection, when opts.localStorageKey is
+    // given.
+    initialize: function(models, opts) {
+      if (opts.localStorageKey) {
+        this.key = 'GallerySelection-' + opts.localStorageKey;
+        this.localStorage = new Backbone.LocalStorage(this.key);
+      }
+    },
+
+    parse: function(response) {
+      return response;
+    }
+
+  });
+  
+  return ImageCollection;
+});

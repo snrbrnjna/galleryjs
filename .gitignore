@@ -8,10 +8,14 @@ tmp
 test/bower_components/
 .DS_Store
 
-# index page is different for dev and dist task, therefor it is prepared by grunt
+# index & selection pages are different for dev and dist task, therefor it is 
+# prepared by grunt
 app/index.html
+app/selection.html
+
 # do not add gallery images to git index
 app/images/galleries
+
 # ghpages is a branch of this repo, which is checked out inside this repo, so
 # keep it out here!!
 gh-pages

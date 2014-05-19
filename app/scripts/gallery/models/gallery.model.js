@@ -14,6 +14,7 @@ define([
 
   var GalleryModel = Backbone.Model.extend({
 
+    // local or remote
     url: function() {
       return this.get('src');
     },
@@ -57,16 +58,16 @@ define([
     
     parse: function(response) {
       var galleryHash = response.gallery;
-      // Prepare and parse data
-      var imageOptions = {presets: this._parsePresets(galleryHash.presets)};
+      // Init Collection with response Hash
+      galleryHash.images = new ImageCollection(galleryHash.images, {
+        presets: this._parsePresets(galleryHash.presets)
+      });
       // Precedence in these options:
       // 1) options given as attributes into the constructor (the ones written in data-attributes)
       // 2) options coming with the fetched json data
       // 3) default options
-      var galleryOpts = _.extend({}, this.defaultOpts, galleryHash.opts, this.attributes.opts);
-      // Init Collection on response Hash
-      galleryHash.images = new ImageCollection(galleryHash.images, imageOptions);
-      galleryHash.opts = galleryOpts;
+      galleryHash.opts = _.extend({}, 
+        this.defaultOpts, galleryHash.opts, this.attributes.opts);
 
       return galleryHash;
     },

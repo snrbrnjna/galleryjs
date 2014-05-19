@@ -38,6 +38,9 @@
 .js .photos .photo.loading img { opacity: 0; }
 .js .photos .photo.loaded { opacity: 1; background: none; }
 .js .photos .photo.loaded img { opacity: 1; }
+.js .photos.animating .photo.loaded {
+  -webkit-transition-duration: .5s;
+  transition-duration: .5s; }
 
 .photos .photo img {
   display: block;
@@ -49,7 +52,7 @@
   opacity: 0;
   -webkit-transition: opacity .5s ease-in-out;
   transition: opacity .5s ease-in-out;
-  -webkit-transition-delay: .5s;
+  -webkit-transition-delay: .2s;
   transition-delay: .5s;
   cursor: pointer;
   width: 58px;

@@ -5,7 +5,7 @@
 define([
   'backbone',
   'underscore',
-  'gallery/models/gallery.model',
+  'gallery/models/gallery.factory',
   'gallery/collections/selection.collection',
   'gallery/views/thumb.container.view',
   'gallery/views/thumb.container.dynamic.view',
@@ -15,9 +15,9 @@ define([
   'gallery/views/selection/pdf.button',
   'gallery/views/selection/indicator'
 ],
-function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
-  ThumbContainerDynamicView, SliderView, ResponsiveAdapter, SelectionToggleButton,
-  SelectionPdfButton, SelectionIndicator) {
+function(Backbone, _, GalleryFactory, SelectionCollection,
+  ThumbContainerView, ThumbContainerDynamicView, SliderView, ResponsiveAdapter,
+  SelectionToggleButton, SelectionPdfButton, SelectionIndicator) {
   
   var GalleryApp = Backbone.View.extend({
     
@@ -26,8 +26,8 @@ function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
     initialize: function() {
       if (this.$el.length) {
         
-        // Init Model
-        this.initGalleryModel();
+        // Init GalleryModel
+        this.model = GalleryFactory.create(this.$el);
 
         // Init Selection
         if (ResponsiveAdapter.getMediaType() === 'desktop') {
@@ -45,25 +45,6 @@ function(Backbone, _, GalleryModel, SelectionCollection, ThumbContainerView,
         // Instanciate the SliderView
         this.initSlider();
       }
-    },
-
-    // Initialize the GalleryModel
-    initGalleryModel: function() {
-
-      // get Gallery source
-      var src = this.$el.data('src');
-      if (src === undefined) {
-        if (this.$el.data('project')) {
-          src = this.$el.data('project') + '.json';
-          console.warn('"data-project" as a data source for galleryjs is deprecated! Use "data-src" instead!');
-        }
-      }
-
-      // initialize GalleryModel
-      this.model = new GalleryModel({
-        src: src,
-        opts: this.$el.data('opts')
-      });
     },
 
     // Init SelectionCollection only when there is the data attrib data-gal-selector

@@ -237,14 +237,16 @@ module.exports = function (grunt) {
         },
         copy: {
             prepareDev: {
-                src: '<%= yeoman.app %>/index-dev.html',
-                dest: '<%= yeoman.app %>/index.html'
-
+                files: {
+                    '<%= yeoman.app %>/index.html': '<%= yeoman.app %>/index-dev.html',
+                    '<%= yeoman.app %>/selection.html': '<%= yeoman.app %>/selection-dev.html',
+                }
             },
             prepareDist: {
-                src: '<%= yeoman.app %>/index-dist.html',
-                dest: '<%= yeoman.app %>/index.html'
-
+                files: {
+                    '<%= yeoman.app %>/index.html': '<%= yeoman.app %>/index-dist.html',
+                    '<%= yeoman.app %>/selection.html': '<%= yeoman.app %>/selection-dist.html',
+                }
             },
             lib: {
                 files: {

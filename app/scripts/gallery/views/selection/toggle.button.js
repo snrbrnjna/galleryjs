@@ -8,10 +8,11 @@
  *
  */
 define([
+  'underscore',
   'backbone',
   'gallery/views/selection/component'
 ],
-function(Backbone, SelectionComponent) {
+function(_, Backbone, SelectionComponent) {
 
   var SelectionToggleButton = SelectionComponent.extend({
 
@@ -28,12 +29,29 @@ function(Backbone, SelectionComponent) {
     },
 
     filter: function() {
-      if (!this.$el.hasClass('filtered')) {
-        this.collection.gallery.set('images', this.collection);
-      } else {
-        this.collection.gallery.fetch();
+      var galleryImages = this.collection.gallery.get('images');
+      
+      if (!this.$el.hasClass('filtered')) {     // filter selected
+        this.unfilteredImages = new Backbone.Collection(galleryImages.models);
+        galleryImages.reset(this.collection.models);
+      } else {                                  // unfilter selected
+        galleryImages.reset(this.unfilteredImages.models);
+        this.unfilteredImages = undefined;
       }
       this.$el.toggleClass('filtered');
+    },
+
+    // When an item gets removed and the selection is currently toggled (filtered), 
+    // then we need to "synchronize" the corresponding ImageModel object in the 
+    // unfiltered collection.
+    itemRemoved: function(model, col, opts) {
+      if (this.unfilteredImages) {
+        var imageModel = this.unfilteredImages.get(model.id);
+        if (imageModel) {
+          imageModel.set('selected', false);
+        }
+      }
+      SelectionComponent.prototype.itemRemoved.apply(this, arguments);
     },
 
     selectionChanged: function(opts) {

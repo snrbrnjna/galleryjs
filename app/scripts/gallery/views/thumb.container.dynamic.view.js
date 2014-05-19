@@ -42,6 +42,11 @@ define([
       this.chunkSize = ResponsiveAdapter.getOptionByMediaType(galleryOpts, 'chunk_size');
 
       this.constructor.__super__.initGallery.apply(this, arguments);
+
+      // now all images are fetched (the collection is initialized), now we can 
+      // listen for events (reset, remove) on the images collection
+      this.listenTo(this.model.get('images'), 'reset', this.initThumbs);
+      this.listenTo(this.model.get('images'), 'remove', this.removeThumb);
     },
 
     // override
@@ -64,6 +69,13 @@ define([
 
     remove: function() {
       this.$el.isotope('remove', this.$el.children());
+    },
+
+    removeThumb: function(model, collection, options) {
+      this.$el.addClass('animating');
+      this.$el.isotope('remove', model.getThumbView().$el, _.bind(function() {
+        this.$el.removeClass('animating');
+      }, this));
     },
         
     renderNextChunk: function() {

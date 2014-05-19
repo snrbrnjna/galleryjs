@@ -1,7 +1,7 @@
 /* SelectionCollection
  * ---------------
  *
- * The collection of selected ImageModel objects. Is saved in localStorage of
+ * A collection of selected ImageModel objects. It gets saved in localStorage of
  * the client browser.
  *
  */
@@ -19,40 +19,43 @@ function (_, Backbone, nope, ImageModel) {
       model: ImageModel,
 
 
+      /*
+       * TODO: SelectionCollection auch ohne gallery object ?? => explizites Fetchen und kein Beobachten 
+       */
       initialize: function (models, options) {
         this.gallery = options.gallery;
 
-        // A Selection for the given Gallery only or a more global one given by
-        // data-gal-selection attribute?
+        // A key for identifying the Selection
         this.key = typeof(options.key) === 'boolean' ?
-          'GallerySelection-' + this.gallery.id :
-          'GallerySelection-' + options.key;
+          'GallerySelection-' + this.gallery.id :  // identified by the given Gallery
+          'GallerySelection-' + options.key; // identified by a given key
 
         // Selection is saved in localStorage
         this.localStorage = new Backbone.LocalStorage(this.key);
 
         // wait for the ImageCollection to be fetched 
         // => listenTo it & fetch selection from localStorage
-        this.listenTo(this.gallery, 'change', this.initGallery);
+        this.listenToOnce(this.gallery, 'change', this.initGallery);
       },
 
       // Called, when the GalleryModel is initialized/loaded
       // Now we can 
-      // - fetch this selection from the localStorage and connect it with the
-      //   ImageCollection of the GalleryModel
-      // - listen to its ImageCollection for any changes to the selected attribute 
-      //   of its ImageModels
+      // - fetch this selection from the localStorage and mark all it's images
+      //   as selected in the ImageCollection of the GalleryModel.
+      // - listen to any changes to the 'selected' attribute of the ImageModels
+      //   in the Gallery.
       initGallery: function() {
-        var galleryImages = this.gallery.get('images');
-
         // before we setup the change-listener, else we have 1 superfluos 
         // callback-roundtrip
         this.fetch();
 
-        this.listenTo(galleryImages, 'change:selected', this.selectionChanged);
+        this.listenTo(
+          this.gallery.get('images'), 'change:selected', this.selectionChanged);
       },
 
-      // called by SelectionCollection#fetch
+      // Called by SelectionCollection#fetch
+      // Marks all the fetched images as selected in the ImageCollection of the 
+      // GalleryModel.
       parse: function(response) {
         if (this.gallery) {
           var galleryImages = this.gallery.get('images');
