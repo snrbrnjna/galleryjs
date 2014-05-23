@@ -19,7 +19,7 @@ define([
     // given.
     initialize: function(models, opts) {
       if (opts.localStorageKey) {
-        this.key = 'GallerySelection-' + opts.localStorageKey;
+        this.key = opts.localStorageKey;
         this.localStorage = new Backbone.LocalStorage(this.key);
       }
     },

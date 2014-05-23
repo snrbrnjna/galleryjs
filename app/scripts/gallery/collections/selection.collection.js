@@ -19,19 +19,27 @@ function (_, Backbone, nope, ImageModel) {
       model: ImageModel,
 
 
-      /*
-       * TODO: SelectionCollection auch ohne gallery object ?? => explizites Fetchen und kein Beobachten 
-       */
+      /**
+       * LocalStorage ImageModel Collection given by an explicit key (``options.key``) 
+       * or, when the key is a boolean, by the id of the given GalleryModel 
+       * (``options.gallery``). 
+       * The Collection gets connected with the given GalleryModel: 
+       * Once it's Images are loaded their selected attribute is set, when they
+       * are in the Selection. Then the ``selected`` attribute of the GalleryModel
+       * images are watched, so that the selection contains only selected images.
+       **/
       initialize: function (models, options) {
+        // connect gallery and selection
         this.gallery = options.gallery;
+        this.gallery.set('selection', this);
 
-        // A key for identifying the Selection
+        // A id and key for identifying the Selection
         this.key = typeof(options.key) === 'boolean' ?
-          'GallerySelection-' + this.gallery.id :  // identified by the given Gallery
-          'GallerySelection-' + options.key; // identified by a given key
+          this.gallery.id :  // identified by the given Gallery
+          options.key; // identified by a given key
 
         // Selection is saved in localStorage
-        this.localStorage = new Backbone.LocalStorage(this.key);
+        this.localStorage = new Backbone.LocalStorage('GallerySelection-' + this.key);
 
         // wait for the ImageCollection to be fetched 
         // => listenTo it & fetch selection from localStorage

@@ -18,20 +18,19 @@ define([
       this.id = this.get('key');
     },
 
-    // override fetch to only fetch selection
-    // TODO: Hier muss gedreht werden. Wir haben jetzt evtl 2 mal dieselbe 
-    // collection: Einmal als Selection ausserhalb, einmal hier als Collection 
-    // der Gallery Bilder. Das muss nicht sein, wenn die Selection eh in das 
-    // GalleryModel wandert.
+    // Override fetch to only fetch selection
     fetch: function() {
-      // this.attributes['images'] = new ImageCollection([], {
-      //   localStorageKey: this.get('key')
-      // });
-      this.attributes['images'] = new SelectionCollection([], {
-        gallery: this,
-        key: this.id
-      });
-
+      // Is the selection already registered on this GalleryModel?
+      var gallerySelection = this.get('selection');
+      if (gallerySelection && gallerySelection.key == this.id) {
+        this.attributes['images'] = gallerySelection;  
+      } else { // no, we have to initialize a new SelectionCollection
+        new SelectionCollection([], {
+          gallery: this,
+          key: this.id
+        });
+      }
+      
       // Gallery default options merged with attribute-opts
       this.attributes['opts'] = _.extend({}, this.defaultOpts, this.attributes.opts);
 
