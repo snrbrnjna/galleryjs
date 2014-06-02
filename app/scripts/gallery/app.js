@@ -40,7 +40,16 @@ function(Backbone, _, GalleryFactory, SelectionCollection,
         this.initThumbContainer();
         
         // Fetch Gallery Data from Server
-        this.model.fetch();
+        this.model.fetch({
+          success: _.bind(function(model, resp, opts) {
+            // mark DOM Element as initialized
+            this.$el.addClass('initialized');
+            // mark DOM Element as empty
+            if (model.get('images').isEmpty()) {
+              this.$el.addClass('empty');
+            }
+          }, this)
+        });
 
         // Instanciate the SliderView
         this.initSlider();

@@ -19,10 +19,10 @@ define([
     },
 
     // Override fetch to only fetch selection
-    fetch: function() {
+    fetch: function(opts) {
       // Is the selection already registered on this GalleryModel?
       var gallerySelection = this.get('selection');
-      if (gallerySelection && gallerySelection.key == this.id) {
+      if (gallerySelection && gallerySelection.key === this.id) {
         this.attributes['images'] = gallerySelection;  
       } else { // no, we have to initialize a new SelectionCollection
         new SelectionCollection([], {
@@ -34,11 +34,13 @@ define([
       // Gallery default options merged with attribute-opts
       this.attributes['opts'] = _.extend({}, this.defaultOpts, this.attributes.opts);
 
-      // fetch local ImageCollection
+      // fetch local ImageCollection and propagate given callbacks
       this.attributes['images'].fetch({
-        success: _.bind(function () {
+        success: _.bind(function (collection, resp, _opts) {
+          if (opts.success) { opts.success(this, resp, opts); }
           this.trigger('change');
-        }, this)
+        }, this),
+        error: opts.error
       });
     }
 

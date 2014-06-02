@@ -32,6 +32,9 @@ function($, nope, _, Backbone, isotope, ThumbView, ResponsiveAdapter) {
       // merge defaults and options
       this.options = _.extend({}, this.defaults, this.options);
 
+      // mark container as loading
+      this.$el.addClass('loading');
+
       // wait for the ImageCollection to be fetched
       this.listenTo(this.model, 'change', this.galleryFetched);
       
