@@ -72,10 +72,11 @@ define([
     },
 
     removeThumb: function(model, collection, options) {
-      this.$el.addClass('animating');
-      this.$el.isotope('remove', model.getThumbView().$el, _.bind(function() {
-        this.$el.removeClass('animating');
-      }, this));
+      var $el = this.$el;
+      $el.addClass('animating');
+      $el.isotope('remove', model.getThumbView().$el, function() {
+        $el.removeClass('animating');
+      });
     },
         
     renderNextChunk: function() {

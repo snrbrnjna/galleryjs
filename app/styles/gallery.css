@@ -13,10 +13,11 @@
     visibility: hidden;
 }
 
-.photos {
+.initialized .photos {
   padding: 5px;
   background-color: #fff;
 }
+.empty .photos { padding: 0; }
 .js .photos.loading { /* Loading indicator for Thumbs container */
   background-position: center 50px;
   background-color: #fff;

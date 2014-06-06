@@ -42,12 +42,17 @@ function(Backbone, _, GalleryFactory, SelectionCollection,
         // Fetch Gallery Data from Server
         this.model.fetch({
           success: _.bind(function(model, resp, opts) {
+            var $el = this.$el;
             // mark DOM Element as initialized
-            this.$el.addClass('initialized');
+            $el.addClass('initialized');
             // mark DOM Element as empty
             if (model.get('images').isEmpty()) {
-              this.$el.addClass('empty');
+              $el.addClass('empty');
             }
+            // listenTo remove Events => mark empty
+            this.listenTo(model.get('images'), 'remove', function(m,c,o) {
+              if (c.isEmpty()) { $el.addClass('empty'); }  
+            });
           }, this)
         });
 
