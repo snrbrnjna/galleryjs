@@ -1,6 +1,11 @@
 /* jshint camelcase: false */
 /*
  * Gallery App
+ *
+ * Options:
+ * - el: Element to initialize the Gallery on.
+ * - onInit: Callback for when the GalleryApp is initialized (the Images are 
+ *           loaded). The callback receives to args: GalleryApp and GalleryModel
  */
 define([
   'backbone',
@@ -23,7 +28,7 @@ function(Backbone, _, GalleryFactory, SelectionCollection,
     
     el: 'article.gallery',
 
-    initialize: function() {
+    initialize: function(opts) {
       if (this.$el.length) {
         
         // Init GalleryModel
@@ -41,7 +46,7 @@ function(Backbone, _, GalleryFactory, SelectionCollection,
         
         // Fetch Gallery Data from Server
         this.model.fetch({
-          success: _.bind(function(model, resp, opts) {
+          success: _.bind(function(model, resp, _opts) {
             var $el = this.$el;
             // mark DOM Element as initialized
             $el.addClass('initialized');
@@ -51,13 +56,17 @@ function(Backbone, _, GalleryFactory, SelectionCollection,
             }
             // listenTo remove Events => mark empty
             this.listenTo(model.get('images'), 'remove', function(m,c,o) {
-              if (c.isEmpty()) { $el.addClass('empty'); }  
+              if (c.isEmpty()) { $el.addClass('empty'); }
             });
+            if (opts.onInit) { opts.onInit(this, this.model); }
           }, this)
         });
 
         // Instanciate the SliderView
         this.initSlider();
+
+        // make gallery object available in DOM
+        this.$el.data('gallery', this);
       }
     },
 

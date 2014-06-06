@@ -19,9 +19,12 @@
       var galleryEl = $('.gallery-app');
       if (galleryEl.length) {
         // initialize Gallery
-        var galleryApp = new GalleryAppClass({el: galleryEl});
-        // making gallery object available in DOM
-        galleryEl.data('gallery', galleryApp);
+        new GalleryAppClass({
+          el: galleryEl,
+          onInit: function(app, model) {
+            console.log('Gallery initialized!', app, model);
+          }
+        });
       }
     });
   }
