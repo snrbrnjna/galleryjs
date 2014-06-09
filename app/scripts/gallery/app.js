@@ -18,11 +18,13 @@ define([
   'gallery/utils/responsive.adapter',
   'gallery/views/selection/toggle.button',
   'gallery/views/selection/pdf.button',
-  'gallery/views/selection/indicator'
+  'gallery/views/selection/indicator',
+  'gallery/views/selection/component'
 ],
 function(Backbone, _, GalleryFactory, SelectionCollection,
   ThumbContainerView, ThumbContainerDynamicView, SliderView, ResponsiveAdapter,
-  SelectionToggleButton, SelectionPdfButton, SelectionIndicator) {
+  SelectionToggleButton, SelectionPdfButton, SelectionIndicator, 
+  SelectionComponent) {
   
   var GalleryApp = Backbone.View.extend({
     
@@ -91,6 +93,12 @@ function(Backbone, _, GalleryFactory, SelectionCollection,
 
         // init pdf button
         this.selectionPdfButton = new SelectionPdfButton({
+          collection: this.selection
+        });
+
+        // init selection components, which only need to be initialized and set active/inactive
+        new SelectionComponent({
+          el: $('.selection .component'),
           collection: this.selection
         });
       }
