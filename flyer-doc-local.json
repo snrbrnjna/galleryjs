@@ -19,6 +19,9 @@
         "baseurl": "images/galleries/flyer-doc/large"
       }
     },
+    "meta": {
+      "foo": "bar"
+    },
     "imageCount": 231,
     "images": [
       {
@@ -28,6 +31,9 @@
         "orientation": "portrait",
         "ratio": 0.708,
         "exif": null,
+        "meta": {
+          "title": "Test-Titel"
+          },
         "thumb": {
           "width": 240,
           "height": 338
