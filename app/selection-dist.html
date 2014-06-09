@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Gallery</title>
+        <title>Gallery Selection</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -31,14 +31,18 @@
         <header>
             <h1>Have a Gallery</h1>
             <div class="selection">
-                <span class="toggle button" title="toggle selection"><span class="indicator"></span></span>
+                <a href="index.html" class="button active initialized">Home</a>
                 <span class="pdf button" title="download selected photos as PDF document" data-url="http://api.brnjna.net/pdf" data-title="Flyer Auswahl" data-key="flyer"></span>
-                <a href="selection.html" class="button component">Selection [<span class="indicator"></span>]</a>
             </div>
         </header>
 
+        <h2>Your Selection (<span class="selection"><span class="indicator"></span></span>)</h2>
+
         <!-- Gallery App -->
-        <div class="gallery-app" data-gal-src="flyer-doc-remote.json" data-gal-selection="flyer-doc-local">
+        <div class="gallery-app" 
+            data-gal-src="flyer-doc-remote.json" 
+            data-gal-selection="flyer-doc-local"
+            data-gal-opts='{"min_col_width": {"desktop": 120, "pad": 120, "phone": 120}, "gutter_width": 3, "chunk_size": 15, "first_chunk": 25}'>
             
             <!-- Container for Thumbs of First Page -->
             <div class="container photos"></div>

@@ -23,7 +23,7 @@ define([
 ],
 function(Backbone, _, GalleryFactory, SelectionCollection,
   ThumbContainerView, ThumbContainerDynamicView, SliderView, ResponsiveAdapter,
-  SelectionToggleButton, SelectionPdfButton, SelectionIndicator, 
+  SelectionToggleButton, SelectionPdfButton, SelectionIndicator,
   SelectionComponent) {
   
   var GalleryApp = Backbone.View.extend({
