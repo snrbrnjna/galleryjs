@@ -40,10 +40,11 @@
     visibility: hidden;
 }
 
-.photos {
+.fetched.photos {
   padding: 5px;
   background-color: #fff;
 }
+.empty .photos { padding: 0; }
 .js .photos.loading { /* Loading indicator for Thumbs container */
   background-position: center 50px;
   background-color: #fff;
@@ -65,44 +66,54 @@
 .js .photos .photo.loading img { opacity: 0; }
 .js .photos .photo.loaded { opacity: 1; background: none; }
 .js .photos .photo.loaded img { opacity: 1; }
+.js .photos.animating .photo.loaded {
+  -webkit-transition-duration: .5s;
+  transition-duration: .5s; }
 
 .photos .photo img {
   display: block;
   width: 100%;
 }
 
-/* Selector (add2pdf) Button */
-[data-gal-selection="true"] span.selector {
-  position: absolute;
+/* Select Button */
+[data-gal-selection] span.selector {
   opacity: 0;
+  -webkit-transition: opacity .5s ease-in-out;
   transition: opacity .5s ease-in-out;
-  -webkit-transition-delay: .5s;
+  -webkit-transition-delay: .2s;
   transition-delay: .5s;
   cursor: pointer;
-  right: 0;
-  bottom: 0;
   width: 58px;
   height: 58px;
   background: url(../images/add_button01_sprite.png) no-repeat 7px 3px;
   z-index: 30;
+}
+[data-gal-selection] .photo span.selector {
+  position: absolute;
+  right: 0; bottom: 0;
+}
+[data-gal-selection] .cockpit span.selector {
+  opacity: 1;
 }
 .loaded:hover span.selector {
   -webkit-transition-delay: 0s;
   transition-delay: 0s;
   opacity: 1;
 }
-.loaded span.selector:hover {
+.loaded span.selector:hover,
+.cockpit span.selector:hover {
   background-position: -52px 3px;
 }
-.loaded.selected span.selector {
+.loaded span.selector.selected,
+.cockpit span.selector.selected {
   opacity: 1;
   background-position: -112px 3px;
 }
-.loaded.selected span.selector:hover {
+.loaded span.selector.selected:hover,
+.cockpit span.selector.selected:hover {
   background-position: -172px 3px;
 }
-
-/* End Selector (add2pdf) Button */
+/* End Select Button */
 
 .stopper {
   background-color: #fff;
@@ -214,8 +225,7 @@
 .cockpit .cockpit_body {
   position: absolute;
   left: -6px; bottom: -12px;
-  min-width: 200px;
-  max-width: 100%;
+  width: 100%;
   background: rgba(3,3,3,.80);
   border-radius: 4px 4px 0 0;
   height: 46px;
@@ -231,7 +241,7 @@
   background: rgba(3,3,3,.50);
   border-radius: 2px;
   text-align: center;
-  z-index: 20;
+  z-index: 100;
   cursor: pointer;
 }
 .cockpit_button:hover {
@@ -245,14 +255,33 @@
 
 /* Cockpit Body */
 .cockpit .cockpit_body div {
-  float: left;
-  margin: 3px 0 6px 52px;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   text-align: left;
-  padding: 3px 10px;
+  margin: 2px 0 6px;
+  padding: 3px 0 3px 72px;
 }
-.cockpit_body div span.line {
+[data-gal-selection] .cockpit .cockpit_body div:first-child {
+  padding-left: 58px;
+  z-index: 50;
+}
+[data-gal-selection] .cockpit .cockpit_body div:first-child + div {
+  padding-left: 124px
+}
+.cockpit span.selector {
+  float: left;
+  margin-top: -15px;
+}
+.cockpit_body span.line {
   float: left;
   clear: both;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
 }
 
 /*** SVG icons polyfill ***/

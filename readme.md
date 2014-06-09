@@ -29,11 +29,15 @@ Hava a look at [index-dev.html](/app/index-dev.html) inside the ``Gallery-App`` 
 Inizialize the gallery in your main.js:
 
 ``` js
-var galleryEl = $('.gallery-app');
-if (galleryEl.length) {
-    new GalleryApp({el: galleryEl});
-}
+new GalleryApp({
+    el: $('.gallery-app'),
+    onInit: function(app, model)
+});
 ```
+
+The ``onInit`` is called, when the gallery data is fetched. It gets 2 params: 
+- the GalleryApp object, a backbone view representing the whole application and
+- the GalleryModel object, a backbone model representing the Gallery data including the ImageCollection.
 
 ## Example Gallery
 
