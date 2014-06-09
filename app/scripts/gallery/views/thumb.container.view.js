@@ -43,6 +43,7 @@ function($, nope, _, Backbone, isotope, ThumbView, ResponsiveAdapter) {
     },
 
     galleryFetched: function() {
+      this.$el.addClass('fetched');
       this.initGallery();
       this.initThumbs();
     },

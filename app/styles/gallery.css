@@ -13,7 +13,7 @@
     visibility: hidden;
 }
 
-.initialized .photos {
+.fetched.photos {
   padding: 5px;
   background-color: #fff;
 }
