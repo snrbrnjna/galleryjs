@@ -19,6 +19,9 @@
         "baseurl": "http://assets.brnjna.net/img/galleries/flyer-doc/large"
       }
     },
+    "meta": {
+      "foo": "bar"
+    },
     "imageCount": 231,
     "images": [
       {
