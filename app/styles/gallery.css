@@ -61,6 +61,9 @@
   background: url(../images/add_button01_sprite.png) no-repeat 7px 3px;
   z-index: 30;
 }
+[data-gal-selection="false"] span.selector {
+  background-image: none;
+}
 [data-gal-selection] .photo span.selector {
   position: absolute;
   right: 0; bottom: 0;
@@ -243,6 +246,11 @@
 }
 [data-gal-selection] .cockpit .cockpit_body div:first-child + div {
   padding-left: 124px
+}
+/* Reset Selector in Cockpit */
+[data-gal-selection="false"] .cockpit .cockpit_body div:first-child,
+[data-gal-selection] .cockpit .cockpit_body div:first-child + div {
+  padding-left: 72px;
 }
 .cockpit span.selector {
   float: left;
