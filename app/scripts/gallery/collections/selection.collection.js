@@ -18,7 +18,6 @@ function (_, Backbone, nope, ImageModel) {
       // Reference to this collection's model.
       model: ImageModel,
 
-
       /**
        * LocalStorage ImageModel Collection given by an explicit key (``options.key``) 
        * or, when the key is a boolean, by the id of the given GalleryModel 

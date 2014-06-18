@@ -9,7 +9,7 @@
       main(GalleryApp);
     });
   } else { // grunt dist task
-    // require.js seems not to be present => GalleryApp has to beloaded as an 
+    // require.js seems not to be present => GalleryApp has to be loaded as an 
     // independent script => instanciate it without loading any dependencies
     main(GalleryApp);
   }
