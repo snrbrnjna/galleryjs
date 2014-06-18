@@ -54,7 +54,7 @@ define([
         this.attributes['filenameOrig'] = attrs['filename'].replace('-' + attrs['digest'], '');
         // set image_page url
         if (options.gallery && options.gallery.imagePages && options.gallery.basepath) {
-          this.attributes['imagePagePath'] = options.gallery.basepath + attrs['digest'];
+          this.attributes['imagePagePath'] = options.gallery.path.replace(/\.html$/, '') + attrs['digest'];
         }
       }
     },
