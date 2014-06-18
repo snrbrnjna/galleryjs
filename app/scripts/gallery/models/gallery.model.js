@@ -25,6 +25,7 @@ define([
       return {
         src: '',
         title: '',
+        image_pages: false,
         presets: {
           thumb: {
             width: 300
@@ -60,7 +61,13 @@ define([
       var galleryHash = response.gallery;
       // Init Collection with response Hash
       galleryHash.images = new ImageCollection(galleryHash.images, {
-        presets: this._parsePresets(galleryHash.presets)
+        presets: this._parsePresets(galleryHash.presets),
+        gallery: {
+          basepath: galleryHash.postBasepath,
+          baseurl: galleryHash.postBaseurl,
+          path: galleryHash.postPath,
+          imagePages: galleryHash.imagePages
+        }
       });
       // Precedence in these options:
       // 1) options given as attributes into the constructor (the ones written in data-attributes)

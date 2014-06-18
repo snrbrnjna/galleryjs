@@ -242,7 +242,12 @@ define([
       
       this.$('.photo').empty();
     
-      this._setHashbang('', 'ÄMPTI');
+      // update browser url
+      if (this.model.get('imagePages') && this.model.get('postPath')) {
+        history.replaceState(null, '', this.model.get('postPath'));
+      } else {
+        this._setHashbang(null, 'ÄMPTI');
+      }
     
       this.$el.swipe('disable');
       this.model.toggleSliderState();
@@ -251,13 +256,18 @@ define([
     _setHashbang: function(bangboombang, title) {
       if (Modernizr.history) {
         var newLoc = document.location.href;
-        newLoc = newLoc.replace(/\#.*/, '') + '#!' + bangboombang;
+        newLoc = newLoc.replace(/\#.*/, '') + (bangboombang ? '#!' + bangboombang : '');
         history.replaceState(null, title, newLoc);
       }
     },
     
     _currentChanged: function() {
-      this._setHashbang(this.current.model.id, 'Image ' + this.current.model.id);
+      // update browser url
+      if (this.model.get('imagePages')) {
+        history.replaceState(null, '', this.current.model.get('imagePagePath'));
+      } else {
+        this._setHashbang(this.current.model.id, 'Image ' + this.current.model.id);
+      }
       
       this.model.trigger('slider:newImage', this.current);
       

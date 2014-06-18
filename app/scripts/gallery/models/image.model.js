@@ -37,20 +37,25 @@ define([
         orientation: undefined, // landscape | portrait
         ratio: 0, // < 1 => portrait | > 1 landscape TODO: Doppelung
         exif: {},
-        meta: {}
+        meta: {},
+        imagePagePath: undefined
       };
     },
     
     // Constructor/Initializer has to be called with a options.presets hash with 
     // a baseurl for every preset (minimum: thumb & large).
     initialize: function(attrs, options) {
-      // set the src attribute for every preset
       if (options !== undefined) {
+        // set the src attribute for every preset
         _.forEach(options.presets, _.bind(function(preset, presetKey) {
           this.attributes[presetKey]['src'] = preset['baseurl'] + '/' + attrs['filename'];
         }, this));
         // set orig-filename
         this.attributes['filenameOrig'] = attrs['filename'].replace('-' + attrs['digest'], '');
+        // set image_page url
+        if (options.gallery && options.gallery.imagePages && options.gallery.basepath) {
+          this.attributes['imagePagePath'] = options.gallery.basepath + attrs['digest'];
+        }
       }
     },
 

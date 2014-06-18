@@ -1,6 +1,9 @@
 {
   "gallery": {
     "title": "Flyer Doc Patcheko",
+    "postPath": "/",
+    "postBasepath": "/",
+    "postBaseurl": "http://0.0.0.0:9000",
     "presets": {
       "thumb": {
         "width": 240,
@@ -21,6 +24,18 @@
     },
     "meta": {
       "foo": "bar"
+    },
+    "dynamic": true,
+    "imagePages": true,
+    "opts": {
+      "min_col_width": {
+        "desktop": 120,
+        "pad": 120,
+        "phone": 120
+      },
+      "gutter_width": 3,
+      "chunk_size": 15,
+      "first_chunk": 25
     },
     "imageCount": 231,
     "images": [
@@ -5571,17 +5586,6 @@
           "height": 848
         }
       }
-    ],
-    "dynamic": true,
-    "opts": {
-      "min_col_width": {
-        "desktop": 120,
-        "pad": 120,
-        "phone": 120
-      },
-      "gutter_width": 3,
-      "chunk_size": 15,
-      "first_chunk": 25
-    }
+    ]
   }
 }
