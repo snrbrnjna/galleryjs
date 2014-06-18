@@ -276,7 +276,7 @@
 }
 /* Reset Selector in Cockpit */
 [data-gal-selection="false"] .cockpit .cockpit_body div:first-child,
-[data-gal-selection] .cockpit .cockpit_body div:first-child + div {
+[data-gal-selection="false"] .cockpit .cockpit_body div:first-child + div {
   padding-left: 72px;
 }
 .cockpit span.selector {
