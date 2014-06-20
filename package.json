@@ -3,7 +3,12 @@
   "version": "0.7.3",
   "author": "Snr Brnjna <snr@brnjna.net>",
   "description": "a little responsive full width masonry gallery",
-  "keywords": "gallery, masonry, responsive, backbone",
+  "keywords": [
+    "gallery", 
+    "masonry", 
+    "responsive", 
+    "backbone"
+  ],
   "licence": "modified MIT",
   "repository": {
     "type": "git",
