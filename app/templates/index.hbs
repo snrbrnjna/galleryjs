@@ -1,8 +1,9 @@
 ---
-layout: gallery.hbs
-
-gallery:
-  key: <% if (production) { %>flyer-doc-remote<% } else { %>flyer-doc-local<% } %>
-  src: <%= gallery.key %>.json
-  selection: <%= gallery.key %>
+layout: default.hbs
+title: 'galleryjs'
+content_class: page
 ---
+
+{{#markdown}}
+Here we go. Have a taste of [galleryjs](https://github.com/snrbrnjna/galleryjs).
+{{/markdown}}

@@ -8,21 +8,23 @@ header {
   padding: 8px;
 }
 
-h1, h2, .menu a {
+header h1, header h2, .menu a {
   font-family: grutchshadedregular, Helvetica, OpenSans, Arial;
   color: #40445C;
   margin: 0;
   font-weight: normal;
 }
 
-h1 {
+header h1 {
   font-size: 3.25em;
 }
-h1 a, .menu a {
+header h1 a, .menu a {
   color: #40445C;
   text-decoration: none;
 }
-
+header h2 {
+  display: none;
+}
 .menu a {
   font-size: 1.3em;
   display: inline-block;

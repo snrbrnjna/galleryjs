@@ -263,14 +263,20 @@ module.exports = function (grunt) {
                     production: false,
                     pdfService: '<%= site.pdf_service.dev %>'
                 },
-                files: {'.tmp/': ['<%= site.templates %>/*.hbs']}
+                files: {'.tmp/': [
+                    '<%= site.templates %>/*.hbs',
+                    '<%= site.templates %>/galleries/*.hbs'
+                ]}
             },
             dist: {
                 options: {
                     production: true,
                     pdfService: '<%= site.pdf_service.dist %>'
                 },
-                files: {'<%= yeoman.dist %>/': ['<%= site.templates %>/*.hbs']}
+                files: {'<%= yeoman.dist %>/': [
+                    '<%= site.templates %>/*.hbs',
+                    '<%= site.templates %>/galleries/*.hbs'
+                ]}
             }
         },
         copy: {

@@ -44,7 +44,9 @@
 
         {{> header }}
 
-        {{> body }}
+        <div class="content {{content_class}}">
+            {{> body }}
+        </div>
 
         {{#unless production}}
         <!-- env: development -->
