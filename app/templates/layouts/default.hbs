@@ -33,7 +33,7 @@
         <!-- endenv -->
         {{/if}}
 
-        <!-- build:js scripts/vendor/modernizr.js -->
+        <!-- build:js(app) scripts/vendor/modernizr.js -->
         <script src="bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
     </head>
@@ -54,7 +54,9 @@
 
         {{#if production}}
         <!-- env: production -->
+            <!-- build:js(app) scripts/vendor/jquery.js -->
             <script src="bower_components/jquery/dist/jquery.min.js"></script>
+            <!-- endbuild -->
 
             <!-- build:js(dist) scripts/gallery.pkgd.js -->
             <script src="scripts/gallery.pkgd.js"></script>

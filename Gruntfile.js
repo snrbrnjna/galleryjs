@@ -306,8 +306,6 @@ module.exports = function (grunt) {
                             '.htaccess',
                             'images/{,*/}*.{webp,gif,svg,png,gif,jpg}',
                             'styles/fonts/{,*/}*.*',
-                            'bower_components/modernizr/modernizr.js',
-                            'bower_components/jquery/dist/jquery.min.js',
                             'scripts/main.js',
                             '*.json'
                         ]
@@ -325,7 +323,6 @@ module.exports = function (grunt) {
                         '.htaccess',
                         'images/{,*/}*.{webp,gif,svg,png,gif,jpg}',
                         'scripts/**/*.js',
-                        'bower_components/jquery/dist/jquery.min.js',
                         'styles/**/*.*', // also fonts
                         '*.json',
                         '*.html'
