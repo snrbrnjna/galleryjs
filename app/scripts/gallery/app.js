@@ -37,7 +37,7 @@ function(Backbone, _, GalleryFactory, SelectionCollection,
         this.model = GalleryFactory.create(this.$el);
 
         // Init Selection
-        if (ResponsiveAdapter.getMediaType() === 'desktop') {
+        if (ResponsiveAdapter.getMediaType() !== 'phone') {
           this.initSelection();
         } else {
           this.$el.removeAttr('data-gal-selection');
