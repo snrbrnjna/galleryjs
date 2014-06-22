@@ -23,7 +23,7 @@ Or get the latest script and stylesheet files from the [repo](/lib).
 ## Integrate
 
 ### HTML
-Hava a look at [index-dev.html](/app/index-dev.html) inside the ``Gallery-App`` comments for the HTML markup needed for gallery.js.
+Hava a look at [index.html](/app/templates/layouts/gallery.hbs) inside the ``Gallery-App`` comments for the HTML markup needed for gallery.js.
 
 ### JS
 Inizialize the gallery in your main.js:
@@ -31,7 +31,7 @@ Inizialize the gallery in your main.js:
 ``` js
 new GalleryApp({
     el: $('.gallery-app'),
-    onInit: function(app, model)
+    onInit: function(app, model) {}
 });
 ```
 

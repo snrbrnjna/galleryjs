@@ -8,19 +8,34 @@ header {
   padding: 8px;
 }
 
-h1 {
+h1, h2, .menu a {
   font-family: grutchshadedregular, Helvetica, OpenSans, Arial;
-  font-size: 3.25em;
-  font-weight: normal;
   color: #40445C;
   margin: 0;
+  font-weight: normal;
 }
 
-h2 {
-  padding: 0 8px;
-  margin: 1em 0 .5em;
+h1 {
+  font-size: 3.25em;
+}
+h1 a, .menu a {
+  color: #40445C;
+  text-decoration: none;
 }
 
+.menu a {
+  font-size: 1.3em;
+  display: inline-block;
+  margin: 0 1em 5px 0;
+  border-bottom: 1px solid #40445C;
+}
+.menu a:hover {
+  border-bottom: 1px solid #89F8AD;
+}
+.menu a.current {
+  cursor: text;
+  border-bottom: 1px solid #89F8AD;
+}
 .selection .button {
   display: none;
   opacity: .5;
@@ -52,7 +67,6 @@ h2 {
 .selection .button.toggle:before {
   content: 'Filter ';
 }
-
 .selection .button.error {
   border-color: red;
 }
@@ -77,6 +91,15 @@ h2 {
         background-color: #EF89F8; 
         -webkit-box-shadow: 0 0 9px #ccc; 
     }
+}
+
+/* empty message */
+.empty-message {
+  display: none;
+  margin-top: 2em;
+}
+.empty .empty-message {
+  display: block;
 }
 
 @media (max-width: 640px) {

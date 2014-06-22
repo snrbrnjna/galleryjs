@@ -1,6 +1,13 @@
 {
   "gallery": {
     "title": "Flyer Doc Patcheko",
+    "meta": {
+      "date": "2014-04-16 14-59-33",
+      "title": "Flyer Doc Patcheko",
+      "categories": null,
+      "tags": null,
+      "author": "hias"
+    },
     "postPath": "/",
     "postBasepath": "/",
     "postBaseurl": "http://0.0.0.0:9000",
@@ -22,11 +29,8 @@
         "baseurl": "images/galleries/flyer-doc/large"
       }
     },
-    "meta": {
-      "foo": "bar"
-    },
     "dynamic": true,
-    "imagePages": true,
+    "imagePages": false,
     "opts": {
       "min_col_width": {
         "desktop": 120,

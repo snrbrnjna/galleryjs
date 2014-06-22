@@ -1,0 +1,8 @@
+---
+layout: gallery.hbs
+gallery:
+  key: <% if (production) { %>flyer-doc-remote<% } else { %>flyer-doc-local<% } %>
+  src: 'selection:<%= gallery.key %>'
+  selection: <%= gallery.key %>
+  opts: '{"min_col_width": {"desktop": 150, "pad": 120, "phone": 120}, "gutter_width": 3, "chunk_size": 15, "first_chunk": 25}'
+---

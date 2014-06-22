@@ -1,0 +1,16 @@
+<header>
+    <h1><a href="/">Have a Gallery</a></h1>
+    <h2>{{ title }}</h2>
+    <div class="menu selection">
+      <a href="/" class="{{#is pagename "index.html"}}current{{/is}}">
+        ... with a Selection
+      </a>
+      <a href="selection.html" class="{{#is pagename "selection.html"}}current{{/is}}">
+        ... of a Selection [<span class="indicator"></span>]
+      </a>
+    </div>
+    <div class="selection">
+          <span class="toggle button" title="toggle selection"><span class="indicator"></span></span>
+          <span class="pdf button" title="download selected photos as PDF document" data-url="{{pdfService}}" data-title="Flyer Selection" data-key="flyer"></span>
+      </div>
+</header>

@@ -1,0 +1,26 @@
+# =============================================
+# Build config
+# =============================================
+
+app:          <%= yeoman.app %>   # comes from Gruntfile 
+
+# Data
+data:         data/*.{json,yml} #<% site.app %>/data/*.{json,yml}
+
+# Templates
+templates:    <%= site.app %>/templates
+includes:     <%= site.templates %>/includes/*.hbs
+layouts:      <%= site.templates %>/layouts
+layout:       default.hbs
+
+helpers:      <%= site.templates %>/helpers
+plugins:      <%= site.templates %>/plugins
+
+# =============================================
+# App config
+# =============================================
+
+# Gallery
+pdf_service:
+  dev: http://localhost:1337/pdf
+  dist: http://api.brnjna.net/pdf

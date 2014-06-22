@@ -20,6 +20,7 @@ module.exports = function (grunt) {
     require('time-grunt')(grunt);
     // load all grunt tasks
     require('load-grunt-tasks')(grunt);
+    grunt.loadNpmTasks('assemble');
 
     // configurable paths
     var yeomanConfig = {
@@ -32,6 +33,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         yeoman: yeomanConfig,
+        site  : grunt.file.readYAML('_config.yml'),
         watch: {
             options: {
                 nospawn: true,
@@ -47,10 +49,14 @@ module.exports = function (grunt) {
                     '{.tmp,<%= yeoman.app %>}/scripts/**/*.js',
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
                     '<%= yeoman.app %>/scripts/templates/*.{ejs,mustache,hbs}',
-                    'test/spec/**/*.js'
+                    '<%= site.templates %>/**/*.{ejs,mustache,hbs}',
+                    'test/spec/**/*.js',
+                    '_config.*'
                 ],
-                tasks: ['copy:prepareDev']
-
+                tasks: [
+                    'clean:server',
+                    'assemble:dev'
+                ]
             },
             jst: {
                 files: [
@@ -186,7 +192,7 @@ module.exports = function (grunt) {
             }
         },
         useminPrepare: {
-            html: '<%= yeoman.app %>/index.html',
+            html: '<%= yeoman.dist %>/index.html',
             options: {
                 dest: '<%= yeoman.dist %>'
             }
@@ -229,25 +235,45 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: '<%= yeoman.app %>',
+                    cwd: '<%= yeoman.dist %>',
                     src: '*.html',
                     dest: '<%= yeoman.dist %>'
                 }]
             }
         },
+        assemble: {
+            options: {
+                flatten: true,
+                // Metadata
+                pkg: '<%= pkg %>',
+                site: '<%= site %>',
+                // data: ['<%= site.data %>'], // not used
+
+                // Templates
+                partials: '<%= site.includes %>',
+                layoutdir: '<%= site.layouts %>',
+                layout: '<%= site.layout %>',
+
+                // Extensions
+                // helpers: '<%= site.helpers %>', // not used
+                // plugins: '<%= site.plugins %>'  // not used
+            },
+            dev: {
+                options: {
+                    production: false,
+                    pdfService: '<%= site.pdf_service.dev %>'
+                },
+                files: {'.tmp/': ['<%= site.templates %>/*.hbs']}
+            },
+            dist: {
+                options: {
+                    production: true,
+                    pdfService: '<%= site.pdf_service.dist %>'
+                },
+                files: {'<%= yeoman.dist %>/': ['<%= site.templates %>/*.hbs']}
+            }
+        },
         copy: {
-            prepareDev: {
-                files: {
-                    '<%= yeoman.app %>/index.html': '<%= yeoman.app %>/index-dev.html',
-                    '<%= yeoman.app %>/selection.html': '<%= yeoman.app %>/selection-dev.html',
-                }
-            },
-            prepareDist: {
-                files: {
-                    '<%= yeoman.app %>/index.html': '<%= yeoman.app %>/index-dist.html',
-                    '<%= yeoman.app %>/selection.html': '<%= yeoman.app %>/selection-dist.html',
-                }
-            },
             lib: {
                 files: {
                     '<%= yeoman.lib %>/gallery.pkgd.js': [
@@ -269,20 +295,24 @@ module.exports = function (grunt) {
                 }
             },
             dist: {
-                files: [{
-                    expand: true,
-                    dot: true,
-                    cwd: '<%= yeoman.app %>',
-                    dest: '<%= yeoman.dist %>',
-                    src: [
-                        '*.{ico,txt}',
-                        '.htaccess',
-                        'images/{,*/}*.{webp,gif,svg,png,gif,jpg}',
-                        'styles/fonts/{,*/}*.*',
-                        '*.json',
-                        '*.html' // remove, when htmlmin comes in again
-                    ]
-                }]
+                files: [
+                    {
+                        expand: true,
+                        dot: true,
+                        cwd: '<%= yeoman.app %>',
+                        dest: '<%= yeoman.dist %>',
+                        src: [
+                            '*.{ico,txt}',
+                            '.htaccess',
+                            'images/{,*/}*.{webp,gif,svg,png,gif,jpg}',
+                            'styles/fonts/{,*/}*.*',
+                            'bower_components/modernizr/modernizr.js',
+                            'bower_components/jquery/dist/jquery.min.js',
+                            'scripts/main.js',
+                            '*.json'
+                        ]
+                    }
+                ]
             },
             ghpages: {
                 files: [{
@@ -295,6 +325,7 @@ module.exports = function (grunt) {
                         '.htaccess',
                         'images/{,*/}*.{webp,gif,svg,png,gif,jpg}',
                         'scripts/**/*.js',
+                        'bower_components/jquery/dist/jquery.min.js',
                         'styles/**/*.*', // also fonts
                         '*.json',
                         '*.html'
@@ -365,8 +396,8 @@ module.exports = function (grunt) {
         }
 
         grunt.task.run([
-            'copy:prepareDev',
             'clean:server',
+            'assemble:dev',
             'createDefaultTemplate',
             'jst',
             'connect:livereload',
@@ -399,8 +430,8 @@ module.exports = function (grunt) {
         
         var buildTasks = [
             'jshint',
-            'copy:prepareDist',
             'clean:dist',
+            'assemble:dist',
             'createDefaultTemplate',
             'jst',
             'useminPrepare',
