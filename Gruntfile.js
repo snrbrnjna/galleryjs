@@ -405,7 +405,7 @@ module.exports = function (grunt) {
             'jst',
             'connect:livereload',
             'open:server',
-            'watch'
+            'watch:livereload'
         ]);
     });
 
