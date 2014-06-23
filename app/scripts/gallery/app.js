@@ -74,7 +74,8 @@ function(Backbone, _, GalleryFactory, SelectionCollection,
 
     // Init SelectionCollection only when there is the data attrib data-gal-selector
     initSelection: function() {
-      if (this.$el.data('gal-selection') !== undefined) {
+      var galSelectionAttrib = this.$el.data('gal-selection');
+      if (!!galSelectionAttrib) {
         // init selection collection
         this.selection = new SelectionCollection([], {
           gallery: this.model,

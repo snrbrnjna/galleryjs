@@ -1,0 +1,8 @@
+---
+layout: gallery.hbs
+title: gallery without a selection
+gallery:
+  key: <% if (production) { %>flyer-doc-remote<% } else { %>flyer-doc-local<% } %>
+  src: <%= gallery.key %>.json
+  selection: 'false'
+---
