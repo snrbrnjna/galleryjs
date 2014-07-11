@@ -15,20 +15,22 @@ define([
       var src = _getSource($el);
 
       // initialize GalleryModel
-      var model;
-      if (src.indexOf('selection:') < 0) {
-        model = new GalleryModel({
-          src: src,
-          opts: $el.data('gal-opts') || $el.data('opts')
-        });
-      } else {
-        model = new SelectionGalleryModel({
-          key: src.replace('selection:', ''),
-          opts: $el.data('gal-opts') || $el.data('opts')
-        });
+      if (src !== undefined) {
+        var model;
+        if (src.indexOf('selection:') < 0) {
+          model = new GalleryModel({
+            src: src,
+            opts: $el.data('gal-opts') || $el.data('opts')
+          });
+        } else {
+          model = new SelectionGalleryModel({
+            key: src.replace('selection:', ''),
+            opts: $el.data('gal-opts') || $el.data('opts')
+          });
+        }
+        return model;
       }
 
-      return model;
     }
 
     // extracts the corrects data attribute for the Gallery model to be 

@@ -47,7 +47,11 @@ header h2 {
   margin: 2px 0;
   border: 1px solid #E80AFC;
 }
-.selection .button.initialized {
+.selection .indicator {
+  display: none;
+}
+.selection .button.initialized,
+.selection .indicator.initialized {
   display: inline-block;
 }
 .selection .button.active {
@@ -63,8 +67,11 @@ header h2 {
   box-shadow: none; /* button pressed */
   color: #000;
 }
+.selection .indicator:before {
+  content: '[';
+}
 .selection .indicator:after {
-  content: ' Photos';
+  content: ' Photos]';
 }
 .selection .button.toggle:before {
   content: 'Filter ';

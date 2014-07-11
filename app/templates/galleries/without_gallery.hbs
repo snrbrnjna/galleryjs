@@ -1,0 +1,17 @@
+---
+layout: default.hbs
+content_class: gallery
+title: gallery without a gallery (only a selection we have)
+---
+
+{{#markdown}}
+### Here we go! 
+
+Selection indicators also work on pages, where we have no gallery. 
+Therefor the indicators have to explicitly define the selection key for which 
+they should show, a.k.a indicate the number of items.
+{{/markdown}}
+
+<span class="indicator" data-selection="fantasy"></span> Fantasy Indicator <br/>
+
+<span class="indicator" data-selection="{{#if production}}flyer-doc-remote{{else}}flyer-doc-local{{/if}}"></span> Reality Indicator

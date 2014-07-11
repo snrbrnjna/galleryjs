@@ -14,7 +14,8 @@ function(Backbone, SelectionComponent) {
 
   var SelectionIndicator = SelectionComponent.extend({
 
-    el: '.selection .indicator',
+    // the ones with data-selection get their elements passed in explicitly (see app.js)
+    el: '.selection .indicator:not([data-selection])',
 
     selectionChanged: function(opts) {
       this.render();

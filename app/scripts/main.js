@@ -16,16 +16,13 @@
 
   function main(GalleryAppClass) {
     $(function () {
-      var galleryEl = $('.gallery-app');
-      if (galleryEl.length) {
-        // initialize Gallery
-        new GalleryAppClass({
-          el: galleryEl,
-          onInit: function(app, model) {
-            console.log('Gallery initialized!', app, model);
-          }
-        });
-      }
+      // initialize Gallery
+      new GalleryAppClass({
+        el: $('.gallery-app'),
+        onInit: function(app, model) {
+          console.log('Gallery initialized!', app, model);
+        }
+      });
     });
   }
 
