@@ -27,7 +27,7 @@
 
         <header>
     <h1><a href="/">Have a Gallery</a></h1>
-    <h2>galleryjs</h2>
+    <h2>gallery without a gallery (only a selection we have)</h2>
     <div class="menu selection">
       <a href="with_selection.html" class="">
         ... with Selection
@@ -38,7 +38,7 @@
       <a href="without_selection.html" class="">
         ... without Selection
       </a>
-      <a href="without_gallery.html" class="">
+      <a href="without_gallery.html" class="current">
         ... without Gallery
       </a>
       <a href="readme.html" class="">
@@ -53,11 +53,18 @@
 </header>
 
 
-        <div class="content page">
+        <div class="content gallery">
             
 
-<p>Here we go. Have a taste of <a href="https://github.com/snrbrnjna/galleryjs">galleryjs</a>.</p>
+<h3 id="here-we-go-">Here we go!</h3>
+<p>Selection indicators also work on pages, where we have no gallery. 
+Therefor the indicators have to explicitly define the selection key for which 
+they should show, a.k.a indicate the number of items.</p>
 
+
+<span class="indicator" data-selection="fantasy"></span> Fantasy Indicator <br/>
+
+<span class="indicator" data-selection="flyer-doc-remote"></span> Reality Indicator
 
         </div>
 

@@ -27,7 +27,7 @@
 
         <header>
     <h1><a href="/">Have a Gallery</a></h1>
-    <h2>galleryjs</h2>
+    <h2>readme</h2>
     <div class="menu selection">
       <a href="with_selection.html" class="">
         ... with Selection
@@ -41,7 +41,7 @@
       <a href="without_gallery.html" class="">
         ... without Gallery
       </a>
-      <a href="readme.html" class="">
+      <a href="readme.html" class="current">
         readme
       </a>
     </div>
@@ -56,7 +56,39 @@
         <div class="content page">
             
 
-<p>Here we go. Have a taste of <a href="https://github.com/snrbrnjna/galleryjs">galleryjs</a>.</p>
+<h1 id="gallery-js">gallery.js</h1>
+<p>A <a href="http://backbonejs.org/">backbone</a> app for a full width <a href="http://masonry.desandro.com/">masonry</a> gallery. </p>
+<h2 id="install">Install</h2>
+<p>Install via <a href="http://bower.io/">bower</a>:</p>
+<pre><code class="language-bash">bower install gallery.js</code></pre>
+<p>Or get the latest script and stylesheet files from the <a href="/lib">repo</a>.</p>
+<h3 id="development">Development</h3>
+<ul>
+<li>Clone Repo</li>
+<li>Install dependencies:<ul>
+<li>npm install</li>
+<li>bower install</li>
+</ul>
+</li>
+<li>For development: <code>grunt serve</code> </li>
+<li>For building the example gallery into a <code>dist</code> folder: <code>grunt build</code></li>
+</ul>
+<h2 id="integrate">Integrate</h2>
+<h3 id="html">HTML</h3>
+<p>Hava a look at <a href="/app/templates/layouts/gallery.hbs">index.html</a> inside the <code>Gallery-App</code> comments for the HTML markup needed for gallery.js.</p>
+<h3 id="js">JS</h3>
+<p>Inizialize the gallery in your main.js:</p>
+<pre><code class="language-js"><span class="keyword">new</span> GalleryApp({
+    el: $(<span class="string">'.gallery-app'</span>),
+    onInit: <span class="function"><span class="keyword">function</span><span class="params">(app, model)</span> {</span>}
+});</code></pre>
+<p>The <code>onInit</code> is called, when the gallery data is fetched. It gets 2 params: </p>
+<ul>
+<li>the GalleryApp object, a backbone view representing the whole application and</li>
+<li>the GalleryModel object, a backbone model representing the Gallery data including the ImageCollection.</li>
+</ul>
+<h2 id="example-gallery">Example Gallery</h2>
+<p>The <a href="https://snrbrnjna.github.io/galleryjs">Images</a> are flyers for the <a href="http://gutfeeling.de">gutfeeling</a> collective by the famous giftwrapping-doctor Sascha Schwegler.</p>
 
 
         </div>

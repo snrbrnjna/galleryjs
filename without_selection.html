@@ -27,7 +27,7 @@
 
         <header>
     <h1><a href="/">Have a Gallery</a></h1>
-    <h2>galleryjs</h2>
+    <h2>gallery without a selection</h2>
     <div class="menu selection">
       <a href="with_selection.html" class="">
         ... with Selection
@@ -35,7 +35,7 @@
       <a href="of_a_selection.html" class="">
         ... of a Selection <span class="indicator" data-selection="flyer-doc-remote"></span>
       </a>
-      <a href="without_selection.html" class="">
+      <a href="without_selection.html" class="current">
         ... without Selection
       </a>
       <a href="without_gallery.html" class="">
@@ -53,11 +53,75 @@
 </header>
 
 
-        <div class="content page">
+        <div class="content gallery">
             
 
-<p>Here we go. Have a taste of <a href="https://github.com/snrbrnjna/galleryjs">galleryjs</a>.</p>
+        
 
+
+        <!-- Gallery App -->
+        <div class="gallery-app" 
+          data-gal-src="flyer-doc-remote.json" 
+          data-gal-selection="false"
+          data-gal-opts="">
+            
+            <!-- Container for Thumbs of First Page -->
+            <div class="container photos"></div>
+            <div class="stopper"></div>
+            <!-- End Container Thumbs -->
+
+            <!-- Slider -->
+            <div class="slider">
+                <div class="tray">
+                    <div id="prev" class="photo prev"></div>
+                    <div id="current" class="photo current"></div>
+                    <div id="next" class="photo next"></div>
+                    <a class="nav prev" title="[<-] previous"></a>
+                    <a class="nav next" title="next [->]"></a>
+                    <div class="close_button" title="close the slider [ESC]">
+                        <div class="svg-icon">
+                            <span style="background-image: url('images/4ff06669.icon-cross.png');">
+                                <img src="images/icon-cross.svg">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="cockpit">
+                        <div class="cockpit_body"></div>
+                        <div class="cockpit_button">
+                            <div class="menu_icon svg-icon">
+                                <span style="background-image: url('images/1e349788.icon-menu.png');">
+                                    <img src="images/icon-menu.svg">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Slider -->
+
+            <script type="text/html" id="template-thumb">
+              <div class="photo loading" id="<%= img.get('digest') %>">
+                  <img src="<%= img.getThumb().src %>"/>
+                  <span class="selector"></div>
+              </div>
+            </script>
+
+            <script type="text/html" id="template-cockpitBody">
+              <div class="action">
+                  <span class="selector"/>
+              </div>
+              <div class="meta">
+                  <span class="line index"><%= img.index()+1 %> / <%= img.collection.length %></span>
+                  <span class="line filename"><%= img.get('filenameOrig') %></span>
+              </div>
+            </script>
+
+            <div class="empty-message">
+                No images in your favorite selection found.<br/>
+                Add your favorite images to this Selection with the "add to pdf" button in one of our <a href="/">galleries</a>.
+            </div> 
+        </div>
+        <!-- End Gallery App -->
 
         </div>
 
