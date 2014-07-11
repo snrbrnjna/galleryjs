@@ -31,18 +31,13 @@ function(Backbone, _, GalleryFactory, SelectionCollection,
     el: 'article.gallery',
 
     initialize: function(opts) {
-      if (this.$el.length) {
-        
-        // Init GalleryModel
-        this.model = GalleryFactory.create(this.$el);
+      // Init GalleryModel
+      this.model = GalleryFactory.create(this.$el);
 
-        // Init Selection
-        if (ResponsiveAdapter.getMediaType() !== 'phone') {
-          this.initSelection();
-        } else {
-          this.$el.removeAttr('data-gal-selection');
-        }
+      // Init Selection
+      this.initSelection();
 
+      if (this.model) {
         // Init ThumbContainerView
         this.initThumbContainer();
         
@@ -72,37 +67,59 @@ function(Backbone, _, GalleryFactory, SelectionCollection,
       }
     },
 
-    // Init SelectionCollection only when there is the data attrib data-gal-selector
+    // Init Selections (not on phones)
     initSelection: function() {
-      var galSelectionAttrib = this.$el.data('gal-selection');
-      if (!!galSelectionAttrib) {
-        // init selection collection
-        this.selection = new SelectionCollection([], {
-          gallery: this.model,
-          key: this.$el.data('gal-selection')
-        });
+      if (ResponsiveAdapter.getMediaType() !== 'phone') {
+        // Global SelectionCollection for gallery only when there is the 
+        // data attrib data-gal-selector
+        var galSelectionAttrib = this.$el.data('gal-selection');
+        if (!!galSelectionAttrib) {
+          // init selection collection
+          this.selection = SelectionCollection.get(this.$el.data('gal-selection'), this.model);
 
-        // init selection indicator
-        this.selectionIndicator = new SelectionIndicator({
-          collection: this.selection
-        });
+          // init selection indicator
+          this.selectionIndicator = new SelectionIndicator({
+            collection: this.selection
+          });
 
-        // init toggle button
-        this.selectionToggleButton = new SelectionToggleButton({
-          collection: this.selection
-        });
+          // init toggle button
+          this.selectionToggleButton = new SelectionToggleButton({
+            collection: this.selection
+          });
 
-        // init pdf button
-        this.selectionPdfButton = new SelectionPdfButton({
-          collection: this.selection
-        });
+          // init pdf button
+          this.selectionPdfButton = new SelectionPdfButton({
+            collection: this.selection
+          });
 
-        // init selection components, which only need to be initialized and set active/inactive
-        new SelectionComponent({
-          el: $('.selection .component'),
-          collection: this.selection
+          // init selection components, which only need to be initialized and set active/inactive
+          new SelectionComponent({
+            el: $('.selection .component'),
+            collection: this.selection
+          });
+        }
+
+        // Explicitly addressed selection indicators
+        // Group them by selection keys
+        var mapping = {};
+        $('[data-selection].indicator').each(function() {
+          var $el = $(this);
+          mapping[$el.data('selection')] = 
+            mapping[$el.data('selection')] === undefined ? $el : mapping[$el.data('selection')].add($el);
         });
+        // initialize a indicator view for every selection key.
+        _.each(mapping, function($elements, key) {
+          var sel = SelectionCollection.get(key, this.model);
+          new SelectionIndicator({ collection: sel, el: $elements });
+          if (sel.gallery === undefined) {
+            sel.fetch();
+          }
+        }, this);
+
+      } else {
+        this.$el.removeAttr('data-gal-selection');
       }
+
     },
 
     // Instanciate the ThumbContainerView (dynamic or standard?)

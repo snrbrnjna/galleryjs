@@ -6,15 +6,19 @@
         ... with Selection
       </a>
       <a href="of_a_selection.html" class="{{#is pagename "of_a_selection.html"}}current{{/is}}">
-        ... of a Selection [<span class="indicator"></span>]
+        ... of a Selection <span class="indicator" data-selection="{{#if production}}flyer-doc-remote{{else}}flyer-doc-local{{/if}}"></span>
       </a>
       <a href="without_selection.html" class="{{#is pagename "without_selection.html"}}current{{/is}}">
         ... without Selection
+      </a>
+      <a href="without_gallery.html" class="{{#is pagename "without_gallery.html"}}current{{/is}}">
+        ... without Gallery
       </a>
       <a href="readme.html" class="{{#is pagename "readme.html"}}current{{/is}}">
         readme
       </a>
     </div>
+    {{! this is only initialized, when the global gallery has a selection }}
     <div class="selection">
           <span class="toggle button" title="toggle selection"><span class="indicator"></span></span>
           <span class="pdf button" title="download selected photos as PDF document" data-url="{{pdfService}}" data-title="Flyer Selection" data-key="flyer"></span>

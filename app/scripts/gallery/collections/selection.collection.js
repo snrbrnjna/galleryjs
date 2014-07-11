@@ -23,14 +23,20 @@ function (_, Backbone, nope, ImageModel) {
        * or, when the key is a boolean, by the id of the given GalleryModel 
        * (``options.gallery``). 
        * The Collection gets connected with the given GalleryModel: 
-       * Once it's Images are loaded their selected attribute is set, when they
+       * Once it's Images are loaded, the selection is fetched from the 
+       * localStorage and the GalleryModel images are marked ``selected``, if they
        * are in the Selection. Then the ``selected`` attribute of the GalleryModel
        * images are watched, so that the selection contains only selected images.
+       *
+       * If ``options.gallery`` is undefined, the collection has to be fetched
+       * manually.
        **/
       initialize: function (models, options) {
         // connect gallery and selection
-        this.gallery = options.gallery;
-        this.gallery.set('selection', this);
+        if (options.gallery) {
+          this.gallery = options.gallery;
+          this.gallery.set('selection', this);
+        }
 
         // A id and key for identifying the Selection
         this.key = typeof(options.key) === 'boolean' ?
@@ -42,7 +48,9 @@ function (_, Backbone, nope, ImageModel) {
 
         // wait for the ImageCollection to be fetched 
         // => listenTo it & fetch selection from localStorage
-        this.listenToOnce(this.gallery, 'change', this.initGallery);
+        if (this.gallery) {
+          this.listenToOnce(this.gallery, 'change', this.initGallery);
+        } 
       },
 
       // Called, when the GalleryModel is initialized/loaded
@@ -89,6 +97,19 @@ function (_, Backbone, nope, ImageModel) {
         } else if (selectionModel) {
           selectionModel.destroy();
         }
+      }
+    }, {
+      // static members
+
+      _pool: {},
+
+      // Only on instance per key and gallery
+      get: function(key, gallery) {
+        var _key = key + '#' + (gallery !== undefined ? gallery.id : 'nixGallery');
+        if (!_.has(this._pool, _key)) {
+          this._pool[_key] = new SelectionCollection([], {key: key, gallery: gallery});
+        }
+        return this._pool[_key];
       }
     });
     
