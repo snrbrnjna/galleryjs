@@ -119,7 +119,6 @@ function(Backbone, _, GalleryFactory, SelectionCollection,
       } else {
         this.$el.removeAttr('data-gal-selection');
       }
-
     },
 
     // Instanciate the ThumbContainerView (dynamic or standard?)
@@ -135,11 +134,20 @@ function(Backbone, _, GalleryFactory, SelectionCollection,
       }
     },
 
+    // Instanciate the Slider view
     initSlider: function() {
       this.sliderView = new SliderView({
         el: this.$('.slider'),
         model: this.model
       });
+    },
+
+    // Give app user access to the ResponsiveAdapter
+    getResponsiveAdapter: function() {
+      if (this.responsiveAdapter === undefined) {
+        this.responsiveAdapter = ResponsiveAdapter;
+      }
+      return this.responsiveAdapter;
     }
 
   });
