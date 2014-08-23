@@ -76,8 +76,9 @@
   transition-delay: 0s;
   opacity: 1;
 }
-.loaded span.selector:hover,
-.cockpit span.selector:hover {
+/* button feedback on hover only on no-touch devices */
+.notouch .loaded span.selector:hover,
+.notouch .cockpit span.selector:hover {
   background-position: -52px 3px;
 }
 .loaded span.selector.selected,
@@ -85,8 +86,9 @@
   opacity: 1;
   background-position: -112px 3px;
 }
-.loaded span.selector.selected:hover,
-.cockpit span.selector.selected:hover {
+/* button feedback on hover only on no-touch devices */
+.notouch .loaded span.selector.selected:hover,
+.notouch .cockpit span.selector.selected:hover {
   background-position: -172px 3px;
 }
 /* End Select Button */
