@@ -24,7 +24,7 @@ function($, nope, _, Backbone, SelectButton) {
         
         this.listenTo(this.model, 'slider:newImage', this.onNewImage);
 
-        // not over built in events => doesn't work well on touch devices
+        // not with built in events => doesn't work well on touch devices
         // this falls back to mouse events, when no touch events supported
         this.button.swipe({
           tap: _.bind(this.toggleBody, this)
