@@ -13,12 +13,12 @@
         
         
         <!-- env: production -->
-            <link rel="stylesheet" href="styles/8f38a704.main.css">
-            <link rel="stylesheet" href="styles/fbae0ad9.gallery.css">
+            <link rel="stylesheet" href="styles/27b4b384.main.css">
+            <link rel="stylesheet" href="styles/3acb34ec.gallery.css">
         <!-- endenv -->
         
 
-        <script src="scripts/vendor/ea5a0526.modernizr.js"></script>
+        <script src="scripts/vendor/bc575ea6.modernizr.js"></script>
     </head>
     <body>
         <!--[if lt IE 10]>
@@ -80,9 +80,12 @@
 <p>Inizialize the gallery in your main.js:</p>
 <pre><code class="language-js"><span class="keyword">new</span> GalleryApp({
     el: $(<span class="string">'.gallery-app'</span>),
+    galleryOpts: {},
     onInit: <span class="function"><span class="keyword">function</span><span class="params">(app, model)</span> {</span>}
 });</code></pre>
-<p>The <code>onInit</code> is called, when the gallery data is fetched. It gets 2 params: </p>
+<p><code>el</code>: DOM element with options for the gallery (see <a href="/app/templates/layouts/gallery.hbs">index.html</a> for details).</p>
+<p><code>galleryOpts</code>: options for the gallery model (see <a href="/app/scripts/gallery/model/gallery.model.js">gallery.model.js</a> for details).</p>
+<p><code>onInit</code> is called, when the gallery data is fetched. It gets 2 params: </p>
 <ul>
 <li>the GalleryApp object, a backbone view representing the whole application and</li>
 <li>the GalleryModel object, a backbone model representing the Gallery data including the ImageCollection.</li>
@@ -97,10 +100,10 @@
 
         
         <!-- env: production -->
-            <script src="scripts/vendor/900fa550.jquery.js"></script>
+            <script src="scripts/vendor/475e499f.jquery.js"></script>
 
-            <script src="scripts/30f5c53f.gallery.pkgd.js"></script>
-            <script src="scripts/43cbb0de.main.js"></script>
+            <script src="scripts/e764c6e3.gallery.pkgd.js"></script>
+            <script src="scripts/935d1d70.main.js"></script>
 
             <!-- Piwik -->
             <script type="text/javascript">
