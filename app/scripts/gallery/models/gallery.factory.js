@@ -1,7 +1,8 @@
 define([
+  'underscore',
   'gallery/models/gallery.model',
   'gallery/models/selection.gallery.model'
-], function (GalleryModel, SelectionGalleryModel) {
+], function (_, GalleryModel, SelectionGalleryModel) {
 
   var GalleryFactory = function() {
     
@@ -17,15 +18,16 @@ define([
       // initialize GalleryModel
       if (src !== undefined) {
         var model;
+        var galleryOpts = _.extend({}, $el.data('gal-opts') || $el.data('opts'), opts);
         if (src.indexOf('selection:') < 0) {
           model = new GalleryModel({
             src: src,
-            opts: $el.data('gal-opts') || $el.data('opts')
+            opts: galleryOpts
           });
         } else {
           model = new SelectionGalleryModel({
             key: src.replace('selection:', ''),
-            opts: $el.data('gal-opts') || $el.data('opts')
+            opts: galleryOpts
           });
         }
         return model;

@@ -6,6 +6,8 @@
  * - el: Element to initialize the Gallery on.
  * - onInit: Callback for when the GalleryApp is initialized (the Images are 
  *           loaded). The callback receives to args: GalleryApp and GalleryModel
+ * - galleryOpts: opts for the gallery (override the ones in the gallery DOM 
+                  element (data-gal-opts) and the gallery json).
  */
 define([
   'backbone',
@@ -32,7 +34,7 @@ function(Backbone, _, GalleryFactory, SelectionCollection,
 
     initialize: function(opts) {
       // Init GalleryModel
-      this.model = GalleryFactory.create(this.$el);
+      this.model = GalleryFactory.create(this.$el, opts['galleryOpts']);
 
       // Init Selection
       this.initSelection();

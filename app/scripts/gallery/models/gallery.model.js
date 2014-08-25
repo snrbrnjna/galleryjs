@@ -48,7 +48,8 @@ define([
       },
       gutter_width: 3, // jshint ignore:line
       chunk_size: 8, // jshint ignore:line
-      first_chunk: 15 // jshint ignore:line
+      first_chunk: 15, // jshint ignore:line
+      double_tap_thumb: false // jshint ignore:line
     },
     
     initialize: function() {

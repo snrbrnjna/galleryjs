@@ -1,9 +1,10 @@
 define([
   'jquery',
+  'vendor/jquery.touchSwipe',
   'backbone',
   'gallery/views/selection/select.button'
 ],
-function($, Backbone, SelectButton) {
+function($, nope, Backbone, SelectButton) {
   /*
    * Model: ImageModel
    * Element: Thumb Container
@@ -18,10 +19,33 @@ function($, Backbone, SelectButton) {
       this.model.setThumbView(this);
       this.gallery = this.options.gallery;
       this.template = this.options.template;
+
+      this.doubleTap = this.gallery.get('opts')['double_tap_thumb'];
     },
-    
-    events: {
-      'click': 'openInSlider'
+
+    // need swipeTouch here for tap shit working correctly
+    // events: {
+    //   'click': 'openInSlider'
+    // },
+
+    // override Backbone.View#remove to remove the touch event listener
+    remove: function() {
+      this.$el.swipe('destroy');
+      Backbone.View.prototype.remove.call(this); // call super()
+      // could also be written as:
+      // this.constructor.__super__.remove.call(this);
+    },
+
+    // double tap feature, when touched
+    clickOrTapped: function(evt) {
+      if (evt.type == 'touchend' && this.doubleTap) {
+        this.$el.addClass('double-tap'); // mark as double tap touch interaction for css styling
+        if (this.$el[0].querySelector(':hover') !== null) {
+          this.openInSlider(); 
+        }
+      } else {
+        this.openInSlider();
+      }
     },
     
     openInSlider: function() {
@@ -31,6 +55,13 @@ function($, Backbone, SelectButton) {
     render: function() {
       var html = this.template({img: this.model}).trim();
       this.setElement($.parseHTML(html));
+
+      // not with built in events => doesn't work well on touch devices
+      // this falls back to mouse events, when no touch events supported
+      this.$el.swipe({
+        tap: _.bind(this.clickOrTapped, this)
+      });
+
       if (!this.selectButton) {
         this.selectButton = new SelectButton({
           model: this.model,

@@ -19,6 +19,7 @@
       // initialize Gallery
       new GalleryAppClass({
         el: $('.gallery-app'),
+        galleryOpts: {},
         onInit: function(app, model) {
           console.log('Gallery initialized!', app, model);
         }

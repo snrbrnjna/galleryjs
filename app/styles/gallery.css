@@ -48,6 +48,9 @@
   width: 100%;
 }
 
+/* if double_tap_thumb feature is active, then mark a once tapped thumb with this rule */
+.photo.loaded.double-tap:hover {background: rgba(100,100,100,0.2);}
+
 /* Select Button */
 [data-gal-selection] span.selector {
   opacity: 0;
@@ -59,7 +62,6 @@
   width: 58px;
   height: 58px;
   background: url(../images/add_button01_sprite.png) no-repeat 7px 3px;
-  z-index: 30;
 }
 [data-gal-selection="false"] span.selector {
   background-image: none;
@@ -75,10 +77,10 @@
   -webkit-transition-delay: 0s;
   transition-delay: 0s;
   opacity: 1;
+  z-index: 30;
 }
-/* button feedback on hover only on no-touch devices */
-.notouch .loaded span.selector:hover,
-.notouch .cockpit span.selector:hover {
+.loaded span.selector:hover,
+.cockpit span.selector:hover {
   background-position: -52px 3px;
 }
 .loaded span.selector.selected,
@@ -86,9 +88,8 @@
   opacity: 1;
   background-position: -112px 3px;
 }
-/* button feedback on hover only on no-touch devices */
-.notouch .loaded span.selector.selected:hover,
-.notouch .cockpit span.selector.selected:hover {
+.loaded span.selector.selected:hover,
+.cockpit span.selector.selected:hover {
   background-position: -172px 3px;
 }
 /* End Select Button */
