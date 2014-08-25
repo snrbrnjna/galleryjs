@@ -38,7 +38,7 @@ new GalleryApp({
 
 ``el``: DOM element with options for the gallery (see [index.html](/app/templates/layouts/gallery.hbs) for details).
 
-``galleryOpts``: options for the gallery model (see [gallery.model.js](/app/scripts/gallery/model/gallery.model.js) for details).
+``galleryOpts``: options for the gallery model (see [gallery.model.js](/app/scripts/gallery/models/gallery.model.js) for details).
 
 ``onInit`` is called, when the gallery data is fetched. It gets 2 params: 
 - the GalleryApp object, a backbone view representing the whole application and
