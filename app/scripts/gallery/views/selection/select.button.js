@@ -1,7 +1,7 @@
 define([
   'backbone',
   'jquery',
-  'vendor/jquery.touchSwipe',
+  'vendor/jquery.touchSwipe'
 ],
 function (Backbone, $, nope) {
 
@@ -34,6 +34,7 @@ function (Backbone, $, nope) {
 
     toggleSelected: function(evt) {
       evt.stopImmediatePropagation();
+      evt.preventDefault();
       this.model.set('selected', !this.model.get('selected'));
     },
 
