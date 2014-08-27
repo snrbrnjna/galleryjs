@@ -34,6 +34,7 @@ define([
         this.folioData.url = this.$el.data('url');
         this.folioData.title = this.$el.data('title');
         this.folioData.key = this.$el.data('key');
+        this.folioData.template = this.$el.data('template');
         
         SelectionComponent.prototype.initialize.apply(this, arguments);
       }
@@ -94,6 +95,7 @@ define([
       var folioPayload = {
         title: this.folioData.title,
         key: this.folioData.key,
+        template: this.folioData.template,
         images: []
       };
       this.collection.each(function(imageModel) {
