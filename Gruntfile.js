@@ -366,6 +366,9 @@ module.exports = function (grunt) {
                 pushTo: 'origin',
                 commitFiles: ['-a']
             }
+        },
+        changelog: {
+            options: {}
         }
     });
 
@@ -467,6 +470,7 @@ module.exports = function (grunt) {
             grunt.task.run([
                 'bump-only:' + target,
                 'build:dist',
+                'changelog',
                 'bump-commit'
             ]);
         } else {
