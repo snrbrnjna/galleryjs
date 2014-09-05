@@ -153,12 +153,13 @@ module.exports = function (grunt) {
         requirejs: {
             dist: {
                 options: {
-                    baseUrl: '<%= yeoman.app %>/scripts',
+                    baseUrl: '<%= yeoman.app %>/bower_components',
                     mainConfigFile: '<%= yeoman.app %>/scripts/rconfig.js',
                     findNestedDependencies: true,
                     optimize: 'none', //uglify2',
                     paths: {
-                        'almond': '../../app/bower_components/almond/almond',
+                        'gallery': '../scripts/gallery',
+                        'almond': 'almond/almond',
                         'jquery': 'empty:' // module is stubbed/shimmed in the endFile Fragment of the Wrapper
                     },
                     almond: true,

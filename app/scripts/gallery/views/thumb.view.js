@@ -1,6 +1,6 @@
 define([
   'jquery',
-  'vendor/jquery.touchSwipe',
+  'jquery-touchswipe',
   'backbone',
   'gallery/views/selection/select.button'
 ],

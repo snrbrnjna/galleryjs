@@ -1,6 +1,6 @@
 define([
   'jquery',
-  'imagesloaded',
+  'imagesloaded/imagesloaded',
   'lib/jquery.inview',
   'underscore',
   'backbone',

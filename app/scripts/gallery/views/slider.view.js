@@ -1,6 +1,6 @@
 define([
   'jquery',
-  'vendor/jquery.touchSwipe',
+  'jquery-touchswipe',
   'vendor/jquery.throttle-debounce',
   'underscore',
   'backbone',

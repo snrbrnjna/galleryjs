@@ -1,7 +1,7 @@
 define([
   'backbone',
   'jquery',
-  'vendor/jquery.touchSwipe'
+  'jquery-touchswipe'
 ],
 function (Backbone, $, nope) {
 
