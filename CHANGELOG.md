@@ -1,3 +1,17 @@
+<a name="1.0.0"></a>
+## 1.0.0 (2014-09-10)
+
+
+#### Breaking Changes
+
+* styling of the masonry tile different.
+the styling of the masonry tiles is a little bit different: we do not need a padding around each tile;
+this is handled by the gutter option. we need a margin-bottom for every tile in the size of the gutter.
+
+the gutter width and the minColumnWidt can be given by element sizing, means we can specify it in the css.
+ ([15ecddcb](https://github.com/snrbrnjna/galleryjs/commit/15ecddcbfc2b4557f73a5205748a6ac69da0bede))
+
+
 <a name="0.9.3"></a>
 ### 0.9.3 (2014-08-27)
 
