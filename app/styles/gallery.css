@@ -14,7 +14,7 @@
 }
 
 .fetched.photos {
-  padding: 5px;
+  padding: 3px;
   background-color: #fff;
 }
 .empty .photos { padding: 0; }
@@ -25,7 +25,7 @@
 }
 .photos .photo {
   float: left;
-  padding: 3px;
+  margin-bottom: 3px;
   cursor: pointer;
 }
 /* fade out/in of thumbs */

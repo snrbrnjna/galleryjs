@@ -1,14 +1,18 @@
 define([
   'jquery',
   'imagesloaded/imagesloaded',
+  'jquery-bridget/jquery.bridget',
+  'fluid-masonry',
   'lib/jquery.inview',
   'underscore',
   'backbone',
   'gallery/views/thumb.container.view',
   'gallery/views/thumb.view',
   'gallery/utils/responsive.adapter'
-], function($, ImagesLoaded, nope, _, Backbone, ThumbContainerView, ThumbView, ResponsiveAdapter) {
-  
+], function($, ImagesLoaded, nope, FluidMasonry, nope2, _, Backbone, ThumbContainerView, ThumbView, ResponsiveAdapter) {
+
+  $.bridget('fluidMasonry', FluidMasonry);
+
   /*
    * Adds the Thumbs in the Gallery json dynamically, when the json is loaded, to 
    * the Thumb Container. And not all thumbs at once, but in chunks as a 'stopper'
@@ -68,15 +72,13 @@ define([
     },
 
     remove: function() {
-      this.$el.isotope('remove', this.$el.children());
+      this.$el.fluidMasonry('remove', this.$el.children());
     },
 
     removeThumb: function(model, collection, options) {
       var $el = this.$el;
-      $el.addClass('animating');
-      $el.isotope('remove', model.getThumbView().$el, function() {
-        $el.removeClass('animating');
-      });
+      $el.fluidMasonry('remove', model.getThumbView().$el);
+      $el.fluidMasonry();
     },
         
     renderNextChunk: function() {
@@ -132,7 +134,7 @@ define([
           });
           thumbView = thumbView.render();
           this.$el.append(thumbView.$el);
-          this.$el.isotope('appended', thumbView.$el);
+          this.$el.fluidMasonry('appended', thumbView.$el);
           renderedThumbElements.push(thumbView.el);
         } else {
           break;

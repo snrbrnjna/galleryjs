@@ -24,7 +24,7 @@ require.config({
     localstorage: 'backbone.localstorage/backbone.localstorage',
     underscore: 'underscore/underscore',
     'jquery-touchswipe': 'jquery-touchswipe/jquery.touchswipe',
-    isotope: 'isotope/jquery.isotope',
+    'fluid-masonry': 'fluid-masonry/fluid-masonry',
     md5: 'js-md5/js/md5'
   }
 });

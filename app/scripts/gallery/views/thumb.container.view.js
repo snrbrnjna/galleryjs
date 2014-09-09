@@ -3,18 +3,19 @@ define([
   'vendor/jquery.throttle-debounce',
   'underscore',
   'backbone',
-  'lib/isotope.patcheko',
+  'jquery-bridget/jquery.bridget',
+  'fluid-masonry',
   'gallery/views/thumb.view',
   'gallery/utils/responsive.adapter'
 ],
-function($, nope, _, Backbone, isotope, ThumbView, ResponsiveAdapter) {
+function($, nope, _, Backbone, nope2, FluidMasonry, ThumbView, ResponsiveAdapter) {
   
+  $.bridget('fluidMasonry', FluidMasonry);
+
   /*
    * Model: GalleryModel
    *
    * listens once to 'change' on GalleryModel => init Thumbs
-   * listens to 'slider:newImage' on GalleryModel => scrollToThumb
-   * listens to 'resize.thumbContainer' on window => rearrange Thumbs
    *
    * The constructor needs the following options
    * - model
@@ -37,9 +38,6 @@ function($, nope, _, Backbone, isotope, ThumbView, ResponsiveAdapter) {
 
       // wait for the ImageCollection to be fetched
       this.listenTo(this.model, 'change', this.galleryFetched);
-      
-      // handle resize
-      $(window).on('resize.thumbContainer', _.bind($.debounce(200, this.resize), this));
     },
 
     galleryFetched: function() {
@@ -49,7 +47,7 @@ function($, nope, _, Backbone, isotope, ThumbView, ResponsiveAdapter) {
     },
     
     initGallery: function() {
-      // initialize masonry/isotope on the thumb Container
+      // initialize masonry on the thumb Container
       this.initMasonry(this.model.get('opts'));
     },
 
@@ -78,30 +76,18 @@ function($, nope, _, Backbone, isotope, ThumbView, ResponsiveAdapter) {
      * double in size, depending on container-width)
      */
     initMasonry: function(galleryOpts) {
-      this.$el.isotope({
+      this.$el.fluidMasonry({
         itemSelector : this.options.itemSelector,
-        // we want to handle resizing differently depending on the current slider state
-        resizable: false,
-        masonry: {
-          minColWidth: ResponsiveAdapter.getOptionByMediaType(galleryOpts, 'min_col_width'),
-          gutterWidth: ResponsiveAdapter.getOptionByMediaType(galleryOpts, 'gutter_width')
-        }
+        minColumnWidth: ResponsiveAdapter.getOptionByMediaType(galleryOpts, 'min_col_width'),
+        gutter: ResponsiveAdapter.getOptionByMediaType(galleryOpts, 'gutter_width'),
+        isFitWidth: false
       });
     },
   
     arrangeThumbs: function() {
-      this.$el.isotope();
+      this.$el.fluidMasonry();
     },
-    
-    resize: function() {
-      if (this.debug) { console.log('Slider currently: '+ this.model.sliderState); }
-      var delay = (this.model.sliderState === 'closed' ? 0 : 200);
-      var instance = this;
-      window.setTimeout(function() {
-        instance.arrangeThumbs();
-      }, delay);
-    },
-        
+            
     // scroll to thumbView
     scrollToThumb: function(imageModel) {
       window.setTimeout(function() {
