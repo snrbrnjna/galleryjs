@@ -13,26 +13,42 @@ define([
   'backbone',
   'underscore',
   'gallery/models/gallery.factory',
-  'gallery/collections/selection.collection',
-  'gallery/views/thumb.container.view',
-  'gallery/views/thumb.container.dynamic.view',
+  'gallery/views/thumb.container.masonry',
+  'gallery/views/thumb.container.dynamic',
+  'gallery/views/thumb.container.dynamic.masonry',
   'gallery/views/slider.view',
   'gallery/utils/responsive.adapter',
-  'gallery/views/selection/toggle.button',
-  'gallery/views/selection/pdf.button',
+  'gallery/collections/selection.collection',
+  'gallery/views/selection/component',
   'gallery/views/selection/indicator',
-  'gallery/views/selection/component'
+  'gallery/views/selection/toggle.button',
+  'gallery/views/selection/pdf.button'
 ],
-function(Backbone, _, GalleryFactory, SelectionCollection,
-  ThumbContainerView, ThumbContainerDynamicView, SliderView, ResponsiveAdapter,
-  SelectionToggleButton, SelectionPdfButton, SelectionIndicator,
-  SelectionComponent) {
+function(
+  Backbone, _, GalleryFactory,
+  ThumbContainerMasonry, ThumbContainerDynamic, ThumbContainerDynamicMasonry,
+  SliderView, ResponsiveAdapter,
+  SelectionCollection, SelectionComponent, SelectionIndicator,
+  SelectionToggleButton, SelectionPdfButton
+) {
   
   var GalleryApp = Backbone.View.extend({
     
     el: 'article.gallery',
 
+    // default options for gallery app
+    defaultOpts: {
+      layout: 'masonry'
+    },
+
     initialize: function(opts) {
+
+      // get options
+      if (this.$el.data('gal-layout')) {
+        this.defaultOpts.layout = this.$el.data('gal-layout');
+      }
+      this.options = _.extend({}, this.defaultOpts, this.options);
+
       // Init GalleryModel
       this.model = GalleryFactory.create(this.$el, opts['galleryOpts']);
 
@@ -124,10 +140,16 @@ function(Backbone, _, GalleryFactory, SelectionCollection,
         model: this.model,
         itemSelector: '.photo'
       };
+      
+      // nothing dynamic, all photos are rendered at loading time
       if (this.$('.container.photos .photo').length) {
-        this.containerView = new ThumbContainerView(thumbContainerOptions);
+        this.containerView = new ThumbContainerMasonry(thumbContainerOptions);
       } else {
-        this.containerView = new ThumbContainerDynamicView(thumbContainerOptions);
+        if (this.options.layout === 'none') {
+          this.containerView = new ThumbContainerDynamic(thumbContainerOptions);
+        } else {
+          this.containerView = new ThumbContainerDynamicMasonry(thumbContainerOptions);
+        }
       }
     },
 

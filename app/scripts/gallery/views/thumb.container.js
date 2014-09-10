@@ -3,15 +3,11 @@ define([
   'vendor/jquery.throttle-debounce',
   'underscore',
   'backbone',
-  'jquery-bridget/jquery.bridget',
-  'fluid-masonry',
   'gallery/views/thumb.view',
   'gallery/utils/responsive.adapter'
 ],
-function($, nope, _, Backbone, nope2, FluidMasonry, ThumbView, ResponsiveAdapter) {
+function($, nope, _, Backbone, ThumbView, ResponsiveAdapter) {
   
-  $.bridget('fluidMasonry', FluidMasonry);
-
   /*
    * Model: GalleryModel
    *
@@ -21,7 +17,7 @@ function($, nope, _, Backbone, nope2, FluidMasonry, ThumbView, ResponsiveAdapter
    * - model
    * - el 
    */
-  var ThumbContainerView = Backbone.View.extend({
+  var ThumbContainer = Backbone.View.extend({
   
     el: '.container.photos', // default, can be overridden with constructor
 
@@ -46,10 +42,8 @@ function($, nope, _, Backbone, nope2, FluidMasonry, ThumbView, ResponsiveAdapter
       this.initThumbs();
     },
     
-    initGallery: function() {
-      // initialize masonry on the thumb Container
-      this.initMasonry(this.model.get('opts'));
-    },
+    // noop / abstract method
+    initGallery: function() {},
 
     initThumbs: function() {
       // initialize ThumbViews by iterating over existing thumbs in this container
@@ -70,23 +64,6 @@ function($, nope, _, Backbone, nope2, FluidMasonry, ThumbView, ResponsiveAdapter
       this.$el.removeClass('loading'); // hide loading indicator
       this.$el.find(this.options.itemSelector).addClass('loaded'); // fade in thumbs
     },
-  
-    /*
-     * min_col_width: width of cell (thumb) in masonry layout (thumb can get till 
-     * double in size, depending on container-width)
-     */
-    initMasonry: function(galleryOpts) {
-      this.$el.fluidMasonry({
-        itemSelector : this.options.itemSelector,
-        minColumnWidth: ResponsiveAdapter.getOptionByMediaType(galleryOpts, 'min_col_width'),
-        gutter: ResponsiveAdapter.getOptionByMediaType(galleryOpts, 'gutter_width'),
-        isFitWidth: false
-      });
-    },
-  
-    arrangeThumbs: function() {
-      this.$el.fluidMasonry();
-    },
             
     // scroll to thumbView
     scrollToThumb: function(imageModel) {
@@ -104,5 +81,5 @@ function($, nope, _, Backbone, nope2, FluidMasonry, ThumbView, ResponsiveAdapter
     
   });
 
-  return ThumbContainerView;
+  return ThumbContainer;
 });

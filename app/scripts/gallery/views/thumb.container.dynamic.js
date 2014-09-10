@@ -1,24 +1,20 @@
 define([
   'jquery',
   'imagesloaded/imagesloaded',
-  'jquery-bridget/jquery.bridget',
-  'fluid-masonry',
   'lib/jquery.inview',
   'underscore',
   'backbone',
-  'gallery/views/thumb.container.view',
+  'gallery/views/thumb.container',
   'gallery/views/thumb.view',
   'gallery/utils/responsive.adapter'
-], function($, ImagesLoaded, nope, FluidMasonry, nope2, _, Backbone, ThumbContainerView, ThumbView, ResponsiveAdapter) {
-
-  $.bridget('fluidMasonry', FluidMasonry);
+], function($, ImagesLoaded, nope, _, Backbone, ThumbContainer, ThumbView, ResponsiveAdapter) {
 
   /*
    * Adds the Thumbs in the Gallery json dynamically, when the json is loaded, to 
    * the Thumb Container. And not all thumbs at once, but in chunks as a 'stopper'
    * element comes into the viewport (jquery.inview).
    */
-  var ThumbContainerDynamicView = ThumbContainerView.extend({
+  var ThumbContainerDynamic = ThumbContainer.extend({
     
     debug: false,
     
@@ -30,7 +26,7 @@ define([
       this.loadedImages = 0;
       this.threshold = 300;
       
-      this.constructor.__super__.initialize.apply(this, arguments);
+      ThumbContainer.prototype.initialize.apply(this, arguments);
       
       this.stopper = this.$el.next('.stopper');
       // check for new Slider image => load thumbs...
@@ -45,9 +41,7 @@ define([
       this.firstChunk = ResponsiveAdapter.getOptionByMediaType(galleryOpts, 'first_chunk');
       this.chunkSize = ResponsiveAdapter.getOptionByMediaType(galleryOpts, 'chunk_size');
 
-      this.constructor.__super__.initGallery.apply(this, arguments);
-
-      // now all images are fetched (the collection is initialized), now we can 
+      // now all image models are fetched (the collection is initialized), now we can 
       // listen for events (reset, remove) on the images collection
       this.listenTo(this.model.get('images'), 'reset', this.initThumbs);
       this.listenTo(this.model.get('images'), 'remove', this.removeThumb);
@@ -72,13 +66,12 @@ define([
     },
 
     remove: function() {
-      this.$el.fluidMasonry('remove', this.$el.children());
+      // TODO: we only remove the DOM elements, instead the thumbViews should get removed
+      this.$el.children().remove();
     },
 
     removeThumb: function(model, collection, options) {
-      var $el = this.$el;
-      $el.fluidMasonry('remove', model.getThumbView().$el);
-      $el.fluidMasonry();
+      model.getThumbView().remove();
     },
         
     renderNextChunk: function() {
@@ -92,6 +85,13 @@ define([
       this._checkImagesLoaded(renderedThumbElements);
     },
     
+    // (re)layout masonry
+    // TODO/REFACTOR: wird von imagesloaded aufgerufen => ein weiteres/alle Bild(er) wurde fertig geladen.
+    arrangeThumbs: function() {},
+
+    // callback for a new thumbView is instanciated and added to the dom
+    thumbAdded: function(thumbView) {},
+
     // Binds this._onStopperAppeared function to inview event
     _bindInview: function() {
       window.clearTimeout(this.timeoutBind);
@@ -134,7 +134,7 @@ define([
           });
           thumbView = thumbView.render();
           this.$el.append(thumbView.$el);
-          this.$el.fluidMasonry('appended', thumbView.$el);
+          this.thumbAdded(thumbView);
           renderedThumbElements.push(thumbView.el);
         } else {
           break;
@@ -202,5 +202,5 @@ define([
     
   });
   
-  return ThumbContainerDynamicView;
+  return ThumbContainerDynamic;
 });

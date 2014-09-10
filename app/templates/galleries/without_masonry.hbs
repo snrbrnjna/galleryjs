@@ -1,0 +1,17 @@
+---
+layout: gallery.hbs
+title: gallery without masonry layout
+gallery:
+  key: <% if (production) { %>flyer-doc-remote<% } else { %>flyer-doc-local<% } %>
+  src: <%= gallery.key %>.json
+  selection: <%= gallery.key %>
+  opts: '{"double_tap_thumb": true}'
+  layout: 'none'
+---
+
+<style>
+  .photos { background-color: #ddd !important; overflow: hidden; padding:10px 0 0 !important;}
+  .photo { position: relative; float: left !important; height: 150px; margin: 0 10px 10px 0 !important; }
+  .photo img { width: initial !important; max-height: 100%; }
+  .stopper { float: left; }
+</style>
