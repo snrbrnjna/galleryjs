@@ -31,12 +31,15 @@ Inizialize the gallery in your main.js:
 ``` js
 new GalleryApp({
     el: $('.gallery-app'),
+    layout: 'masonry',
     galleryOpts: {},
     onInit: function(app, model) {}
 });
 ```
 
 ``el``: DOM element with options for the gallery (see [index.html](/app/templates/layouts/gallery.hbs) for details).
+
+``layout``: 'masonry' is the default layout. With 'none', the thumbs are rendered into the dom without any masonry frills. This option can also be specified via the ``data-gal-layout`` attribute.
 
 ``galleryOpts``: options for the gallery model (see [gallery.model.js](/app/scripts/gallery/models/gallery.model.js) for details).
 

@@ -1,3 +1,12 @@
+<a name="1.1.0"></a>
+## 1.1.0 (2014-09-11)
+
+
+#### Features
+
+* **layout:** possible to layout the gallery without masonry ([26ceb06f](https://github.com/snrbrnjna/galleryjs/commit/26ceb06f4ce7408706dcfe8a9c218b6d280c4cad))
+
+
 <a name="1.0.0"></a>
 ## 1.0.0 (2014-09-10)
 
