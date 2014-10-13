@@ -1,3 +1,12 @@
+<a name="1.1.1"></a>
+### 1.1.1 (2014-10-13)
+
+
+#### Bug Fixes
+
+* **style:** selector button had too high z-index for slider ([3e49a099](https://github.com/snrbrnjna/galleryjs/commit/3e49a099451d2e59c187eca0ac0f038c012d8735))
+
+
 <a name="1.1.0"></a>
 ## 1.1.0 (2014-09-11)
 
