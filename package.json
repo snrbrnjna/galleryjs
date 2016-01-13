@@ -3,6 +3,10 @@
   "version": "1.1.1",
   "author": "Snr Brnjna <snr@brnjna.net>",
   "description": "a little responsive full width masonry gallery",
+  "scripts": {
+    "dev": "grunt serve",
+    "build": "grunt build"
+  },
   "keywords": [
     "gallery",
     "masonry",
@@ -14,13 +18,13 @@
     "type": "git",
     "url": "https://github.com/snrbrnjna/galleryjs.git"
   },
-  "dependencies": {},
   "devDependencies": {
     "assemble": "~0.4.39",
     "connect-livereload": "~0.2.0",
     "grunt": "~0.4.1",
     "grunt-bower-requirejs": "~0.7.0",
     "grunt-bump": "0.0.13",
+    "grunt-cli": "^0.1.13",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-coffee": "~0.7.0",
     "grunt-contrib-concat": "~0.3.0",

@@ -17,8 +17,8 @@ Or get the latest script and stylesheet files from the [repo](/lib).
 - Install dependencies:
     - npm install
     - bower install
-- For development: ``grunt serve`` 
-- For building the example gallery into a ``dist`` folder: ``grunt build``
+- For development: ``npm run dev`` 
+- For building the example gallery into a ``dist`` folder: ``npm run build``
 
 ## Integrate
 
