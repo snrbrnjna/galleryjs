@@ -49,4 +49,4 @@ new GalleryApp({
 
 ## Example Gallery
 
-The [Images](https://snrbrnjna.github.io/galleryjs) are flyers for the [gutfeeling](http://gutfeeling.de) collective by the famous giftwrapping-doctor Sascha Schwegler.
+The [Images](https://snrbrnjna.github.io/galleryjs) are flyers for the [gutfeeling](http://gutfeeling.de) crew by the famous giftwrapping-doctor Sascha Schwegeler.
