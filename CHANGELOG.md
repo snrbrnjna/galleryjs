@@ -1,3 +1,12 @@
+<a name="1.1.3"></a>
+### 1.1.3 (2016-01-14)
+
+
+#### Bug Fixes
+
+* remove unwanted changes from last release ([f8349697](https://github.com/snrbrnjna/galleryjs/commit/f8349697ae80e5cac4b08f5ced46261736113871))
+
+
 <a name="1.1.2"></a>
 ### 1.1.2 (2016-01-14)
 
