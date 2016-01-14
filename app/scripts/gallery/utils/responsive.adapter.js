@@ -1,21 +1,22 @@
 define([
   'jquery',
-  'underscore'
-], function($, _) {
-  
+  'underscore',
+  'vendor/jquery.throttle-debounce'
+], function($, _, nope) {
+
   /*
    * ResponsiveAdapter
    *
-   * Knows how diverse Modules react different in some aspects to different 
+   * Knows how diverse Modules react different in some aspects to different
    * devices.
-   * Knows which preset to choose for the device on which we are. 
+   * Knows which preset to choose for the device on which we are.
    * i.e. replaces large with large_phone
    *
    */
   var ResponsiveAdapter = {
 
     /*
-     * Mediatype is defined in devices.css with media queries. 
+     * Mediatype is defined in devices.css with media queries.
      * Default values for media types are 'desktop', 'pads', 'phones'
      */
     getMediaType: function() {
@@ -31,9 +32,9 @@ define([
         return this.mediaType = mt && mt.length>0 ? mt[0] : 'desktop'; // jshint ignore:line
       }
     },
-    
+
     /*
-     * Expects an options-Hash opts and a key of this Hash. The described value 
+     * Expects an options-Hash opts and a key of this Hash. The described value
      * can be a directly returned single value or an object Hash with the
      * mediaTypes managed by this adapter as keys.
      */
@@ -44,7 +45,7 @@ define([
         return opts[key];
       }
     },
-    
+
     presetMapperThumb: function(imageModel) {
       var preset;
       switch(this.getMediaType()) {
@@ -72,8 +73,10 @@ define([
       }
       return preset;
     }
-    
+
   };
-  
+
+  console.log('responsiveAdapter initialized');
+
   return ResponsiveAdapter;
 });

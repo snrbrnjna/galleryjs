@@ -19,7 +19,7 @@ define([
       return this.get('src');
     },
 
-    // Default attributes for the gallery. they get automatically wired before 
+    // Default attributes for the gallery. they get automatically wired before
     // initialize call.
     defaults: function() {
       return {
@@ -38,7 +38,7 @@ define([
       };
     },
 
-    // These are the fallback Options, if neither the json, nor the markup gives 
+    // These are the fallback Options, if neither the json, nor the markup gives
     // us any.
     defaultOpts: {
       min_col_width: { // jshint ignore:line
@@ -51,13 +51,13 @@ define([
       first_chunk: 15, // jshint ignore:line
       double_tap_thumb: false // jshint ignore:line
     },
-    
+
     initialize: function() {
       this.id = md5(this.get('src'));
       this.sliderState = 'closed';
       this._current = undefined;
     },
-    
+
     parse: function(response) {
       var galleryHash = response.gallery;
       // Init Collection with response Hash
@@ -74,8 +74,10 @@ define([
       // 1) options given as attributes into the constructor (the ones written in data-attributes)
       // 2) options coming with the fetched json data
       // 3) default options
-      galleryHash.opts = _.extend({}, 
+      galleryHash.opts = _.extend({},
         this.defaultOpts, galleryHash.opts, this.attributes.opts);
+
+      console.log(this.attributes.opts);
 
       return galleryHash;
     },
@@ -96,7 +98,7 @@ define([
       });
       return presetHash;
     },
-    
+
     toggleSliderState: function() {
       this.sliderState = (this.sliderState === 'closed' ? 'opened' : 'closed');
     },
@@ -104,12 +106,12 @@ define([
     setCurrent: function(imageModel) {
       this._current = imageModel;
     },
-    
+
     // ImageModel instance
     getCurrent: function() {
       return this._current;
     },
-    
+
     // ImageModel instance
     getNext: function() {
       if (this._current) {
@@ -120,7 +122,7 @@ define([
         }
       }
     },
-    
+
     // ImageModel instance
     getPrev: function() {
       if (this._current) {
@@ -131,7 +133,7 @@ define([
       }
     }
   });
-  
+
   return GalleryModel;
-  
+
 });

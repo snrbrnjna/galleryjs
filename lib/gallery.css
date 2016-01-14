@@ -2,27 +2,27 @@
 /* ######## For setting image breakpoints (see responsive.adapter) ######## */
 
 /* iPhone likes */
-@media (max-device-width: 640px), (max-device-height: 650px) and (orientation: landscape) {
-  body:after {content: 'phone'; display: block; margin-top: -30px; font-size: 0; line-height: 0; z-index: 0;} 
+@media (max-width: 640px), (max-height: 650px) and (orientation: landscape) {
+  body:after {content: 'phone'; display: block; margin-top: -30px; font-size: 0; line-height: 0; z-index: 0;}
 
   /* DEBUG: set Header color for checking media queries */
-  /*  .site .header {background: yellow !important;}*/
+    /*body {background: yellow !important;}*/
 }
 
 /* iPad likes */
-@media (min-device-width: 641px) and (max-device-width: 1024px) {
-  body:after {content: 'pad'; display: block; margin-top: -30px; font-size: 0; line-height: 0; z-index: 0;} 
-  
+@media (min-width: 641px) and (max-width: 1024px) {
+  body:after {content: 'pad'; display: block; margin-top: -30px; font-size: 0; line-height: 0; z-index: 0;}
+
   /* DEBUG: set Header color for checking media queries */
-  /*  .site .header {background: red !important;}*/
+    /*body {background: red !important;}*/
 }
 
 /* Large desktop */
-@media (min-device-width: 1025px) {
+@media (min-width: 1025px) {
   body:after {content: 'desktop'; display: block; margin-top: -30px; font-size: 0; line-height: 0; z-index: 0;}
 
-  /* DEBUG: set Header color for checking media queries */  
-  /*  .site .header {background: green !important;}*/
+  /* DEBUG: set Header color for checking media queries */
+    /*body {background: green !important;}*/
 }
 
 /* Loading indicator (override in your styles!)*/
