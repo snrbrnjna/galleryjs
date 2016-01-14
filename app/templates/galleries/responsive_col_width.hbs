@@ -1,0 +1,9 @@
+---
+layout: gallery.hbs
+title: gallery with responsive col-width (screen size ~ col width)
+gallery:
+  key: <% if (production) { %>flyer-doc-remote<% } else { %>flyer-doc-local<% } %>
+  src: <%= gallery.key %>.json
+  selection: 'false'
+  opts: '{"min_col_width": {"desktop": 320, "pad": 180, "phone": 80}}'
+---

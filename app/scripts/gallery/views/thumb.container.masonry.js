@@ -8,7 +8,7 @@ define([
   'gallery/utils/responsive.adapter'
 ],
 function($, _, Backbone, nope, FluidMasonry, ThumbContainer, ResponsiveAdapter) {
-  
+
   $.bridget('fluidMasonry', FluidMasonry);
 
   /*
@@ -18,21 +18,27 @@ function($, _, Backbone, nope, FluidMasonry, ThumbContainer, ResponsiveAdapter) 
    *
    * The constructor needs the following options
    * - model
-   * - el 
+   * - el
    */
   var ThumbContainerMasonry = ThumbContainer.extend({
-  
+
     initialize: function(options) {
       ThumbContainer.prototype.initialize.apply(this, arguments);
+
+      // Listen on window resize to eventually recalculate col with and gutter
+      $(window).on('resize.masonry', $.debounce(300, _.bind(function() {
+        this.initMasonry(this.model.get('opts'));
+        $(window).trigger('scroll');
+      }, this)));
     },
 
     initGallery: function() {
       // initialize masonry on the thumb Container
       this.initMasonry(this.model.get('opts'));
     },
-  
+
     /*
-     * min_col_width: width of cell (thumb) in masonry layout (thumb can get till 
+     * min_col_width: width of cell (thumb) in masonry layout (thumb can get till
      * double in size, depending on container-width)
      */
     initMasonry: function(galleryOpts) {
@@ -43,7 +49,7 @@ function($, _, Backbone, nope, FluidMasonry, ThumbContainer, ResponsiveAdapter) 
         isFitWidth: false
       });
     }
-    
+
   });
 
   return ThumbContainerMasonry;
