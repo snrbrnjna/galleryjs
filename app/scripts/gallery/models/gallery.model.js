@@ -77,8 +77,6 @@ define([
       galleryHash.opts = _.extend({},
         this.defaultOpts, galleryHash.opts, this.attributes.opts);
 
-      console.log(this.attributes.opts);
-
       return galleryHash;
     },
 

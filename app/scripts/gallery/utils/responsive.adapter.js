@@ -1,8 +1,7 @@
 define([
   'jquery',
-  'underscore',
-  'vendor/jquery.throttle-debounce'
-], function($, _, nope) {
+  'underscore'
+], function($, _) {
 
   /*
    * ResponsiveAdapter
@@ -75,8 +74,6 @@ define([
     }
 
   };
-
-  console.log('responsiveAdapter initialized');
 
   return ResponsiveAdapter;
 });
