@@ -1,3 +1,12 @@
+<a name="1.1.4"></a>
+### 1.1.4 (2016-01-15)
+
+
+#### Features
+
+* **responsive:** rerender masonry thumb views when screensize changes ([ed4081ef](https://github.com/snrbrnjna/galleryjs/commit/ed4081ef496e021aaabd92254753e7257b375260))
+
+
 <a name="1.1.3"></a>
 ### 1.1.3 (2016-01-14)
 
