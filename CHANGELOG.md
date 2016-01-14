@@ -1,3 +1,12 @@
+<a name="1.1.5"></a>
+### 1.1.5 (2016-01-15)
+
+
+#### Bug Fixes
+
+* remove console.log statement ([52edc9ca](https://github.com/snrbrnjna/galleryjs/commit/52edc9ca7d2f1adccb8d085f9e589c523e1c2ce0))
+
+
 <a name="1.1.4"></a>
 ### 1.1.4 (2016-01-15)
 
