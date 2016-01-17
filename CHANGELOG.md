@@ -29,7 +29,7 @@
 ### 1.1.2 (2016-01-14)
 
 
-#### Bug Fixes
+#### Features
 
 * **responsive:** change breakpoint to width, not device-width ([e309ffd0](https://github.com/snrbrnjna/galleryjs/commit/e309ffd09a8fb7aaea9e1d7cd3c218d32b2a87b8))
 
