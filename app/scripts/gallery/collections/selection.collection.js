@@ -12,18 +12,18 @@ define([
   'gallery/models/image.model'
 ],
 function (_, Backbone, nope, ImageModel) {
-    
+
     var SelectionCollection = Backbone.Collection.extend({
 
       // Reference to this collection's model.
       model: ImageModel,
 
       /**
-       * LocalStorage ImageModel Collection given by an explicit key (``options.key``) 
-       * or, when the key is a boolean, by the id of the given GalleryModel 
-       * (``options.gallery``). 
-       * The Collection gets connected with the given GalleryModel: 
-       * Once it's Images are loaded, the selection is fetched from the 
+       * LocalStorage ImageModel Collection given by an explicit key (``options.key``)
+       * or, when the key is a boolean, by the id of the given GalleryModel
+       * (``options.gallery``).
+       * The Collection gets connected with the given GalleryModel:
+       * Once it's Images are loaded, the selection is fetched from the
        * localStorage and the GalleryModel images are marked ``selected``, if they
        * are in the Selection. Then the ``selected`` attribute of the GalleryModel
        * images are watched, so that the selection contains only selected images.
@@ -43,24 +43,24 @@ function (_, Backbone, nope, ImageModel) {
           this.gallery.id :  // identified by the given Gallery
           options.key; // identified by a given key
 
-        // Selection is saved in localStorage
+        // Selection is synced with localStorage (localStorage adapter overrides Backbone.Sync)
         this.localStorage = new Backbone.LocalStorage('GallerySelection-' + this.key);
 
-        // wait for the ImageCollection to be fetched 
+        // wait for the ImageCollection to be fetched
         // => listenTo it & fetch selection from localStorage
         if (this.gallery) {
           this.listenToOnce(this.gallery, 'change', this.initGallery);
-        } 
+        }
       },
 
       // Called, when the GalleryModel is initialized/loaded
-      // Now we can 
+      // Now we can
       // - fetch this selection from the localStorage and mark all it's images
       //   as selected in the ImageCollection of the GalleryModel.
       // - listen to any changes to the 'selected' attribute of the ImageModels
       //   in the Gallery.
       initGallery: function() {
-        // before we setup the change-listener, else we have 1 superfluos 
+        // before we setup the change-listener, else we have 1 superfluos
         // callback-roundtrip
         this.fetch();
 
@@ -69,7 +69,7 @@ function (_, Backbone, nope, ImageModel) {
       },
 
       // Called by SelectionCollection#fetch
-      // Marks all the fetched images as selected in the ImageCollection of the 
+      // Marks all the fetched images as selected in the ImageCollection of the
       // GalleryModel.
       parse: function(response) {
         if (this.gallery) {
@@ -93,7 +93,7 @@ function (_, Backbone, nope, ImageModel) {
           // see ImageModel#index
           selectedImage.set('index', undefined);
           this.add(selectedImage);
-          selectedImage.save();
+          selectedImage.save(); // => is handles by the localstorage adapter of this collection
         } else if (selectionModel) {
           selectionModel.destroy();
         }
@@ -112,7 +112,7 @@ function (_, Backbone, nope, ImageModel) {
         return this._pool[_key];
       }
     });
-    
+
     return SelectionCollection;
   }
 );

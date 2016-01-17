@@ -31,11 +31,13 @@ define([
           });
         }
         return model;
+      } else {
+        console.warn('GalleryFactory.create: no gallery src has been found!')
       }
 
     }
 
-    // extracts the corrects data attribute for the Gallery model to be
+    // extracts the correct data attribute for the Gallery model to be
     // instanciated.
     function _getSource($el) {
       var src = $el.data('gal-src') || $el.data('src');
