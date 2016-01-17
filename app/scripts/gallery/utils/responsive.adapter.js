@@ -1,8 +1,8 @@
 define([
   'jquery',
+  'vendor/jquery.throttle-debounce',
   'underscore',
-  'vendor/jquery.throttle-debounce'
-], function($, _, nope) {
+], function($, nope, _) {
 
   /*
    * ResponsiveAdapter
@@ -77,7 +77,7 @@ define([
   };
 
   // Listen on window resize to reset the mediatype
-  $(window).on('resize.responsive-adapter', $.debounce(200, function() {
+  $(window).on('resize.responsive-adapter', ($.debounce || Cowboy.debounce)(200, function() {
     ResponsiveAdapter.mediaType = undefined;
   }));
 
