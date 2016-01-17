@@ -5,9 +5,9 @@ define([
 ], function (_, GalleryModel, SelectionGalleryModel) {
 
   var GalleryFactory = function() {
-    
+
     /**
-     * Factory method: returns an initialized GalleryModel object of the 
+     * Factory method: returns an initialized GalleryModel object of the
      * appropriate GalleryModel class.
      */
     function create($el, opts) {
@@ -19,14 +19,14 @@ define([
       if (src !== undefined) {
         var model;
         var galleryOpts = _.extend({}, $el.data('gal-opts') || $el.data('opts'), opts);
-        if (src.indexOf('selection:') < 0) {
-          model = new GalleryModel({
-            src: src,
+        if (src.indexOf('selection:') >= 0) {
+          model = new SelectionGalleryModel({
+            key: src.replace('selection:', ''),
             opts: galleryOpts
           });
         } else {
-          model = new SelectionGalleryModel({
-            key: src.replace('selection:', ''),
+          model = new GalleryModel({
+            src: src,
             opts: galleryOpts
           });
         }
@@ -35,7 +35,7 @@ define([
 
     }
 
-    // extracts the corrects data attribute for the Gallery model to be 
+    // extracts the corrects data attribute for the Gallery model to be
     // instanciated.
     function _getSource($el) {
       var src = $el.data('gal-src') || $el.data('src');
