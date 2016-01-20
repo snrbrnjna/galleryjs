@@ -4,9 +4,9 @@
  *
  * Options:
  * - el: Element to initialize the Gallery on.
- * - onInit: Callback for when the GalleryApp is initialized (the Images are 
+ * - onInit: Callback for when the GalleryApp is initialized (the Images are
  *           loaded). The callback receives to args: GalleryApp and GalleryModel
- * - galleryOpts: opts for the gallery (override the ones in the gallery DOM 
+ * - galleryOpts: opts for the gallery (override the ones in the gallery DOM
                   element (data-gal-opts) and the gallery json).
  */
 define([
@@ -21,19 +21,17 @@ define([
   'gallery/collections/selection.collection',
   'gallery/views/selection/component',
   'gallery/views/selection/indicator',
-  'gallery/views/selection/toggle.button',
-  'gallery/views/selection/pdf.button'
+  'gallery/views/selection/toggle.button'
 ],
 function(
   Backbone, _, GalleryFactory,
   ThumbContainerMasonry, ThumbContainerDynamic, ThumbContainerDynamicMasonry,
   SliderView, ResponsiveAdapter,
-  SelectionCollection, SelectionComponent, SelectionIndicator,
-  SelectionToggleButton, SelectionPdfButton
+  SelectionCollection, SelectionComponent, SelectionIndicator, SelectionToggleButton
 ) {
-  
+
   var GalleryApp = Backbone.View.extend({
-    
+
     el: 'article.gallery',
 
     // default options for gallery app
@@ -58,7 +56,7 @@ function(
       if (this.model) {
         // Init ThumbContainerView
         this.initThumbContainer();
-        
+
         // Fetch Gallery Data from Server
         this.model.fetch({
           success: _.bind(function(model, resp, _opts) {
@@ -87,7 +85,7 @@ function(
 
     // Init Selections
     initSelection: function() {
-      // Global SelectionCollection for gallery only when there is the 
+      // Global SelectionCollection for gallery only when there is the
       // data attrib data-gal-selector
       var galSelectionAttrib = this.$el.data('gal-selection');
       if (!!galSelectionAttrib) {
@@ -101,11 +99,6 @@ function(
 
         // init toggle button
         this.selectionToggleButton = new SelectionToggleButton({
-          collection: this.selection
-        });
-
-        // init pdf button
-        this.selectionPdfButton = new SelectionPdfButton({
           collection: this.selection
         });
 
@@ -140,7 +133,7 @@ function(
         model: this.model,
         itemSelector: '.photo'
       };
-      
+
       // nothing dynamic, all photos are rendered at loading time
       if (this.$('.container.photos .photo').length) {
         this.containerView = new ThumbContainerMasonry(thumbContainerOptions);
@@ -170,7 +163,7 @@ function(
     }
 
   });
-  
+
   return GalleryApp;
 
 });
