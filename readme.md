@@ -45,7 +45,10 @@ new GalleryApp({
 
 ``onInit`` is called, when the gallery data is fetched. It gets 2 params: 
 - the GalleryApp object, a backbone view representing the whole application and
-- the GalleryModel object, a backbone model representing the Gallery data including the ImageCollection.
+- the GalleryModel object, a backbone model representing the Gallery data.
+
+#### Addons
+In the ``onInit`` callback you can hook your own _addons_ - components, that interact with the gallery, via the `GalleryApp` object. In the [addons](/app/scripts/addons) directory you can find examples for that.
 
 ## Example Gallery
 

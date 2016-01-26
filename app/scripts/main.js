@@ -22,6 +22,7 @@
         galleryOpts: {},
         onInit: function(app, model) {
           console.log('Gallery initialized!', app, model);
+          // ramp up addons
           window.pdfButton = new window.PdfButton($('.selection .button.pdf'), app.selection);
         }
       });
