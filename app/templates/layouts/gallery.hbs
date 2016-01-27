@@ -6,12 +6,12 @@ content_class: gallery
         {{> body }}
 
         <!-- Gallery App -->
-        <div class="gallery-app" 
-          data-gal-src="{{ gallery.src }}" 
+        <div class="gallery-app"
+          data-gal-src="{{ gallery.src }}"
           data-gal-selection="{{ gallery.selection }}"
           data-gal-opts="{{ gallery.opts }}"
           data-gal-layout="{{ gallery.layout }}">
-            
+
             <!-- Container for Thumbs of First Page -->
             <div class="container photos"></div>
             <div class="stopper"></div>
@@ -59,13 +59,13 @@ content_class: gallery
               </div>
               <div class="meta">
                   <span class="line index"><%= img.index()+1 %> / <%= img.collection.length %></span>
-                  <span class="line filename"><%= img.get('filenameOrig') %></span>
+                  <span class="line filename"><%= (img.get('meta') && img.get('meta').title) || img.get('filenameOrig') %></span>
               </div>
             </script>
 
             <div class="empty-message">
                 No images in your favorite selection found.<br/>
                 Add your favorite images to this Selection with the "add to pdf" button in one of our <a href="/">galleries</a>.
-            </div> 
+            </div>
         </div>
         <!-- End Gallery App -->

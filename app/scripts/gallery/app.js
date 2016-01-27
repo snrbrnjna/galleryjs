@@ -86,7 +86,7 @@ function(
     // Init Selections
     initSelection: function() {
       // Global SelectionCollection for gallery only when there is the
-      // data attrib data-gal-selector
+      // data attrib data-gal-selection
       var galSelectionAttrib = this.$el.data('gal-selection');
       if (!!galSelectionAttrib) {
         // init selection collection
