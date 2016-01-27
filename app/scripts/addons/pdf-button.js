@@ -53,7 +53,7 @@ $(function () {
       data.images.push(imageModel.attributes);
     });
     return {folio: data};
-  }
+  };
 
   PdfButton.prototype.itemAdded = function(model, col, opts) {
     if (col.length === 1) {
@@ -121,12 +121,11 @@ $(function () {
           dataType: 'json'
         });
     }
-  },
+  };
 
   PdfButton.prototype.downloadPdf = function(url) {
     window.location.href = url;
-  },
-
+  };
 
   window.PdfButton = PdfButton;
 

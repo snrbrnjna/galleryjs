@@ -26,9 +26,11 @@
           // ramp up addons
           window.pdfButton = new window.PdfButton($('.selection .button.pdf'), app.selection);
           // maximum of images in selection => basic alert
-          app.selection && app.selection.on('maxItems', function() {
-            window.alert('maximum of '+app.selection.maxItems+' items in the selection! Remove items, before you add new ones.');
-          });
+          if (app.selection) {
+            app.selection.on('maxItems', function() {
+              window.alert('maximum of '+app.selection.maxItems+' items in the selection! Remove items, before you add new ones.');
+            });
+          }
         }
       });
     });
