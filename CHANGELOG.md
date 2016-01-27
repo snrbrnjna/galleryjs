@@ -14,6 +14,8 @@
 * **selection-maxItems:**
   * added example ([0c12b95c](https://github.com/snrbrnjna/galleryjs/commit/0c12b95ce5d14993feabe67296f49c3c382c2bfc))
   * specify maxItems for the selection to only take this amount of items. ([bc82fda7](https://github.com/snrbrnjna/galleryjs/commit/bc82fda781b0869b1c985d6d6f7d25532db67444))
+* **selection-pdfButton:**
+  * removed pdf.button from gallery core. now it is an addon (extra js file) [e8e313f4](https://github.com/snrbrnjna/galleryjs/commit/e8e313f487ee31620654b113f9fab8c77e6d51ba)
 
 
 <a name="1.1.5"></a>
