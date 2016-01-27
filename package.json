@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "grunt serve",
     "build": "grunt build",
+    "jshint": "grunt jshint",
     "release-patch": "grunt releaseLib:patch",
     "release-minor": "grunt releaseLib:minor",
     "release-major": "grunt releaseLib:major"
