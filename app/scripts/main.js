@@ -24,9 +24,10 @@
         onInit: function(app, model) {
           console.log('Gallery initialized!', app, model);
           // ramp up addons
-          window.pdfButton = new window.PdfButton($('.selection .button.pdf'), app.selection);
-          // maximum of images in selection => basic alert
           if (app.selection) {
+            window.pdfButton = new window.PdfButton($('.selection .button.pdf'), app.selection);
+            window.wipeButton = new window.DeleteButton($('.selection .button.clean'), app.selection);
+            // maximum of images in selection => basic alert
             app.selection.on('maxItems', function() {
               window.alert('maximum of '+app.selection.maxItems+' items in the selection! Remove items, before you add new ones.');
             });
