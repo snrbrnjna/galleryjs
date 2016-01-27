@@ -20,7 +20,9 @@ $(function () {
     this.parseOptions($el);
 
     this.selection = selection;
-    this.init();
+    if (selection) { // only initialize, when selection given.
+      this.init();
+    }
   };
 
   PdfButton.prototype.init = function() {
