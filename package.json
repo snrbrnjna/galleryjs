@@ -1,6 +1,6 @@
 {
   "name": "gallery.js",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "author": "Snr Brnjna <snr@brnjna.net>",
   "description": "a little responsive full width masonry gallery",
   "scripts": {

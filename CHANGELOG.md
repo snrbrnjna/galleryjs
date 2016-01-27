@@ -1,3 +1,21 @@
+<a name="1.2.0"></a>
+## 1.2.0 (2016-01-27)
+
+
+#### Bug Fixes
+
+* jshint warnings ([5aeafd89](https://github.com/snrbrnjna/galleryjs/commit/5aeafd896319afdbb72a91c74eff1d79eb6a249d))
+* no selection ([218b23ce](https://github.com/snrbrnjna/galleryjs/commit/218b23ce2b958f0eadfebe319ed202f698729058))
+* **responsive:** resize debouncer in responsiveAdapter not loaded, use no-jquery version of it in ([f8daa15d](https://github.com/snrbrnjna/galleryjs/commit/f8daa15d15a3a81863eb9873f9e5d65563bcfb6a))
+
+
+#### Features
+
+* **selection-maxItems:**
+  * added example ([0c12b95c](https://github.com/snrbrnjna/galleryjs/commit/0c12b95ce5d14993feabe67296f49c3c382c2bfc))
+  * specify maxItems for the selection to only take this amount of items. ([bc82fda7](https://github.com/snrbrnjna/galleryjs/commit/bc82fda781b0869b1c985d6d6f7d25532db67444))
+
+
 <a name="1.1.5"></a>
 ### 1.1.5 (2016-01-15)
 
