@@ -20,10 +20,21 @@
       new GalleryAppClass({
         el: $('.gallery-app'),
         galleryOpts: {},
+        selectionOpts: {maxItems: 10},
         onInit: function(app, model) {
           console.log('Gallery initialized!', app, model);
           // ramp up addons
           window.pdfButton = new window.PdfButton($('.selection .button.pdf'), app.selection);
+
+          app.selection.on('add', function(model, col, opts) {
+            console.log('added');
+          });
+          app.selection.on('remove', function(model, col, opts) {
+            console.log('removed');
+          });
+          app.selection.on('maxItems', function() {
+            console.log('maximum of', app.selection.maxItems, 'in the selection! Remove items, before you add new ones.');
+          });
         }
       });
     });

@@ -4,6 +4,7 @@
  * A collection of selected ImageModel objects. It gets saved in localStorage of
  * the client browser.
  *
+ * Events fired: add, remove, maxItems.
  */
 define([
   'underscore',
@@ -30,6 +31,11 @@ function (_, Backbone, nope, ImageModel) {
        *
        * If ``options.gallery`` is undefined, the collection has to be fetched
        * manually.
+       *
+       * Additional options:
+       * - maxItems (optional): if maxItems are selected no more items can get selected. A
+       *                        'maxItems' event is fired on the selection collection, when
+       *                        additional items are prevented froom being added.
        **/
       initialize: function (models, options) {
         // connect gallery and selection
@@ -51,6 +57,9 @@ function (_, Backbone, nope, ImageModel) {
         if (this.gallery) {
           this.listenToOnce(this.gallery, 'change', this.initGallery);
         }
+
+        // set maxItems - can be undefined
+        this.maxItems = options.maxItems;
       },
 
       // Called, when the GalleryModel is initialized/loaded
@@ -85,6 +94,12 @@ function (_, Backbone, nope, ImageModel) {
       },
 
       selectionChanged: function(imageModel, selected) {
+        if (this.maxItems && selected && this.length >= this.maxItems) {
+          this.trigger('maxItems');
+          imageModel.set('selected', false);
+          return;
+        }
+
         var selectionModel = this.get(imageModel.id);
         if (selected && !selectionModel) {
           var selectedImage = imageModel.clone();
@@ -93,7 +108,7 @@ function (_, Backbone, nope, ImageModel) {
           // see ImageModel#index
           selectedImage.set('index', undefined);
           this.add(selectedImage);
-          selectedImage.save(); // => is handles by the localstorage adapter of this collection
+          selectedImage.save(); // => is handled by the localstorage adapter of this collection
         } else if (selectionModel) {
           selectionModel.destroy();
         }
@@ -103,11 +118,12 @@ function (_, Backbone, nope, ImageModel) {
 
       _pool: {},
 
-      // Only on instance per key and gallery
-      get: function(key, gallery) {
+      // Only one instance per key and gallery
+      get: function(key, gallery, opts) {
         var _key = key + '#' + (gallery !== undefined ? gallery.id : 'nixGallery');
         if (!_.has(this._pool, _key)) {
-          this._pool[_key] = new SelectionCollection([], {key: key, gallery: gallery});
+          opts = _.extend({}, opts, {key: key, gallery: gallery});
+          this._pool[_key] = new SelectionCollection([], opts);
         }
         return this._pool[_key];
       }

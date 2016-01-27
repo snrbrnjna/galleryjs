@@ -51,7 +51,7 @@ function(
       this.model = GalleryFactory.create(this.$el, opts['galleryOpts']);
 
       // Init Selection
-      this.initSelection();
+      this.initSelection(opts['selectionOpts']);
 
       if (this.model) {
         // Init ThumbContainerView
@@ -84,13 +84,15 @@ function(
     },
 
     // Init Selections
-    initSelection: function() {
+    initSelection: function(opts) {
       // Global SelectionCollection for gallery only when there is the
       // data attrib data-gal-selection
       var galSelectionAttrib = this.$el.data('gal-selection');
       if (!!galSelectionAttrib) {
+        // merge element opts with app opts
+        opts = _.extend({}, this.$el.data('gal-selection-opts'), opts);
         // init selection collection
-        this.selection = SelectionCollection.get(this.$el.data('gal-selection'), this.model);
+        this.selection = SelectionCollection.get(this.$el.data('gal-selection'), this.model, opts);
 
         // init selection indicator
         this.selectionIndicator = new SelectionIndicator({

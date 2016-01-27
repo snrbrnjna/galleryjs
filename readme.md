@@ -33,22 +33,27 @@ new GalleryApp({
     el: $('.gallery-app'),
     layout: 'masonry',
     galleryOpts: {},
+    selectionOpts: {},
     onInit: function(app, model) {}
 });
 ```
 
-The gallery can be configured in the markup via data attributes of the gallery element `el`. Additionally you can _override_ these settings with the options given to the GalleryApp constructor:
+The gallery can be configured in the markup via data attributes of the gallery element `el`. Additionally you can _override_ these settings with the options given to the GalleryApp constructor along the `el`:
+
 `el`: DOM element with the following options for the gallery:
-- `data-gal-src`: Defines where to take the images from. 2 possibilities:
+- `data-gal-src`: defines where to take the images from. 2 possibilities:
     + a url (relative or absolute) to a gallery-json ([example](/app/flyer-doc-remote.json))
     + `selection:<selection-key>` for a SelectionGalleryModel, which takes its images from a selection specified by the given `<selection-key>`.
-- `data-gal-selection`: key for the Selection to use by the Gallery, or empty string for no selection.
-- `data-gal-opts`: Stringified JSON options for the gallery model. These can be overridden by `galleryOpts`.
+- `data-gal-opts`: stringified JSON options for the gallery model. These can be overridden by `galleryOpts`.
 - `data-gal-layout`: layout to use in the ThumbContainer. Can be overriden by `layout`.
+- `data-gal-selection`: key for the Selection to use by the Gallery, or empty string for no selection.
+- `data-gal-selection-opts`: stringified JSON options for the selection collection. These can be overriden by `selectionOpts`.
 
 `layout`: 'masonry' is the default layout. With 'none', the thumbs are rendered into the dom without any masonry frills.
 
-``galleryOpts``: options for the gallery model (see [gallery.model.js](/app/scripts/gallery/models/gallery.model.js) for details).
+``galleryOpts``: options for the gallery model (see [GalleryModel](/app/scripts/gallery/models/gallery.model.js) for details).
+
+`selectionOpts`: options for the selection collection (see [SelectionCollection](/app/scripts/gallery/collections/selection.collection.js) for details).
 
 ``onInit`` is called, when the gallery data is fetched. It gets 2 params: 
 - the GalleryApp object, a backbone view representing the whole application and
