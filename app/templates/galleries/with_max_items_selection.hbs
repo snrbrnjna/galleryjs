@@ -1,0 +1,12 @@
+---
+layout: gallery.hbs
+title: gallery with a selection of a maximum of 5 items.
+gallery:
+  key: <% if (production) { %>flyer-doc-remote<% } else { %>flyer-doc-local<% } %>
+  src: <%= gallery.key %>.json
+  selection: <%= gallery.key %>
+  selectionOpts: '{"maxItems": 5}'
+  opts: '{"double_tap_thumb": true}'
+---
+
+Have a look at <code>main.js</code> for how you can react, when the maximum of items is selected.

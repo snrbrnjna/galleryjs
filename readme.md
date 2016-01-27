@@ -33,19 +33,34 @@ new GalleryApp({
     el: $('.gallery-app'),
     layout: 'masonry',
     galleryOpts: {},
+    selectionOpts: {},
     onInit: function(app, model) {}
 });
 ```
 
-``el``: DOM element with options for the gallery (see [index.html](/app/templates/layouts/gallery.hbs) for details).
+The gallery can be configured in the markup via data attributes of the gallery element `el`. Additionally you can _override_ these settings with the options given to the GalleryApp constructor along the `el`:
 
-``layout``: 'masonry' is the default layout. With 'none', the thumbs are rendered into the dom without any masonry frills. This option can also be specified via the ``data-gal-layout`` attribute.
+`el`: DOM element with the following options for the gallery:
+- `data-gal-src`: defines where to take the images from. 2 possibilities:
+    + a url (relative or absolute) to a gallery-json ([example](/app/flyer-doc-remote.json))
+    + `selection:<selection-key>` for a SelectionGalleryModel, which takes its images from a selection specified by the given `<selection-key>`.
+- `data-gal-opts`: stringified JSON options for the gallery model. These can be overridden by `galleryOpts`.
+- `data-gal-layout`: layout to use in the ThumbContainer. Can be overriden by `layout`.
+- `data-gal-selection`: key for the Selection to use by the Gallery, or empty string for no selection.
+- `data-gal-selection-opts`: stringified JSON options for the selection collection. These can be overriden by `selectionOpts`.
 
-``galleryOpts``: options for the gallery model (see [gallery.model.js](/app/scripts/gallery/models/gallery.model.js) for details).
+`layout`: 'masonry' is the default layout. With 'none', the thumbs are rendered into the dom without any masonry frills.
+
+``galleryOpts``: options for the gallery model (see [GalleryModel](/app/scripts/gallery/models/gallery.model.js) for details).
+
+`selectionOpts`: options for the selection collection (see [SelectionCollection](/app/scripts/gallery/collections/selection.collection.js) for details).
 
 ``onInit`` is called, when the gallery data is fetched. It gets 2 params: 
 - the GalleryApp object, a backbone view representing the whole application and
-- the GalleryModel object, a backbone model representing the Gallery data including the ImageCollection.
+- the GalleryModel object, a backbone model representing the Gallery data.
+
+#### Addons
+In the ``onInit`` callback you can hook your own _addons_ - components, that interact with the gallery, via the `GalleryApp` object. In the [addons](/app/scripts/addons) directory you can find examples for that.
 
 ## Example Gallery
 
