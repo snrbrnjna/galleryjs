@@ -49,7 +49,8 @@ define([
       gutter_width: 3, // jshint ignore:line
       chunk_size: 8, // jshint ignore:line
       first_chunk: 15, // jshint ignore:line
-      double_tap_thumb: false // jshint ignore:line
+      double_tap_thumb: false, // jshint ignore:line
+      fullscreen_keys: [/*f*/70,/*ENTER*/13] // empty array => no fullscreen mode // jshint ignore:line
     },
 
     initialize: function() {

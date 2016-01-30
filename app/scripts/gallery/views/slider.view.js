@@ -124,6 +124,11 @@ define([
             this.showPrev();
             break;
         }
+        // fullscreen keys are configurable on the gallery model.
+        var fullscreenKeys = this.model.get('opts').fullscreen_keys;
+        if (fullscreenKeys && fullscreenKeys.length && fullscreenKeys.indexOf(evt.keyCode) > -1) {
+          this.enterFullscreen();
+        }
       }
     },
 
@@ -235,6 +240,8 @@ define([
     closeSlider: function() {
       this.model.trigger('slider:closing', this.current);
 
+      this.exitFullscreen();
+
       this.$el.removeClass('open visible');
       $('body').addClass('slider_closed');
 
@@ -248,6 +255,44 @@ define([
 
       this.$el.swipe('disable');
       this.model.toggleSliderState();
+    },
+
+    isFullscreen: function() {
+      return document.fullscreenElement ||    // alternative standard method
+        document.mozFullScreenElement ||      // current working methods
+        document.webkitFullscreenElement ||
+        document.msFullscreenElement;
+    },
+
+    enterFullscreen: function() {
+      if(this.model.get('opts').fullscreen_keys.length) {
+        if (this.isOpen() && !this.isFullscreen()) {
+          var element = this.$el[0];
+          if (element.requestFullscreen) {
+            element.requestFullscreen();
+          } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+          } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+          } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+          }
+        }
+      }
+    },
+
+    exitFullscreen: function() {
+      if (this.isFullscreen()) {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        }
+      }
     },
 
     _onPopstate: function(evt) {
