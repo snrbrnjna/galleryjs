@@ -7,7 +7,7 @@ define([
   'gallery/views/large.view',
   'gallery/views/cockpit.view'
 ], function($, nope, nope2, _, Backbone, LargeView, CockpitView) {
-  
+
   /*
    * Model: GalleryModel
    * Element: is set by the constructor (see app.js)
@@ -21,16 +21,16 @@ define([
    * triggers 'slider:newImage' with current LargeView object on GalleryModel
    */
   var SliderView = Backbone.View.extend({
-        
+
     events: {
       'click .nav.prev': 'showPrev',
       'click .nav.next': 'showNext'
     },
-    
+
     initialize: function() {
       // Mark with slider_closed class
       $('body').addClass('slider_closed');
-      
+
       // Init Elements
       this.tray = this.$('.tray');
       this.currentBox = this.$('.photo.current'); //TODO: Options
@@ -39,7 +39,7 @@ define([
       this.navPrev = this.$('.nav.prev'); // TODO: Options
       this.navNext = this.$('.nav.next'); // TODO: Options
       this.current = undefined;
-      
+
       // Register Handlers
       // Check, when Thumb was clicked
       this.listenTo(this.model, 'thumb:clicked', this.openSlider);
@@ -47,27 +47,28 @@ define([
       $(window).on('resize.slider', _.bind($.debounce(200, this.resize), this));
       // Listen to keyboard
       $(window).on('keyup.slider', _.bind(this.keys, this));
-      // Listen to mousemove for hovering the prev/next buttons - only on 
+      // Listen to mousemove for hovering the prev/next buttons - only on
       // non-touch devices (mixed devices (surface et al) don't get hover help)
       this.touchable = ('ontouchstart' in window);
       if (!this.touchable) {
         this.tray.on('mousemove.slider', _.bind($.throttle(150, this.mousemove), this));
       }
-            
+
       // Init Cockpit
       this.cockpit = new CockpitView({
         model: this.model,
         slider: this
       });
-      
-      // Init Swipe-Handler and deactivate it 
+
+      // Init Swipe-Handler and deactivate it
       // => openSlider/closeSlider enables/disables it again
       this.initSwipeHandler();
       this.$el.swipe('disable');
-      
-      // Check if a ImageModel id is in the window.location.hash 
+
+      // Check if a ImageModel id is in the window.location.hash
       // => open slider with this image
       this.listenToOnce(this.model, 'sync', function() {
+        window.onpopstate = this._onPopstate.bind(this);
         if (window.location.hash.length > 2) {
           var imageModel = this.model.get('images').get(window.location.hash.substr(2));
           if (imageModel) {
@@ -79,7 +80,7 @@ define([
         }
       });
     },
-    
+
     initSwipeHandler: function() {
       var instance = this;
       this.$el.swipe({
@@ -98,7 +99,7 @@ define([
         allowPageScroll: 'none'
       });
     },
-        
+
     // override Backbone.View#remove to remove the event listener for 'resize.slider'
     remove: function() {
       $(window).off('resize.slider');
@@ -109,7 +110,7 @@ define([
       // could also be written as:
       // this.constructor.__super__.remove.call(this);
     },
-    
+
     keys: function(evt) {
       if (this.isOpen()) {
         switch(evt.keyCode) {
@@ -125,7 +126,7 @@ define([
         }
       }
     },
-    
+
     // execute prev/next or close, depending on the area clicked.
     click: function(evt) {
       var mouseCmd = this._mapMouseEvent(evt);
@@ -141,7 +142,7 @@ define([
           break;
       }
     },
-    
+
     // "hover" effect for prev/next buttons while mouse is over image
     mousemove: function(evt) {
       var mouseCmd = this._mapMouseEvent(evt);
@@ -156,7 +157,7 @@ define([
         this.navNext.removeClass('active');
       }
     },
-    
+
     // Check which comand would be executed from the current mouse position
     _mapMouseEvent: function(evt) {
       var $target = $(evt.target);
@@ -176,11 +177,11 @@ define([
         return 'ESC';
       }
     },
-    
+
     isOpen: function() {
       return this.$el.hasClass('open');
     },
-    
+
     openSlider: function(imageModel) {
       this._setDimensions();
       this._setCurrent(imageModel);
@@ -190,94 +191,112 @@ define([
       this.$el.swipe('enable');
       this.model.toggleSliderState();
     },
-    
+
     showNext: function() {
       if (this.next) {
         var newNextBox = this.$el.find('#prev');
-        
+
         this.prev = this.current;
         this.prevBox = this.currentBox.attr('id','prev');
         this.current = this.next;
         this.model.setCurrent(this.next.model);
         this.currentBox = this.nextBox.attr('id','current');
         this.nextBox = newNextBox.attr('id','next');
-        
+
         this.prevBox.toggleClass('current prev');
         this.currentBox.toggleClass('next current');
         this.nextBox.toggleClass('prev next');
-        
+
         this._setNext();
         this._currentChanged();
       }
     },
-    
+
     showPrev: function() {
       if (this.prev) {
         var newPrevBox = this.$el.find('#next');
-        
+
         this.next = this.current;
         this.nextBox = this.currentBox.attr('id','next');
         this.current = this.prev;
         this.model.setCurrent(this.prev.model);
         this.currentBox = this.prevBox.attr('id','current');
         this.prevBox = newPrevBox.attr('id', 'prev');
-        
+
         this.nextBox.toggleClass('current next');
         this.currentBox.toggleClass('prev current');
         this.prevBox.toggleClass('next prev');
-        
+
         this._setPrev();
         this._currentChanged();
       }
     },
-    
+
     closeSlider: function() {
       this.model.trigger('slider:closing', this.current);
-    
+
       this.$el.removeClass('open visible');
       $('body').addClass('slider_closed');
 
       this._setCurrent(undefined);
       this.current = this.next = this.perv = undefined;
-      
+
       this.$('.photo').empty();
-    
+
       // update browser url
-      if (this.model.get('imagePages') && this.model.get('postPath')) {
-        history.replaceState(null, '', this.model.get('postPath'));
-      } else {
-        this._setHashbang(null, 'ÄMPTI');
-      }
-    
+      this._setState(null);
+
       this.$el.swipe('disable');
       this.model.toggleSliderState();
     },
-    
-    _setHashbang: function(bangboombang, title) {
+
+    _onPopstate: function(evt) {
       if (Modernizr.history) {
-        var newLoc = document.location.href;
-        newLoc = newLoc.replace(/\#.*/, '') + (bangboombang ? '#!' + bangboombang : '');
-        history.replaceState(null, title, newLoc);
+        if (evt.state && evt.state.imageId) {
+          var imgModel = this.model.get('images').get(evt.state.imageId);
+          if (!this.isOpen()) {
+            this.openSlider(imgModel);
+          } else {
+            this._setCurrent(imgModel);
+          }
+        } else {
+          this.closeSlider();
+        }
       }
     },
-    
-    _currentChanged: function() {
-      // update browser url
-      if (this.model.get('imagePages')) {
-        history.replaceState(null, '', this.current.model.get('imagePagePath'));
-      } else {
-        this._setHashbang(this.current.model.id, 'Image ' + this.current.model.id);
+
+    _setState: function(imageModel) {
+      if (Modernizr.history) {
+        var curLoc = document.location.href;
+
+        if (imageModel) {
+          if (!history.state || history.state.imageId != imageModel.id) {
+            var url = this.model.get('imagePages') ?
+              imageModel.get('imagePagePath') :
+              curLoc.replace(/\#.*/, '') + '#!'+imageModel.id;
+            history.pushState({imageId: imageModel.id}, '', url);
+          }
+        } else {
+          if (history.state) {
+            history.pushState(null, '', this.model.get('postPath'));
+          }
+        }
+
       }
-      
+    },
+
+    _currentChanged: function() {
+      this._setState(this.current.model);
+
       this.model.trigger('slider:newImage', this.current);
-      
+
       if (this.next) { this.navNext.removeClass('visuallyhidden'); }
       else { this.navNext.addClass('visuallyhidden'); }
       if (this.prev) { this.navPrev.removeClass('visuallyhidden'); }
       else { this.navPrev.addClass('visuallyhidden'); }
-      
+
     },
-    
+
     _setCurrent: function(imageModel) {
       this.model.setCurrent(imageModel);
       var largeView = this._loadOrGetLarge(imageModel);
@@ -289,7 +308,7 @@ define([
         this._setPrev();
       }
     } ,
-    
+
     _setNext: function() {
       this.next = this._loadOrGetLarge(this.model.getNext());
       if (this.next) {
@@ -300,7 +319,7 @@ define([
       }
       return this.next;
     },
-    
+
     _setPrev: function() {
       this.prev = this._loadOrGetLarge(this.model.getPrev());
       if (this.prev) {
@@ -311,7 +330,7 @@ define([
       }
       return this.prev;
     },
-    
+
     // save current tray resolution on the ImageModel or LargeView
     _loadOrGetLarge: function(imageModel) {
       if (imageModel) {
@@ -331,20 +350,20 @@ define([
 
     resize: function() {
       this._setDimensions();
-      
+
       if (this.current) { this.current.resize(); }
       if (this.next) { this.next.resize(); }
       if (this.prev) { this.prev.resize(); }
     },
-    
+
     _setDimensions: function() {
       this.width = this.tray.width();
       this.height = this.tray.height();
       this.ratio = this.width / this.height;
       this.orientation = this.ratio > 1 ? 'landscape' : 'portrait';
     }
-    
+
   });
-  
+
   return SliderView;
 });

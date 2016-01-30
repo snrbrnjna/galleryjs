@@ -41,8 +41,8 @@ define([
         imagePagePath: undefined
       };
     },
-    
-    // Constructor/Initializer has to be called with a options.presets hash with 
+
+    // Constructor/Initializer has to be called with a options.presets hash with
     // a baseurl for every preset (minimum: thumb & large).
     initialize: function(attrs, options) {
       if (options !== undefined) {
@@ -52,8 +52,8 @@ define([
         }, this));
         // set orig-filename
         this.attributes['filenameOrig'] = attrs['filename'].replace('-' + attrs['digest'], '');
-        // set image_page url
-        if (options.gallery && options.gallery.imagePages && options.gallery.basepath) {
+        // set image_page path
+        if (options.gallery && options.gallery.imagePages && options.gallery.path) {
           this.attributes['imagePagePath'] = options.gallery.path.replace(/\.html$/, '') + '/' + attrs['digest'];
         }
       }
@@ -68,23 +68,23 @@ define([
     getLarge: function() {
       return ResponsiveAdapter.presetMapperLarge(this);
     },
-    
+
     getThumbView: function() {
       return this._thumbView;
     },
-    
+
     setThumbView: function(thumbView) {
       this._thumbView = thumbView;
     },
-    
+
     getLargeView: function() {
       return this._largeView;
     },
-    
+
     setLargeView: function(largeView) {
       this._largeView = largeView;
     },
-        
+
     index: function() {
       if (this.attributes.index === undefined) {
         return this.collection ? this.collection.indexOf(this) : undefined;
@@ -92,6 +92,6 @@ define([
       return this.attributes.index;
     }
   });
-  
+
   return ImageModel;
 });
