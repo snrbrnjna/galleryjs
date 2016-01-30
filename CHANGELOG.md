@@ -1,3 +1,12 @@
+<a name="1.3.0"></a>
+## 1.3.0 (2016-01-30)
+
+
+#### Features
+
+* **fullscreen:** fullscreen on configurable keys (default: f, ENTER) in open slider ([841ccb4d](https://github.com/snrbrnjna/galleryjs/commit/841ccb4ddaf226e7670eac6967a0c2127f69cb90))
+
+
 <a name="1.2.1"></a>
 ### 1.2.1 (2016-01-30)
 
