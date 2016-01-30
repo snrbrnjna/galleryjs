@@ -8,8 +8,6 @@
       "tags": null,
       "author": "hias"
     },
-    "postPath": "/",
-    "postBasepath": "/",
     "postBaseurl": "http://0.0.0.0:9000",
     "presets": {
       "thumb": {

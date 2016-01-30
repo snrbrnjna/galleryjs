@@ -1,0 +1,154 @@
+{
+  "gallery": {
+    "title": "Flyer Doc Patcheko",
+    "meta": {
+      "date": "2014-04-16 14-59-33",
+      "title": "Flyer Doc Patcheko",
+      "categories": null,
+      "tags": null,
+      "author": "hias"
+    },
+    "postBaseurl": "http://0.0.0.0:9000",
+    "presets": {
+      "thumb": {
+        "width": 240,
+        "baseurl": "images/galleries/flyer-doc/thumb"
+      },
+      "large_phones": {
+        "width": 650,
+        "baseurl": "images/galleries/flyer-doc/large_phones"
+      },
+      "large_pads": {
+        "width": 1024,
+        "baseurl": "images/galleries/flyer-doc/large_pads"
+      },
+      "large": {
+        "width": 1400,
+        "baseurl": "images/galleries/flyer-doc/large"
+      }
+    },
+    "dynamic": true,
+    "imagePages": true,
+    "opts": {
+      "min_col_width": {
+        "desktop": 120,
+        "pad": 120,
+        "phone": 120
+      },
+      "gutter_width": 3,
+      "chunk_size": 15,
+      "first_chunk": 25
+    },
+    "imageCount": 4,
+    "images": [
+      {
+        "digest": "3819e4",
+        "index": 0,
+        "filename": "1064690_10200566752595241_1768797168_o-0a3d92-3819e4.jpg",
+        "orientation": "portrait",
+        "ratio": 0.708,
+        "exif": null,
+        "meta": {
+          "title": "Test-Titel"
+        },
+        "thumb": {
+          "width": 240,
+          "height": 338
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 918
+        },
+        "large_pads": {
+          "width": 708,
+          "height": 1000
+        },
+        "large": {
+          "width": 708,
+          "height": 1000
+        }
+      },
+      {
+        "digest": "2f8a41",
+        "index": 1,
+        "filename": "478376_3338216977704_1337021160_49904447_937616192_o-79a559-2f8a41.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7075,
+        "exif": null,
+        "meta": {
+          "title": "Test-Titel 2"
+        },
+        "thumb": {
+          "width": 240,
+          "height": 339
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 918
+        },
+        "large_pads": {
+          "width": 849,
+          "height": 1200
+        },
+        "large": {
+          "width": 849,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "488da2",
+        "index": 2,
+        "filename": "59to1a-cab55c-488da2.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7133333333333334,
+        "exif": null,
+        "meta": {
+          "title": "Test-Titel 3"
+        },
+        "thumb": {
+          "width": 240,
+          "height": 336
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 911
+        },
+        "large_pads": {
+          "width": 856,
+          "height": 1200
+        },
+        "large": {
+          "width": 856,
+          "height": 1200
+        }
+      },
+      {
+        "digest": "31b49a",
+        "index": 3,
+        "filename": "59to1b-e4dc3d-31b49a.jpg",
+        "orientation": "portrait",
+        "ratio": 0.7133333333333334,
+        "exif": null,
+        "meta": {
+          "title": "Test-Titel 3"
+        },
+        "thumb": {
+          "width": 240,
+          "height": 336
+        },
+        "large_phones": {
+          "width": 650,
+          "height": 911
+        },
+        "large_pads": {
+          "width": 856,
+          "height": 1200
+        },
+        "large": {
+          "width": 856,
+          "height": 1200
+        }
+      }
+    ]
+  }
+}

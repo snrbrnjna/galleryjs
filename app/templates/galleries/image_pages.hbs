@@ -1,0 +1,12 @@
+---
+layout: gallery.hbs
+title: gallery with image pages
+gallery:
+  key: <% if (production) { %>img-pages-remote<% } else { %>img-pages-local<% } %>
+  src: <%= gallery.key %>.json
+  selection: 'false'
+---
+<p>
+<code>imagePages</code> is an option that can be set only in the json file. It says, that there's a rendered page for every image of the gallery. These pages contain <i>image-metadata</i> for the search engines and facebook, twitter, etc and a <i>redirect</i> to the gallery page with the image id as a hash-fragment.<br/>
+Open the slider and via <code>history.pushState</code> the url for a image page will be set.
+</p>

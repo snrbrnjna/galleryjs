@@ -60,11 +60,12 @@ define([
 
     parse: function(response) {
       var galleryHash = response.gallery;
+      // use current location path as default galler post path
+      galleryHash.postPath = galleryHash.postPath || window.location.pathname;
       // Init Collection with response Hash
       galleryHash.images = new ImageCollection(galleryHash.images, {
         presets: this._parsePresets(galleryHash.presets),
         gallery: {
-          basepath: galleryHash.postBasepath,
           baseurl: galleryHash.postBaseurl,
           path: galleryHash.postPath,
           imagePages: galleryHash.imagePages
