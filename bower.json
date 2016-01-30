@@ -1,6 +1,6 @@
 {
   "name": "gallery.js",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": [
     "lib/gallery.min.css",
     "lib/gallery.pkgd.min.js"

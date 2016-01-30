@@ -1,3 +1,17 @@
+<a name="1.2.1"></a>
+### 1.2.1 (2016-01-30)
+
+
+#### Bug Fixes
+
+* back-button for slider images ([c445cbd7](https://github.com/snrbrnjna/galleryjs/commit/c445cbd773615b2352266a9ce6e43f21e2a675ca))
+
+
+#### Features
+
+* **addon:** delete selection button ([5046be54](https://github.com/snrbrnjna/galleryjs/commit/5046be54739559b14104d7a9065ddd05fb6feb2b))
+
+
 <a name="1.2.0"></a>
 ## 1.2.0 (2016-01-27)
 
