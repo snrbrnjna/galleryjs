@@ -73,7 +73,7 @@ module.exports = function (grunt) {
             options: {
                 port: SERVER_PORT,
                 // change this to '0.0.0.0' to access the server from outside
-                hostname: 'localhost'
+                hostname: '0.0.0.0'
             },
             livereload: {
                 options: {
@@ -120,10 +120,10 @@ module.exports = function (grunt) {
         },
         open: {
             server: {
-                path: 'http://localhost:<%= connect.options.port %>'
+                path: 'http://0.0.0.0:<%= connect.options.port %>'
             },
             test: {
-                path: 'http://localhost:<%= connect.test.options.port %>'
+                path: 'http://0.0.0.0:<%= connect.test.options.port %>'
             }
         },
         clean: {
@@ -423,7 +423,7 @@ module.exports = function (grunt) {
                 'mocha',
                 'watch:test'
             ];
-            
+
         if(!isConnected) {
             return grunt.task.run(testTasks);
         } else {
@@ -434,7 +434,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('build', function (target) {
-        
+
         var buildTasks = [
             'jshint',
             'clean:dist',
@@ -446,7 +446,7 @@ module.exports = function (grunt) {
             'imagemin',
             // reinsert, when data-attribs for gallery opts are removed, as this
             // destroys json strings in data attribs through escaping
-            // 'htmlmin', 
+            // 'htmlmin',
             'concat',
             'copy:lib',
             'cssmin',
