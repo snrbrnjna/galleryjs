@@ -1,9 +1,10 @@
 define([
+  'underscore',
   'backbone',
   'jquery',
-  'jquery-touchswipe'
+  'hammerjs'
 ],
-function (Backbone, $, nope) {
+function (_, Backbone, $, Hammer) {
 
   /*
    * Model: ImageModel
@@ -16,26 +17,30 @@ function (Backbone, $, nope) {
         this.listenTo(this.model, 'change:selected', this.updateSelected);
         this.updateSelected(this.model, this.model.get('selected'));
 
-        // not with built in events => doesn't work well on touch devices
-        // this falls back to mouse events, when no touch events supported
-        this.$el.swipe({
-          tap: _.bind(this.toggleSelected, this)
-        });
+        this.mc = new Hammer.Manager(this.$el[0], {recognizers: [[Hammer.Tap]]});
+        this.mc.on('tap', _.bind(this.toggleSelected, this));
       }
+    },
+
+    isVisible: function() {
+      return this.$el.is(':visible') && this.$el.css('opacity') > 0;
     },
 
     // override Backbone.View#remove to remove the touch event listener
     remove: function() {
-      this.$el.swipe('destroy');
+      this.mc.off('tap');
       Backbone.View.prototype.remove.call(this); // call super()
       // could also be written as:
       // this.constructor.__super__.remove.call(this);
     },
 
     toggleSelected: function(evt) {
-      evt.stopImmediatePropagation();
-      evt.preventDefault();
-      this.model.set('selected', !this.model.get('selected'));
+      // DEBUG
+      // console.log('SelectButton', evt.target, 'visible', this.isVisible());
+      if (this.isVisible()) { // only toggle selected, when button is visible.
+        evt.srcEvent.stopImmediatePropagation();
+        this.model.set('selected', !this.model.get('selected'));
+      }
     },
 
     updateSelected: function(ImageModel, selected) {

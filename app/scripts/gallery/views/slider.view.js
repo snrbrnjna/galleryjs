@@ -1,12 +1,12 @@
 define([
   'jquery',
-  'jquery-touchswipe',
   'vendor/jquery.throttle-debounce',
   'underscore',
   'backbone',
   'gallery/views/large.view',
-  'gallery/views/cockpit.view'
-], function($, nope, nope2, _, Backbone, LargeView, CockpitView) {
+  'gallery/views/cockpit.view',
+  'hammerjs'
+], function($, nope, _, Backbone, LargeView, CockpitView, Hammer) {
 
   /*
    * Model: GalleryModel
@@ -63,7 +63,6 @@ define([
       // Init Swipe-Handler and deactivate it
       // => openSlider/closeSlider enables/disables it again
       this.initSwipeHandler();
-      this.$el.swipe('disable');
 
       // Check if a ImageModel id is in the window.location.hash
       // => open slider with this image
@@ -83,21 +82,23 @@ define([
 
     initSwipeHandler: function() {
       var instance = this;
-      this.$el.swipe({
-        swipeLeft: function(evt, direction, distance, duration, fingerCount) {
-          instance.showNext();
-          evt.preventDefault();
-        },
-        swipeRight: function(evt, direction, distance, duration, fingerCount) {
-          instance.showPrev();
-          evt.preventDefault();
-        },
-        tap: function(evt, target) {
-          evt.preventDefault();
-          instance.click(evt);
-        },
-        allowPageScroll: 'none'
+      this.mc = new Hammer.Manager(this.$el[0], {recognizers: [
+        [Hammer.Tap],
+        [Hammer.Swipe, {direction: Hammer.DIRECTION_HORIZONTAL}]
+      ]});
+      this.mc.on('tap', function(evt) {
+        evt.preventDefault();
+        instance.click(evt.srcEvent);
       });
+      this.mc.on('swipeleft', function(evt) {
+        evt.preventDefault();
+        instance.showNext();
+      });
+      this.mc.on('swiperight', function(evt) {
+        evt.preventDefault();
+        instance.showPrev();
+      });
+      this.mc.set({enable:false});
     },
 
     // override Backbone.View#remove to remove the event listener for 'resize.slider'
@@ -105,7 +106,9 @@ define([
       $(window).off('resize.slider');
       $(window).off('keyup.slider');
       if (this.touchable) { this.tray.off('mousemove.slider'); }
-      this.$el.swipe('destroy');
+      this.mc.off('tap');
+      this.mc.off('swipeleft');
+      this.mc.off('swiperight');
       Backbone.View.prototype.remove.call(this); // call super()
       // could also be written as:
       // this.constructor.__super__.remove.call(this);
@@ -177,6 +180,10 @@ define([
         var offsetX = pageX - $(evt.target).offset().left;
         var offsetRelX = offsetX / this.current.getWidth();
         return (offsetRelX < 0.45 ? 'nav.prev' : 'nav.next');
+      } else if ($target.is('.nav.next')) {
+        return 'nav.next';
+      } else if ($target.is('.nav.prev')) {
+        return 'nav.prev';
       } else if ($target.closest('.cockpit').length === 0) {
         // $.closest => all targets within the specified .cockpit container
         return 'ESC';
@@ -193,7 +200,7 @@ define([
       this.$el.addClass('open');
       $('body').removeClass('slider_closed');
       this.$el.addClass('visible');
-      this.$el.swipe('enable');
+      this.mc.set({enable:true});
       this.model.toggleSliderState();
     },
 
@@ -253,7 +260,7 @@ define([
       // update browser url
       this._setState(null);
 
-      this.$el.swipe('disable');
+      this.mc.set({enable:false});
       this.model.toggleSliderState();
     },
 

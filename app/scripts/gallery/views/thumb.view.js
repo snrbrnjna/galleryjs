@@ -1,17 +1,19 @@
 define([
   'jquery',
-  'jquery-touchswipe',
+  'underscore',
   'backbone',
-  'gallery/views/selection/select.button'
+  'gallery/views/selection/select.button',
+  'hammerjs'
 ],
-function($, nope, Backbone, SelectButton) {
+function($, _, Backbone, SelectButton, Hammer) {
+
   /*
    * Model: ImageModel
    * Element: Thumb Container
    * #gallery: GalleryModel
    */
   var ThumbView = Backbone.View.extend({
-    
+
     /*
      * options.gallery expected!
      */
@@ -20,47 +22,49 @@ function($, nope, Backbone, SelectButton) {
       this.gallery = this.options.gallery;
       this.template = this.options.template;
 
-      this.doubleTap = this.gallery.get('opts')['double_tap_thumb'];
+      this.doubleTapEnabled = this.gallery.get('opts')['double_tap_thumb'];
     },
-
-    // need swipeTouch here for tap shit working correctly
-    // events: {
-    //   'click': 'openInSlider'
-    // },
 
     // override Backbone.View#remove to remove the touch event listener
     remove: function() {
-      this.$el.swipe('destroy');
+      this.mc.off('tap');
       Backbone.View.prototype.remove.call(this); // call super()
       // could also be written as:
       // this.constructor.__super__.remove.call(this);
     },
 
     // double tap feature, when touched
-    clickOrTapped: function(evt) {
-      if (evt.type == 'touchend' && this.doubleTap) {
-        this.$el.addClass('double-tap'); // mark as double tap touch interaction for css styling
-        if (this.$el[0].querySelector(':hover') !== null) {
-          this.openInSlider(); 
+    tap: function(evt) {
+      // DEBUG
+      // console.log('ThumbView tap, target:', evt.target, 'selectorVisible:', this.selectButton.isVisible());
+
+      // target selectButton and button is visible => no tap thumb functionality
+      if (evt.target === this.selectButton.$el[0] && this.selectButton.isVisible()) {return true;}
+
+      // double tap only with real touch events
+      if (this.doubleTapEnabled && evt.pointerType !== 'mouse') {
+        // mark as tapped for double tap interaction and for css styling
+        this.$el.siblings('.tapped').not(this.$el).removeClass('tapped');
+        if (!this.$el.hasClass('tapped')) {
+          this.$el.addClass('tapped');
+          return;
         }
-      } else {
-        this.openInSlider();
       }
+      this.openInSlider();
     },
-    
+
     openInSlider: function() {
       this.gallery.trigger('thumb:clicked', this.model);
     },
-    
+
     render: function() {
       var html = this.template({img: this.model}).trim();
       this.setElement($.parseHTML(html));
 
-      // not with built in events => doesn't work well on touch devices
-      // this falls back to mouse events, when no touch events supported
-      this.$el.swipe({
-        tap: _.bind(this.clickOrTapped, this)
-      });
+      // listen on tap events => extra behaviour for taps, when double_tap_thumb option
+      // hammerjs simulates taps when using a mouse or other pointer.
+      this.mc = new Hammer.Manager(this.$el[0], {recognizers: [[Hammer.Tap]]});
+      this.mc.on('tap', _.bind(this.tap, this));
 
       if (!this.selectButton) {
         this.selectButton = new SelectButton({
@@ -70,8 +74,8 @@ function($, nope, Backbone, SelectButton) {
       }
       return this;
     }
-    
+
   });
-  
+
   return ThumbView;
 });

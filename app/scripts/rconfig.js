@@ -23,8 +23,8 @@ require.config({
     backbone: 'backbone/backbone',
     localstorage: 'backbone.localstorage/backbone.localstorage',
     underscore: 'underscore/underscore',
-    'jquery-touchswipe': 'jquery-touchswipe/jquery.touchswipe',
     'fluid-masonry': 'fluid-masonry/fluid-masonry',
-    md5: 'js-md5/js/md5'
+    md5: 'js-md5/js/md5',
+    hammerjs: 'hammerjs/hammer'
   }
 });
