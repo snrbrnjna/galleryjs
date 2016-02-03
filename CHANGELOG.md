@@ -1,3 +1,13 @@
+<a name="1.3.1"></a>
+### 1.3.1 (2016-02-03)
+
+
+#### Bug Fixes
+
+* **gruntfile:** make dev server accessible from outside ([1b640d4d](https://github.com/snrbrnjna/galleryjs/commit/1b640d4d1a8d3a1a7f9d4305c0ac30bfbc0f9d21))
+* **touch:** fixed touch events on iphone (switched from jquery-touchSwipe to hammerjs) ([c3c0eda0](https://github.com/snrbrnjna/galleryjs/commit/c3c0eda00787292394f2d242bfc99908d08dea9b))
+
+
 <a name="1.3.0"></a>
 ## 1.3.0 (2016-01-30)
 
