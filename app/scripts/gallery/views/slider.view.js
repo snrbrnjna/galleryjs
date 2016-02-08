@@ -22,10 +22,11 @@ define([
    */
   var SliderView = Backbone.View.extend({
 
-    events: {
-      'click .nav.prev': 'showPrev',
-      'click .nav.next': 'showNext'
-    },
+    // done by #_mapMouseEvent
+    // events: {
+    //   'click .nav.prev': 'showPrev',
+    //   'click .nav.next': 'showNext'
+    // },
 
     initialize: function() {
       // Mark with slider_closed class
