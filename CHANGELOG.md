@@ -1,3 +1,12 @@
+<a name="1.3.2"></a>
+### 1.3.2 (2016-02-08)
+
+
+#### Bug Fixes
+
+* **slider:** triggered next/prev twice ([239df8c8](https://github.com/snrbrnjna/galleryjs/commit/239df8c83960ecffe2a645bde485d6f933b719ef))
+
+
 <a name="1.3.1"></a>
 ### 1.3.1 (2016-02-03)
 
